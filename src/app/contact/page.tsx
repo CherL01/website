@@ -20,7 +20,7 @@ export default function ContactPage() {
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Interested in collaborating on robotics projects, discussing research opportunities, 
-            or just want to connect? I'd love to hear from you!
+            or just want to connect? I&apos;d love to hear from you!
           </p>
         </motion.div>
 
@@ -42,7 +42,7 @@ export default function ContactPage() {
               </motion.div>
               
               <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                Let's Start a Conversation
+                Let&apos;s Start a Conversation
               </h2>
               
               <p className="text-lg text-gray-600 mb-6">
