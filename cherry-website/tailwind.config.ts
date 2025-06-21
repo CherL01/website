@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "hsl(var(--background) / <alpha-value>)",
+        foreground: "hsl(var(--foreground) / <alpha-value>)",
         primary: {
           50: "#FFF6F6",
           100: "#FFEBEB", 
@@ -22,6 +22,7 @@ const config: Config = {
           700: "#FF0F0F",
           800: "#E60000",
           900: "#B30000",
+          DEFAULT: "#FFDCDC",
         },
         secondary: {
           50: "#FFF9F5",
@@ -34,6 +35,7 @@ const config: Config = {
           700: "#FF8C3C",
           800: "#FF7A1D",
           900: "#E6650A",
+          DEFAULT: "#FFF2EB",
         },
         accent: {
           50: "#FFF5E6",
@@ -46,7 +48,21 @@ const config: Config = {
           700: "#FFA66E",
           800: "#FF9A5B",
           900: "#FF8E48",
+          DEFAULT: "#FFE8CD",
         },
+        gray: {
+          50: "#F9FAFB",
+          100: "#F3F4F6", 
+          200: "#E5E7EB",
+          300: "#D1D5DB",
+          400: "#9CA3AF",
+          500: "#6B7280",
+          600: "#4B5563",
+          700: "#374151",
+          800: "#1F2937",
+          900: "#111827",
+        },
+        white: "#ffffff",
       },
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
