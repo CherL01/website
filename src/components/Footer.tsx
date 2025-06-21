@@ -5,9 +5,9 @@ import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
 
 const socialLinks = [
   {
-    name: 'GitHub',
-    href: 'https://github.com/CherL01',
-    icon: Github,
+    name: 'Email',
+    href: 'mailto:cherry.lian@gatech.edu',
+    icon: Mail,
   },
   {
     name: 'LinkedIn',
@@ -15,14 +15,14 @@ const socialLinks = [
     icon: Linkedin,
   },
   {
+    name: 'GitHub',
+    href: 'https://github.com/CherL01',
+    icon: Github,
+  },
+  {
     name: 'Portfolio',
     href: 'https://cherrylian01.wixsite.com/engineeringportfolio',
     icon: ExternalLink,
-  },
-  {
-    name: 'Email',
-    href: 'mailto:cherry.lian@gatech.edu',
-    icon: Mail,
   },
 ];
 

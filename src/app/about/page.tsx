@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Download, MapPin, Calendar, Award, ExternalLink } from 'lucide-react';
+import { MapPin, Calendar, Award, ExternalLink } from 'lucide-react';
 import resumeData from '@/data/resume.json';
 
 export default function AboutPage() {
@@ -29,13 +29,9 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800">
             About <span className="text-gradient">Cherry</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Robotics Engineer and ML Researcher passionate about creating intelligent systems 
-            that enhance human-robot interaction and autonomous navigation.
-          </p>
         </motion.div>
 
         {/* Personal Bio */}
@@ -54,21 +50,11 @@ export default function AboutPage() {
                 autonomous mobile robots to creating interactive learning frameworks that enhance 
                 robot-human collaboration.
               </p>
-                          <p className="text-lg text-gray-700 leading-relaxed mb-8">
+                          <p className="text-lg text-gray-700 leading-relaxed">
                 With experience at Huawei Canada developing ML models for network optimization and 
                 current research at Georgia Tech on semantic visual-inertial SLAM systems, I&apos;m passionate 
                 about bridging the gap between theoretical research and practical robotic applications.
               </p>
-            <motion.a
-              href="/assets/Yi_Lian_Resume.pdf"
-              download
-              className="btn-primary text-lg px-8 py-3 inline-flex items-center space-x-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Download size={20} />
-              <span>Download CV</span>
-            </motion.a>
           </div>
         </motion.section>
 
