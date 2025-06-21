@@ -98,6 +98,14 @@ html {
   animation: float 3s ease-in-out infinite;
 }
 
+/* Text utilities */
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
 /* Leaflet map styles */
 .leaflet-container {
   height: 400px;
