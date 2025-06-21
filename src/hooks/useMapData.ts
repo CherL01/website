@@ -4,6 +4,54 @@ import { useMemo } from 'react';
 import { MapData, MapDataSchema, GlobalStats, FilterType } from '@/types/map';
 import mapDataJson from '@/data/map.json';
 
+// Enhanced continent mapping for global statistics
+const CONTINENT_MAP: Record<string, string> = {
+  // North America
+  'Canada': 'North America',
+  'USA': 'North America',
+  'United States': 'North America',
+  'Mexico': 'North America',
+  
+  // Europe
+  'United Kingdom': 'Europe',
+  'UK': 'Europe',
+  'Germany': 'Europe',
+  'France': 'Europe',
+  'Italy': 'Europe',
+  'Spain': 'Europe',
+  'Netherlands': 'Europe',
+  'Switzerland': 'Europe',
+  'Sweden': 'Europe',
+  'Norway': 'Europe',
+  'Denmark': 'Europe',
+  
+  // Asia
+  'China': 'Asia',
+  'Japan': 'Asia',
+  'South Korea': 'Asia',
+  'Singapore': 'Asia',
+  'India': 'Asia',
+  'Thailand': 'Asia',
+  'Malaysia': 'Asia',
+  'Indonesia': 'Asia',
+  
+  // Oceania
+  'Australia': 'Oceania',
+  'New Zealand': 'Oceania',
+  
+  // South America
+  'Brazil': 'South America',
+  'Argentina': 'South America',
+  'Chile': 'South America',
+  'Colombia': 'South America',
+  
+  // Africa
+  'South Africa': 'Africa',
+  'Egypt': 'Africa',
+  'Nigeria': 'Africa',
+  'Kenya': 'Africa',
+};
+
 export function useMapData() {
   // Validate and parse the map data
   const mapData = useMemo(() => {
@@ -16,27 +64,41 @@ export function useMapData() {
     }
   }, []);
 
-  // Calculate global statistics
+  // Calculate enhanced global statistics for Phase 3
   const globalStats = useMemo((): GlobalStats => {
     const allEntries = mapData.flatMap(location => location.entries);
     const countries = new Set(mapData.map(location => location.country));
     
-    // Simple continent mapping
+    // Enhanced continent detection
     const getContinent = (country: string): string => {
-      const continentMap: Record<string, string> = {
-        'Canada': 'North America',
-        'USA': 'North America',
-        'United States': 'North America',
-        // Add more mappings as needed
-      };
-      return continentMap[country] || 'Unknown';
+      return CONTINENT_MAP[country] || 'Other';
     };
 
-    const continents = new Set(mapData.map(location => getContinent(location.country)));
+    const continents = new Set(
+      mapData
+        .map(location => getContinent(location.country))
+        .filter(continent => continent !== 'Other')
+    );
+
+    // Calculate years active from all entries
+    const yearsActive = new Set<number>();
+    allEntries.forEach(entry => {
+      const durationMatch = entry.duration.match(/(\d{4})/g);
+      if (durationMatch) {
+        durationMatch.forEach(year => yearsActive.add(parseInt(year)));
+      }
+    });
 
     // Count entries by type
     const entryTypes = allEntries.reduce((acc, entry) => {
       acc[entry.type] = (acc[entry.type] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    // Calculate entry type percentages for charts
+    const totalEntries = allEntries.length;
+    const entryTypePercentages = Object.keys(entryTypes).reduce((acc, type) => {
+      acc[type] = totalEntries > 0 ? Math.round((entryTypes[type] / totalEntries) * 100) : 0;
       return acc;
     }, {} as Record<string, number>);
 
@@ -45,6 +107,11 @@ export function useMapData() {
       totalEntries: allEntries.length,
       countries: countries.size,
       continents: continents.size,
+      yearsActive: yearsActive.size,
+      yearRange: yearsActive.size > 0 ? {
+        start: Math.min(...yearsActive),
+        end: Math.max(...yearsActive)
+      } : null,
       entryTypes: {
         all: allEntries.length,
         education: entryTypes.education || 0,
@@ -52,6 +119,9 @@ export function useMapData() {
         conference: entryTypes.conference || 0,
         travel: entryTypes.travel || 0,
       },
+      entryTypePercentages,
+      countriesList: Array.from(countries).sort(),
+      continentsList: Array.from(continents).sort(),
     };
   }, [mapData]);
 

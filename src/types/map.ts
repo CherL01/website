@@ -70,11 +70,19 @@ export interface LocationModalProps {
   onEntrySelect: (entryId: string) => void;
 }
 
-// Global statistics type
+// Enhanced global statistics type for Phase 3
 export interface GlobalStats {
   totalLocations: number;
   totalEntries: number;
   countries: number;
   continents: number;
+  yearsActive: number;
+  yearRange: {
+    start: number;
+    end: number;
+  } | null;
   entryTypes: Record<FilterType, number>;
+  entryTypePercentages: Record<string, number>;
+  countriesList: string[];
+  continentsList: string[];
 } 

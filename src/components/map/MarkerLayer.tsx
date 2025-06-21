@@ -90,8 +90,8 @@ const MarkerLayer = memo(function MarkerLayer({
             latitude={lat}
             anchor="bottom"
           >
-            <motion.div
-              className="cursor-pointer"
+            <motion.button
+              className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-full"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               animate={{
@@ -101,6 +101,10 @@ const MarkerLayer = memo(function MarkerLayer({
               onClick={() => handleMarkerClick(locationId)}
               onMouseEnter={() => handleMarkerHover(locationId)}
               onMouseLeave={() => handleMarkerHover(null)}
+              onFocus={() => handleMarkerHover(locationId)}
+              onBlur={() => handleMarkerHover(null)}
+              aria-label={`${location.city}, ${location.country} - ${location.entries.length} experience${location.entries.length > 1 ? 's' : ''} (${entryTypes.join(', ')})`}
+              title={`${location.city}, ${location.country}`}
             >
               {/* Marker Container */}
               <div className="relative">
@@ -164,7 +168,7 @@ const MarkerLayer = memo(function MarkerLayer({
                   )}
                 </div>
               </motion.div>
-            </motion.div>
+            </motion.button>
           </Marker>
         );
       })}
