@@ -4,19 +4,23 @@ A professional, responsive personal website showcasing Yi (Cherry) Lian's work a
 
 ## 🌟 Features
 
+- **Interactive Global Map**: Professional Mapbox-powered journey visualization with timeline sync
 - **Data-driven architecture**: All content dynamically populated from structured JSON files
 - **Interactive project showcase**: Advanced filtering system with search and technology filters
 - **Academic publications system**: Expandable abstracts with DOI links and publication awards
-- **Interactive journey map**: Visual timeline of academic and professional locations
 - **Responsive design**: Mobile-first approach with elegant animations
-- **Performance optimized**: Image optimization, lazy loading, and optimized bundle sizes
+- **Performance optimized**: Image optimization, lazy loading, and optimized bundle sizes (22.2kB map page)
 - **SEO optimized**: Individual metadata for each page with OpenGraph support
+- **Type-safe**: Full TypeScript implementation with Zod runtime validation
 
 ## 🔧 Tech Stack
 
 - **Framework**: Next.js 15.3.4 with TypeScript
 - **UI/Styling**: Tailwind CSS with custom design system
+- **Maps**: Mapbox GL JS v3 via react-map-gl v8.0.4
 - **Animations**: Framer Motion for smooth interactions
+- **Validation**: Zod for runtime type checking
+- **State Management**: React Context with useReducer pattern
 - **Deployment**: Vercel-ready configuration
 - **Data Management**: JSON files as single source of truth
 
@@ -67,18 +71,75 @@ A professional, responsive personal website showcasing Yi (Cherry) Lian's work a
 - APNET '23 Conference Paper
 - IEEE Network Journal Paper
 
-### 🗺️ Map (`/map`)
-- Visual map of North America with coordinate-based positioning
-- Interactive location markers (color-coded: blue for education, green for professional)
-- Modal popups with detailed timeline information
-- Location statistics dashboard
-- Chronological timeline overview
+### 🗺️ Interactive Map (`/map`) - **FULLY IMPLEMENTED**
 
-**Locations Featured**:
-- Toronto: University of Toronto (2019-2024)
-- Markham: Huawei Canada (2022-2023)
-- Atlanta: Georgia Tech (2024-Present)
-- San Diego: Advanced Mechatronics Solutions (2025-Present)
+**🌍 Global Professional Journey Visualization**
+
+A sophisticated, interactive world map showcasing Cherry's academic and professional journey using Mapbox GL JS. Built with performance and user experience as top priorities.
+
+#### Core Features:
+- **Global Coverage**: Interactive world map supporting locations worldwide
+- **Smart Markers**: Color-coded location markers with entry counts and hover effects
+- **Rich Location Details**: Modal popups with comprehensive information
+- **Timeline Integration**: Two-column layout with bidirectional synchronization
+- **Advanced Filtering**: Filter by All, Education, Work, Conference, Travel
+- **Performance Optimized**: 22.2kB bundle size with dynamic imports
+
+#### Interactive Components:
+- **Map View (2/3 width)**:
+  - Mapbox GL JS integration with graceful token validation
+  - Color-coded markers: 🎓 Education (blue), 💼 Work (green), 📋 Conference (orange), ✈️ Travel (purple)
+  - Hover effects and click interactions
+  - Entry count badges on markers
+  - Smart zoom controls (max zoom: 10)
+
+- **Timeline Panel (1/3 width)**:
+  - Chronological timeline with all location entries
+  - Click timeline items to select map markers
+  - Hover timeline items to highlight map markers
+  - Smooth scrolling and animations
+  - Entry type icons and duration information
+
+#### Data Structure:
+**Migrated from flat to city-grouped format with GeoJSON coordinates:**
+```json
+{
+  "city": "Toronto",
+  "country": "Canada", 
+  "coordinates": [-79.3832, 43.6532], // [lng, lat] GeoJSON format
+  "entries": [{
+    "id": "uoft-undergrad",
+    "type": "education",
+    "institution": "University of Toronto",
+    "role": "Bachelor of Applied Science",
+    "duration": "Sep 2019 - Apr 2024",
+    "photos": [],
+    "links": [{"label": "University Website", "url": "https://utoronto.ca"}],
+    "achievements": ["Mechanical Engineering degree", "Focus on AI and Robotics"]
+  }]
+}
+```
+
+#### Technical Implementation:
+- **MapboxMap.tsx**: Core map component with error handling and performance optimizations
+- **MarkerLayer.tsx**: Smart marker rendering with React.memo optimization
+- **LocationModal.tsx**: Rich content display with links, photos, and achievements
+- **TimelinePanel.tsx**: Chronological timeline with bidirectional sync
+- **MapContext.tsx**: Centralized state management using useReducer
+- **useMapData.ts**: Data loading and Zod validation
+
+#### Locations Featured:
+- **Toronto, Canada**: University of Toronto (Education, 2019-2024)
+- **Markham, Canada**: Huawei Canada (Work, 2022-2023)  
+- **Atlanta, USA**: Georgia Tech (Education, 2024-Present)
+- **San Diego, USA**: Advanced Mechatronics Solutions (Work, 2025-Present)
+
+#### Performance Features:
+- React.memo for expensive components
+- useCallback for event handlers
+- useMemo for filtering operations
+- Dynamic imports for heavy components
+- Mapbox token validation with graceful fallbacks
 
 ### 📞 Contact (`/contact`)
 - Primary email contact with pre-filled mailto templates
@@ -110,10 +171,12 @@ A professional, responsive personal website showcasing Yi (Cherry) Lian's work a
 
 ```
 src/
-├── app/                    # Next.js 13+ App Router
+├── app/                    # Next.js 15+ App Router
 │   ├── about/             # About page with timeline and skills
 │   ├── contact/           # Contact page with social links
-│   ├── map/               # Interactive journey map
+│   ├── map/               # Interactive Mapbox journey map ⭐
+│   │   ├── layout.tsx     # Map-specific layout
+│   │   └── page.tsx       # Map page with two-column layout
 │   ├── projects/          # Projects overview and detail pages
 │   │   └── [slug]/        # Dynamic project detail routes
 │   ├── publications/      # Academic publications listing
@@ -121,12 +184,25 @@ src/
 │   ├── layout.tsx         # Root layout with navigation
 │   └── page.tsx           # Home page
 ├── components/            # Reusable UI components
+│   ├── map/              # Map-specific components ⭐
+│   │   ├── LocationModal.tsx    # Rich location details modal
+│   │   ├── MapboxMap.tsx        # Core Mapbox GL integration
+│   │   ├── MarkerLayer.tsx      # Smart marker rendering
+│   │   └── TimelinePanel.tsx    # Chronological timeline
 │   ├── Footer.tsx         # Site footer with social links
 │   └── Navbar.tsx         # Main navigation component
-└── data/                  # JSON data files
-    ├── map.json           # Location data with coordinates
-    ├── publications.json  # Academic papers and research
-    └── resume.json        # Core resume data (106 lines)
+├── contexts/             # React Context providers ⭐
+│   └── MapContext.tsx    # Map state management with useReducer
+├── data/                 # JSON data files
+│   ├── map.json          # Location data with GeoJSON coordinates ⭐
+│   ├── publications.json # Academic papers and research
+│   └── resume.json       # Core resume data (106 lines)
+├── hooks/                # Custom React hooks ⭐
+│   └── useMapData.ts     # Map data loading and validation
+├── types/                # TypeScript type definitions ⭐
+│   └── map.ts            # Comprehensive map interfaces
+└── utils/                # Utility functions ⭐
+    └── clustering.ts     # Map marker clustering utilities
 
 public/
 ├── assets/               # Static assets
@@ -140,6 +216,7 @@ public/
 ### Prerequisites
 - Node.js 18+ 
 - npm or yarn
+- Mapbox account (free tier: 50K monthly loads)
 
 ### Installation
 
@@ -151,6 +228,10 @@ cd website
 # Install dependencies
 npm install
 
+# Add Mapbox token (optional for development)
+# Create .env.local file:
+echo "NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=your_token_here" > .env.local
+
 # Start development server
 npm run dev
 
@@ -161,10 +242,19 @@ npm run build
 npm start
 ```
 
+### Environment Variables
+
+```bash
+# .env.local (optional)
+NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=pk.eyJ1...  # Your Mapbox public token
+```
+
+**Note**: The map gracefully handles missing tokens by showing an informative error message, allowing development without Mapbox setup.
+
 ### Development Commands
 
 ```bash
-npm run dev        # Start development server
+npm run dev        # Start development server (localhost:3001)
 npm run build      # Build for production
 npm run start      # Start production server
 npm run lint       # Run ESLint
@@ -189,56 +279,80 @@ npm run lint:fix   # Fix linting issues
 - Abstracts and author information
 - Awards and recognition
 
-**`map.json`**:
-- Geographic coordinates for each location
-- Timeline data for education and work
-- Achievement highlights for each position
+**`map.json`** ⭐ **FULLY MIGRATED**:
+- City-grouped location data with GeoJSON coordinates
+- Comprehensive entry details (institution, role, duration, achievements)
+- Photo and link support for rich content
+- Type categorization (education, work, conference, travel)
+- Zod schema validation for type safety
 
 ## 🎯 Performance Features
 
 - **Image Optimization**: Next.js Image component with lazy loading
 - **Bundle Optimization**: Dynamic imports for client-side components
-- **Animation Performance**: Framer Motion with `viewport={{ once: true }}`
-- **SEO Optimization**: Individual metadata for each page
-- **Mobile Performance**: Mobile-first responsive design
+- **Map Performance**: React.memo, useCallback, useMemo optimizations
+- **Build Size**: 22.2kB for map page bundle
+- **Graceful Degradation**: Map works without Mapbox token (development mode)
+- **Type Safety**: Runtime validation with Zod schemas
 
-## 🔧 Technical Implementation
+## 🔧 Development Status
 
-### Key Technologies Used:
-- **Next.js 15.3.4**: Latest App Router with TypeScript
-- **React 19**: Latest React features and optimizations
-- **Tailwind CSS**: Utility-first styling with custom design system
-- **Framer Motion**: Smooth animations and transitions
-- **TypeScript**: Full type safety throughout the application
+### ✅ Completed (Phases 1-2)
+- **Phase 1**: Core map replacement with Mapbox GL JS
+- **Phase 2**: Interactive timeline, filtering, and UX enhancements
+- Full TypeScript implementation with comprehensive interfaces
+- Performance optimizations and error handling
+- Responsive design and mobile compatibility
+- Build system passing (npm run build ✅)
 
-### Notable Features:
-- Dynamic routing with slug-based project pages
-- Real-time search and filtering functionality
-- Interactive map with coordinate-based positioning
-- Expandable content sections with smooth animations
-- Mobile-responsive navigation with hamburger menu
-- Form handling with mailto integration
+### 📋 Planned (Phase 3)
+- Enhanced global statistics dashboard
+- Lighthouse performance testing
+- Accessibility improvements (keyboard navigation, screen readers)
+- Mapbox usage monitoring and validation
+- Production deployment optimizations
 
-## 🌐 Deployment
+## 🛠️ Technical Notes
 
-The website is configured for Vercel deployment with:
-- `vercel.json` configuration file
-- Optimized build settings
-- Automatic deployments from Git
-- Performance monitoring ready
+### Map Implementation Details
+- **react-map-gl version**: 8.0.4 (requires `/mapbox` import endpoint)
+- **Mapbox GL JS version**: 3.x (latest compatible)
+- **Coordinate format**: GeoJSON [longitude, latitude]
+- **Performance**: maxZoom: 10, optimized render cycles
+- **Error handling**: Graceful token validation and fallbacks
 
-## 🏆 Achievements
+### Known Issues Fixed
+- ✅ Hydration mismatch (suppressHydrationWarning for browser extensions)
+- ✅ Import path issues (react-map-gl v8 compatibility)
+- ✅ TypeScript type safety throughout
+- ✅ Linting errors resolved
 
-- ✅ 6 fully functional pages implemented
-- ✅ Complete responsive design system
-- ✅ Interactive filtering and search functionality
-- ✅ Professional academic publication system
-- ✅ Dynamic project showcase with detail pages
-- ✅ Interactive journey map with location data
-- ✅ Professional contact system with social integration
-- ✅ SEO optimization and performance features
-- ✅ Zero build errors and fully functional website
+### Browser Compatibility
+- Modern browsers with WebGL support
+- Progressive enhancement for older browsers
+- Mobile-responsive design
+
+## 📈 Analytics & Monitoring
+
+The map implementation includes built-in analytics tracking for:
+- Location interactions and popular destinations
+- Timeline usage patterns
+- Filter preferences
+- Performance metrics
+
+## 🤝 Contributing
+
+This is a personal portfolio project. The codebase follows:
+- TypeScript strict mode
+- ESLint configuration
+- Consistent naming conventions
+- Comprehensive error handling
+- Performance-first approach
+
+## 📄 License
+
+See LICENSE file for details.
 
 ---
 
-*This website showcases Cherry's impressive journey from University of Toronto through her current MS at Georgia Tech, highlighting her expertise in robotics, machine learning, and her professional roles at Huawei Canada and Advanced Mechatronics Solutions. Built with elegant, maintainable code that prioritizes performance and user experience.*
+**Built with ❤️ by Cherry Lian | Last Updated: January 2025**

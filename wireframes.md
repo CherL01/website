@@ -57,76 +57,379 @@
 
 ---
 
-## 👩‍💼 About Page (`/about`)
+## 🗺️ Interactive Map Page (`/map`) - **FULLY IMPLEMENTED**
 
-### Layout Structure
+### Layout Structure (Two-Column Desktop)
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                        NAVIGATION BAR                           │
+│ Cherry Lian    [About] [Projects] [Publications] [Map*] [Contact]│
 ├─────────────────────────────────────────────────────────────────┤
-│                      PERSONAL BIO                              │
-│ Passionate robotics engineer and ML researcher with expertise   │
-│ spanning autonomous systems, computer vision, and intelligent   │
-│ robotics. Currently pursuing MS in Robotics at Georgia Tech.    │
-│                                                                 │
-│ [Download CV] [Email Me] [LinkedIn] [GitHub]                    │
+│                      PAGE HEADER                               │
+│                    Interactive Journey Map                      │
+│               Explore Cherry's Academic & Professional Path     │
 ├─────────────────────────────────────────────────────────────────┤
-│                    EDUCATION & EXPERIENCE                      │
-│                                                                 │
-│ 2025 ────●── Robotics Engineer @ Advanced Mechatronics          │
-│          │   Solutions, San Diego                              │
-│          │   • Leading autonomous robotics projects            │
-│          │                                                     │
-│ 2024 ────●── MS Robotics @ Georgia Tech (4.0 GPA)              │
-│          │   • Research in robot learning and HRI             │
-│          │                                                     │
-│ 2023 ────●── ML Engineer @ Huawei Canada                       │
-│          │   • Published 3 research papers                    │
-│          │   • Led ML solutions for network optimization      │
-│          │                                                     │
-│ 2019 ────●── B.A.Sc. Mechanical Engineering @ UofT            │
-│              • Dean's List, robotics specialization           │
+│              FILTER CONTROLS                                   │
+│ [All] [🎓 Education] [💼 Work] [📋 Conference] [✈️ Travel]      │
+│                                                    4 locations  │
 ├─────────────────────────────────────────────────────────────────┤
-│                      SKILLS MATRIX                             │
-│ [Python] [ROS2] [PyTorch] [TensorFlow] [OpenCV] [SLAM]          │
-│ [Computer Vision] [Machine Learning] [Deep Learning] [NLP]      │
-│ [Robotic Manipulation] [Motion Planning] [Control Systems]     │
-│ [Linux] [Git] [Docker] [AWS] [C++] [JavaScript] [MATLAB]       │
-│ [SolidWorks] [Gazebo] [Robosuite] [Jupyter] [LaTeX]           │
-└─────────────────────────────────────────────────────────────────┘
+│ MAP VIEW (66.67%)            │ TIMELINE PANEL (33.33%)          │
+│                              │                                  │
+│  ┌─────────────────────────┐ │ ┌─────────────────────────────┐  │
+│  │                         │ │ │ 📅 Timeline Overview        │  │
+│  │    🌍 MAPBOX MAP        │ │ │                             │  │
+│  │                         │ │ │ ● 2025 Robotics Engineer   │⭐│
+│  │  📍 San Diego (1)       │ │ │   Advanced Mechatronics     │  │
+│  │                         │ │ │   Solutions, San Diego      │  │
+│  │      📍 Atlanta (1)     │ │ │                             │  │
+│  │                         │ │ │ ● 2024 MS Robotics         │  │
+│  │                         │ │ │   Georgia Tech, Atlanta     │  │
+│  │                         │ │ │                             │  │
+│  │                         │ │ │ ● 2023 ML Engineer         │  │
+│  │   📍 Toronto (1)        │ │ │   Huawei Canada, Markham   │  │
+│  │                         │ │ │                             │  │
+│  │       📍 Markham (1)    │ │ │ ● 2019 Bachelor's Degree   │  │
+│  │                         │ │ │   University of Toronto    │  │
+│  │                         │ │ │                             │  │
+│  │   [Zoom Controls]       │ │ │                             │  │
+│  └─────────────────────────┘ │ └─────────────────────────────┘  │
+│                              │                                  │
+└──────────────────────────────┴──────────────────────────────────┘
 ```
 
-### Components Detail
+### Mobile Layout (Stacked)
+```
+┌─────────────────────────────────────┐
+│         NAVIGATION BAR              │
+├─────────────────────────────────────┤
+│         PAGE HEADER                 │
+│    Interactive Journey Map          │
+├─────────────────────────────────────┤
+│       FILTER CONTROLS               │
+│ [All] [🎓] [💼] [📋] [✈️]           │
+├─────────────────────────────────────┤
+│                                     │
+│        🌍 MAPBOX MAP                │
+│                                     │
+│     📍 Markers with counts          │
+│                                     │
+│      [Zoom Controls]                │
+├─────────────────────────────────────┤
+│       TIMELINE PANEL                │
+│                                     │
+│ ● 2025 Robotics Engineer           │
+│   Advanced Mechatronics            │
+│                                     │
+│ ● 2024 MS Robotics                 │
+│   Georgia Tech                      │
+│                                     │
+│ (Scrollable list)                   │
+└─────────────────────────────────────┘
+```
 
-**Personal Bio Section**:
-- Introductory paragraph highlighting Cherry's expertise
-- Contact action buttons with hover effects
-- Download CV button links to `/assets/Yi_Lian_Resume.pdf`
+### Core Components Architecture
 
-**Interactive Timeline**:
-- Data source: Combined `resume.json` → education + experience arrays
-- Chronological sorting with visual markers:
-  - 🎓 Education (blue markers)  
-  - 💼 Work Experience (green markers)
-- Each entry shows:
-  - Institution/Company name
-  - Role/Degree title
-  - Duration
-  - Key achievements (bullet points)
-- Framer Motion staggered animations on scroll
+#### 1. **MapboxMap.tsx** - Core Map Engine
+```typescript
+// Features:
+- Mapbox GL JS v3 integration via react-map-gl v8.0.4
+- Global world map with performance optimizations
+- Graceful token validation and error handling
+- Responsive viewport management
+- Max zoom: 10 for performance
+- Custom map styling and controls
 
-**Skills Matrix**:
-- Data source: `resume.json` → technical_skills array (26 skills)
-- Interactive skill tags with hover effects
-- Organized by categories (Programming, Robotics, ML/AI, Tools)
-- Color-coded badges matching site theme
-- Click functionality for future filtering enhancement
+// Props Interface:
+interface MapboxMapProps {
+  locations: Location[]
+  selectedLocation: Location | null
+  hoveredLocation: Location | null
+  onLocationSelect: (location: Location | null) => void
+  onLocationHover: (location: Location | null) => void
+  filteredType: FilterType
+}
+```
 
-**Technical Implementation**:
-- TypeScript interfaces for timeline and skills data
-- `useMemo` optimization for timeline sorting
-- Responsive breakpoints for mobile/tablet/desktop
-- Smooth scroll animations with Framer Motion
+#### 2. **MarkerLayer.tsx** - Smart Marker System
+```typescript
+// Features:
+- Color-coded markers by entry type:
+  🎓 Education: #3B82F6 (blue)
+  💼 Work: #10B981 (green) 
+  📋 Conference: #F59E0B (orange)
+  ✈️ Travel: #8B5CF6 (purple)
+- Entry count badges on markers
+- Hover effects and smooth transitions
+- Click interactions for selection
+- React.memo optimization for performance
+
+// Marker States:
+- Default: Small marker with count badge
+- Hovered: Enlarged with glow effect
+- Selected: Highlighted with distinct styling
+- Filtered: Dimmed when not matching filter
+```
+
+#### 3. **LocationModal.tsx** - Rich Content Display
+```typescript
+// Features:
+- Modal popup triggered by marker clicks
+- Comprehensive location information display
+- Photo gallery support (currently placeholders)
+- External links with proper styling
+- Achievement lists with bullet points
+- Responsive modal sizing
+- Close on backdrop click or ESC key
+
+// Content Structure:
+interface LocationEntry {
+  id: string
+  type: 'education' | 'work' | 'conference' | 'travel'
+  institution: string
+  role: string
+  duration: string
+  photos: string[]
+  links: { label: string; url: string }[]
+  achievements: string[]
+}
+```
+
+#### 4. **TimelinePanel.tsx** - Chronological Navigation
+```typescript
+// Features:
+- Chronological timeline sorted by start date (newest first)
+- Two-way sync with map markers:
+  • Click timeline → select map marker
+  • Hover timeline → highlight map marker
+- Entry type icons and color coding
+- Smooth scrolling and animations
+- Responsive design (collapses on mobile)
+- React.memo optimization
+
+// Timeline Item Structure:
+┌─────────────────────────────────────┐
+│ 🎓 2024-Present                    │⭐ Selected indicator
+│ MS Robotics                         │
+│ Georgia Tech, Atlanta               │
+│ Duration: Aug 2024 - Present        │
+│ ─────────────────────────────────── │
+│ 💼 2022-2023                       │
+│ ML Engineer                         │
+│ Huawei Canada, Markham             │
+└─────────────────────────────────────┘
+```
+
+#### 5. **MapContext.tsx** - State Management
+```typescript
+// Features:
+- Centralized state management using useReducer
+- Actions: SELECT_LOCATION, HOVER_LOCATION, SET_FILTER, LOAD_DATA
+- Type-safe action dispatching
+- Global state sharing across components
+- Performance optimized with React.memo dependencies
+
+// State Interface:
+interface MapState {
+  locations: Location[]
+  selectedLocation: Location | null
+  hoveredLocation: Location | null
+  filteredType: FilterType
+  isLoading: boolean
+  error: string | null
+}
+```
+
+### Interactive Features
+
+#### Filter System
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ FILTER CONTROLS                                                 │
+│ [All*] [🎓 Education] [💼 Work] [📋 Conference] [✈️ Travel]      │
+│                                                    4 locations  │
+└─────────────────────────────────────────────────────────────────┘
+
+Filter Behavior:
+- All: Shows all location types (default)
+- Education: Shows only university/academic locations  
+- Work: Shows only professional employment
+- Conference: Shows only conference/event locations
+- Travel: Shows only travel/personal locations
+- Count updates dynamically based on filter
+```
+
+#### Bidirectional Sync System
+```
+MAP ←→ TIMELINE SYNCHRONIZATION
+
+User Action               Map Response            Timeline Response
+─────────────────────────────────────────────────────────────────
+Click map marker    →     Select marker          Highlight timeline item
+Click timeline item →     Select marker          Highlight timeline item  
+Hover map marker    →     Show hover state       Highlight timeline item
+Hover timeline item →     Highlight marker       Show hover state
+Filter change       →     Show/hide markers      Filter timeline items
+```
+
+### Data Structure (GeoJSON Format)
+
+#### Location Data Schema (map.json)
+```json
+{
+  "locations": [
+    {
+      "city": "Toronto",
+      "country": "Canada",
+      "coordinates": [-79.3832, 43.6532], // [lng, lat] GeoJSON format
+      "entries": [
+        {
+          "id": "uoft-undergrad",
+          "type": "education",
+          "institution": "University of Toronto",
+          "role": "Bachelor of Applied Science",
+          "duration": "Sep 2019 - Apr 2024",
+          "startDate": "2019-09-01",
+          "endDate": "2024-04-30",
+          "photos": [], // Future: Array of photo URLs
+          "links": [
+            {
+              "label": "University Website",
+              "url": "https://utoronto.ca"
+            }
+          ],
+          "achievements": [
+            "Mechanical Engineering degree",
+            "Focus on AI and Robotics",
+            "Dean's List recognition"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### TypeScript Interfaces (src/types/map.ts)
+```typescript
+export interface Location {
+  city: string
+  country: string
+  coordinates: [number, number] // [lng, lat]
+  entries: LocationEntry[]
+}
+
+export interface LocationEntry {
+  id: string
+  type: 'education' | 'work' | 'conference' | 'travel'
+  institution: string
+  role: string
+  duration: string
+  startDate: string
+  endDate: string | null
+  photos: string[]
+  links: Array<{ label: string; url: string }>
+  achievements: string[]
+}
+
+export type FilterType = 'all' | 'education' | 'work' | 'conference' | 'travel'
+```
+
+### Performance Optimizations
+
+#### React Performance
+```typescript
+// Component memoization
+export const MarkerLayer = React.memo(MarkerLayerComponent)
+export const TimelinePanel = React.memo(TimelinePanelComponent)
+
+// Callback memoization
+const handleLocationSelect = useCallback((location: Location | null) => {
+  dispatch({ type: 'SELECT_LOCATION', payload: location })
+}, [dispatch])
+
+// Expensive computation memoization  
+const filteredLocations = useMemo(() => {
+  return locations.filter(location => 
+    filterType === 'all' || location.entries.some(entry => entry.type === filterType)
+  )
+}, [locations, filterType])
+```
+
+#### Bundle Optimization
+- Dynamic imports for heavy components
+- Tree shaking for unused Mapbox features
+- Optimized bundle size: 22.2kB for map page
+- Lazy loading for modal content
+
+#### Mapbox Performance
+- maxZoom: 10 to prevent excessive detail loading
+- Optimized marker rendering cycles
+- Efficient coordinate transformations
+- Graceful degradation without token
+
+### Error Handling & Validation
+
+#### Mapbox Token Validation
+```typescript
+// Graceful handling of missing/invalid tokens
+if (!mapboxToken) {
+  return (
+    <div className="map-error">
+      <h3>Map Unavailable</h3>
+      <p>Mapbox token not configured for development</p>
+      <p>The interactive map will be available in production</p>
+    </div>
+  )
+}
+```
+
+#### Data Validation (Zod Schemas)
+```typescript
+// Runtime type checking with Zod
+const LocationSchema = z.object({
+  city: z.string(),
+  country: z.string(),
+  coordinates: z.tuple([z.number(), z.number()]),
+  entries: z.array(LocationEntrySchema)
+})
+
+export const validateMapData = (data: unknown): Location[] => {
+  return LocationSchema.array().parse(data)
+}
+```
+
+### Accessibility Features
+
+#### Keyboard Navigation
+- Tab navigation through timeline items
+- Enter/Space to select timeline items
+- Escape to close modal
+- Focus management for modal open/close
+
+#### Screen Reader Support
+- ARIA labels for map markers
+- Role attributes for interactive elements
+- Alt text for images and icons
+- Semantic HTML structure
+
+#### Visual Accessibility
+- High contrast marker colors
+- Focus indicators on interactive elements
+- Sufficient color contrast ratios
+- Scalable text and icons
+
+### Browser Compatibility
+
+#### Supported Browsers
+- Chrome 88+ (WebGL support required)
+- Firefox 85+ (WebGL support required)
+- Safari 14+ (WebGL support required)
+- Edge 88+ (WebGL support required)
+
+#### Progressive Enhancement
+- Fallback error message for unsupported browsers
+- Graceful degradation without JavaScript
+- Mobile-responsive design for all screen sizes
 
 ---
 
@@ -263,6 +566,79 @@ return (
 
 ---
 
+## 👩‍💼 About Page (`/about`)
+
+### Layout Structure
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        NAVIGATION BAR                           │
+├─────────────────────────────────────────────────────────────────┤
+│                      PERSONAL BIO                              │
+│ Passionate robotics engineer and ML researcher with expertise   │
+│ spanning autonomous systems, computer vision, and intelligent   │
+│ robotics. Currently pursuing MS in Robotics at Georgia Tech.    │
+│                                                                 │
+│ [Download CV] [Email Me] [LinkedIn] [GitHub]                    │
+├─────────────────────────────────────────────────────────────────┤
+│                    EDUCATION & EXPERIENCE                      │
+│                                                                 │
+│ 2025 ────●── Robotics Engineer @ Advanced Mechatronics          │
+│          │   Solutions, San Diego                              │
+│          │   • Leading autonomous robotics projects            │
+│          │                                                     │
+│ 2024 ────●── MS Robotics @ Georgia Tech (4.0 GPA)              │
+│          │   • Research in robot learning and HRI             │
+│          │                                                     │
+│ 2023 ────●── ML Engineer @ Huawei Canada                       │
+│          │   • Published 3 research papers                    │
+│          │   • Led ML solutions for network optimization      │
+│          │                                                     │
+│ 2019 ────●── B.A.Sc. Mechanical Engineering @ UofT            │
+│              • Dean's List, robotics specialization           │
+├─────────────────────────────────────────────────────────────────┤
+│                      SKILLS MATRIX                             │
+│ [Python] [ROS2] [PyTorch] [TensorFlow] [OpenCV] [SLAM]          │
+│ [Computer Vision] [Machine Learning] [Deep Learning] [NLP]      │
+│ [Robotic Manipulation] [Motion Planning] [Control Systems]     │
+│ [Linux] [Git] [Docker] [AWS] [C++] [JavaScript] [MATLAB]       │
+│ [SolidWorks] [Gazebo] [Robosuite] [Jupyter] [LaTeX]           │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Components Detail
+
+**Personal Bio Section**:
+- Introductory paragraph highlighting Cherry's expertise
+- Contact action buttons with hover effects
+- Download CV button links to `/assets/Yi_Lian_Resume.pdf`
+
+**Interactive Timeline**:
+- Data source: Combined `resume.json` → education + experience arrays
+- Chronological sorting with visual markers:
+  - 🎓 Education (blue markers)  
+  - 💼 Work Experience (green markers)
+- Each entry shows:
+  - Institution/Company name
+  - Role/Degree title
+  - Duration
+  - Key achievements (bullet points)
+- Framer Motion staggered animations on scroll
+
+**Skills Matrix**:
+- Data source: `resume.json` → technical_skills array (26 skills)
+- Interactive skill tags with hover effects
+- Organized by categories (Programming, Robotics, ML/AI, Tools)
+- Color-coded badges matching site theme
+- Click functionality for future filtering enhancement
+
+**Technical Implementation**:
+- TypeScript interfaces for timeline and skills data
+- `useMemo` optimization for timeline sorting
+- Responsive breakpoints for mobile/tablet/desktop
+- Smooth scroll animations with Framer Motion
+
+---
+
 ## 📚 Publications Page (`/publications`)
 
 ### Layout Structure
@@ -347,112 +723,6 @@ interface Publication {
 - `useMemo` for optimized filtering
 - Framer Motion for smooth animations
 - SEO-optimized metadata for academic indexing
-
----
-
-## 🗺️ Interactive Map Page (`/map`)
-
-### Layout Structure
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        NAVIGATION BAR                           │
-├─────────────────────────────────────────────────────────────────┤
-│                      JOURNEY STATS                             │
-│ 🌍 4 Locations | 🏛️ 2 Countries | 📍 3 States/Provinces        │
-├─────────────────────────────────────────────────────────────────┤
-│                    INTERACTIVE MAP                             │
-│                      NORTH AMERICA                             │
-│                                                                 │
-│            ● Toronto (2019-2024)                               │
-│            ● Markham (2022-2023)                              │
-│                                                                 │
-│                                                                 │
-│                                ● Atlanta (2024-Present)        │
-│                                                                 │
-│                                                                 │
-│                  ● San Diego (2025-Present)                    │
-│                                                                 │
-│ Legend: ● Education  ● Professional                            │
-├─────────────────────────────────────────────────────────────────┤
-│                    TIMELINE OVERVIEW                           │
-│ ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐   │
-│ │ 🎓 Toronto      │ │ 💼 Markham      │ │ 🎓 Atlanta      │   │
-│ │ University of   │ │ Huawei Canada   │ │ Georgia Tech    │   │
-│ │ Toronto         │ │ ML Engineer     │ │ MS Robotics     │   │
-│ │ 2019-2024       │ │ 2022-2023       │ │ 2024-Present    │   │
-│ │ B.A.Sc. Mech    │ │ Research & Dev  │ │ 4.0 GPA        │   │
-│ └─────────────────┘ └─────────────────┘ └─────────────────┘   │
-│              ┌─────────────────┐                               │
-│              │ 💼 San Diego    │                               │
-│              │ Advanced Mech   │                               │
-│              │ Solutions       │                               │
-│              │ 2025-Present    │                               │
-│              │ Robotics Eng    │                               │
-│              └─────────────────┘                               │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### Components Detail
-
-**Journey Statistics**:
-- Dynamic counters showing total locations, countries, and regions
-- Data calculated from `map.json` location entries
-- Visual stat cards with icons
-
-**Interactive Map**:
-- Visual representation of North America with CSS positioning
-- **Location Markers**:
-  - Blue circles (●) for educational institutions
-  - Green circles (●) for professional positions
-  - Positioned using coordinate data from `map.json`
-- **Click Interactions**: Markers open detailed modal popups
-- **Hover Effects**: Smooth scaling and color transitions
-
-**Modal Popup System**:
-```typescript
-// Modal content structure for each location
-interface LocationModal {
-  location: string;
-  institution: string;
-  role: string;
-  duration: string;
-  type: 'education' | 'professional';
-  achievements: string[];
-  coordinates: [number, number];
-}
-```
-
-**Timeline Overview Cards**:
-- Visual timeline below the map
-- Chronological arrangement of all locations
-- Color-coded by type (education vs professional)
-- Key achievements and details for each position
-
-**Location Data Structure**:
-```json
-{
-  "id": "toronto",
-  "city": "Toronto",
-  "country": "Canada",
-  "coordinates": [43.6532, -79.3832],
-  "institution": "University of Toronto",
-  "role": "B.A.Sc. Mechanical Engineering",
-  "duration": "2019-2024",
-  "type": "education",
-  "achievements": [
-    "Dean's List recognition",
-    "Robotics specialization focus",
-    "Founded robotics club"
-  ]
-}
-```
-
-**Technical Implementation**:
-- CSS-based coordinate positioning system
-- Modal state management with `useState`
-- Responsive design for mobile map viewing
-- Smooth animations with Framer Motion
-- Click-outside-to-close modal functionality
 
 ---
 
@@ -561,167 +831,136 @@ Best regards,
 
 ---
 
-## 🧩 Shared Components
+## 🎨 Design System Specifications
 
-### Navigation Bar (`Navbar.tsx`)
-
-**Desktop Navigation**:
-```
-┌─────────────────────────────────────────────────────────────────┐
-│ Cherry Lian    [About] [Projects] [Publications] [Map] [Contact] │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-**Mobile Navigation**:
-```
-┌─────────────────────────────────────────────────────────────────┐
-│ Cherry Lian                                              [☰]    │
-├─────────────────────────────────────────────────────────────────┤
-│                     SLIDE-OUT MENU                             │
-│                        [About]                                 │
-│                      [Projects]                                │
-│                    [Publications]                              │
-│                        [Map]                                   │
-│                      [Contact]                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-**Features**:
-- Fixed positioning at top of all pages
-- Active page highlighting with color changes
-- Smooth hover transitions
-- Mobile hamburger menu with slide-out animation
-- Logo/name links to home page
-- Z-index management for overlay elements
-
-### Footer (`Footer.tsx`)
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│        © 2025 Yi (Cherry) Lian | [GitHub] [LinkedIn] [Email]    │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-**Features**:
-- Consistent across all pages
-- Social media icon links matching contact page
-- Copyright notice with current year
-- Minimal, professional design
-- Mobile-responsive layout
-
-### Layout System
-
-**Root Layout** (`layout.tsx`):
-- Site-wide metadata configuration
-- Font loading (Inter font family)
-- Global CSS imports
-- Navigation and footer wrapper
-- SEO optimization tags
-
-**Page-Specific Layouts**:
-- Individual layout files for each major section
-- Custom metadata for SEO optimization
-- Section-specific styling and configuration
-- OpenGraph and Twitter card support
-
----
-
-## 🎨 Design System Implementation
-
-### Color Palette & CSS Variables
+### Color Palette
 ```css
 :root {
-  --color-primary: #FFDCDC;    /* Soft pink */
-  --color-secondary: #FFF2EB;  /* Warm cream */
-  --color-accent: #FFE8CD;     /* Light peach */
-  --color-highlight: #FFD6BA;  /* Warm beige */
-  --color-text: #333333;       /* Dark gray */
-  --color-text-light: #666666; /* Medium gray */
+  /* Primary Colors */
+  --primary: #FFDCDC;      /* Soft pink - main brand color */
+  --secondary: #FFF2EB;    /* Warm cream - secondary brand */
+  --accent: #FFE8CD;       /* Light peach - accent elements */
+  --highlight: #FFD6BA;    /* Warm beige - highlights */
+  
+  /* Map-specific Colors */
+  --education: #3B82F6;    /* Blue - education markers */
+  --work: #10B981;         /* Green - work markers */
+  --conference: #F59E0B;   /* Orange - conference markers */
+  --travel: #8B5CF6;       /* Purple - travel markers */
+  
+  /* Semantic Colors */
+  --error: #EF4444;        /* Red - errors and warnings */
+  --success: #10B981;      /* Green - success states */
+  --warning: #F59E0B;      /* Orange - warning states */
+  --info: #3B82F6;         /* Blue - info states */
 }
+```
+
+### Typography Scale
+```css
+/* Font Families */
+font-family: ui-sans-serif, system-ui, sans-serif;
+
+/* Scale */
+--text-xs: 0.75rem;    /* 12px */
+--text-sm: 0.875rem;   /* 14px */
+--text-base: 1rem;     /* 16px */
+--text-lg: 1.125rem;   /* 18px */
+--text-xl: 1.25rem;    /* 20px */
+--text-2xl: 1.5rem;    /* 24px */
+--text-3xl: 1.875rem;  /* 30px */
+--text-4xl: 2.25rem;   /* 36px */
 ```
 
 ### Component Classes
 ```css
+/* Card System */
 .card {
-  @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300;
+  @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
 }
 
 .card-hover {
-  @apply hover:shadow-lg hover:scale-105 transform;
+  @apply card transition-all duration-300 hover:shadow-md hover:-translate-y-1;
 }
 
+/* Button System */
 .btn-primary {
-  @apply bg-primary text-white px-6 py-3 rounded-lg font-semibold 
-         hover:bg-opacity-90 transition-all duration-300;
+  @apply bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors;
 }
 
 .btn-secondary {
-  @apply border-2 border-primary text-primary px-6 py-3 rounded-lg 
-         font-semibold hover:bg-primary hover:text-white transition-all duration-300;
+  @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors;
+}
+
+/* Map-specific Classes */
+.map-marker {
+  @apply w-4 h-4 rounded-full border-2 border-white shadow-md cursor-pointer transition-all;
+}
+
+.map-marker-selected {
+  @apply ring-4 ring-blue-200 scale-125;
+}
+
+.timeline-item {
+  @apply p-4 border-l-4 border-gray-200 hover:border-blue-400 transition-colors cursor-pointer;
 }
 ```
 
-### Typography System
-- **Headings**: Clean hierarchy with consistent spacing
-- **Body Text**: Optimized for readability across devices  
-- **Interactive Elements**: Clear visual feedback
-- **Code Elements**: Monospace font with syntax highlighting ready
+### Responsive Breakpoints
+```css
+/* Tailwind CSS Breakpoints */
+sm: '640px',   /* Small devices */
+md: '768px',   /* Medium devices */
+lg: '1024px',  /* Large devices */
+xl: '1280px',  /* Extra large devices */
+2xl: '1536px'  /* 2X Extra large devices */
 
-### Animation Patterns
-- **Page Transitions**: Smooth enter/exit animations
-- **Hover Effects**: Consistent scaling and color changes
-- **Loading States**: Skeleton loaders for dynamic content
-- **Scroll Animations**: Progressive revelation with Framer Motion
+/* Map-specific Responsive Behavior */
+@media (max-width: 768px) {
+  /* Stack map and timeline vertically */
+  .map-container {
+    flex-direction: column;
+  }
+  
+  .map-view {
+    width: 100%;
+    height: 400px;
+  }
+  
+  .timeline-panel {
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+}
+```
 
 ---
 
-## 📱 Responsive Design Specifications
+## 🔧 Technical Implementation Notes
 
-### Breakpoint System
-- **Mobile**: < 768px (single column layouts)
-- **Tablet**: 768px - 1024px (mixed layouts)
-- **Desktop**: > 1024px (full multi-column layouts)
+### Build System
+- **Next.js 15.3.4** with App Router
+- **TypeScript** strict mode enabled
+- **ESLint** with custom rules
+- **Tailwind CSS** with custom configuration
+- **Vercel deployment** ready
 
-### Mobile Optimizations
-- **Navigation**: Hamburger menu with slide-out drawer
-- **Cards**: Single column stacking with full-width
-- **Typography**: Optimized font sizes for small screens
-- **Touch Targets**: Minimum 44px for all interactive elements
-- **Images**: Responsive sizing with proper aspect ratios
+### Performance Targets
+- **Map page bundle**: 22.2kB (current)
+- **First contentful paint**: < 1.5s
+- **Largest contentful paint**: < 2.5s
+- **Cumulative layout shift**: < 0.1
 
-### Performance Considerations
-- **Image Optimization**: Next.js Image component with lazy loading
-- **Bundle Splitting**: Dynamic imports for heavy components
-- **Animation Performance**: GPU-accelerated transforms
-- **Loading States**: Progressive content loading
-- **Caching**: Proper HTTP caching headers for static assets
+### Browser Support
+- **Modern browsers** with WebGL support
+- **Progressive enhancement** for older browsers
+- **Mobile-first** responsive design
+- **Accessibility** WCAG 2.1 AA compliance
 
 ---
 
-## 🔧 Technical Architecture
-
-### Data Flow
-```
-JSON Files (Single Source of Truth)
-    ↓
-TypeScript Interfaces
-    ↓
-React Components
-    ↓
-Rendered UI
-```
-
-### State Management
-- **Local State**: `useState` for component-specific data
-- **Derived State**: `useMemo` for computed values
-- **URL State**: Next.js routing for navigation state
-- **Form State**: Controlled inputs with validation
-
-### Performance Optimization
-- **Memoization**: `useMemo` and `useCallback` where beneficial
-- **Image Optimization**: Next.js Image with proper sizing
-- **Bundle Analysis**: Regular bundle size monitoring
-- **Lazy Loading**: Dynamic imports and viewport-based loading
-
-This comprehensive documentation covers all implemented pages, components, and features of Cherry Lian's personal website, providing a complete reference for maintenance, updates, and future enhancements.
+**Last Updated**: January 2025  
+**Status**: Interactive Map (Phases 1-2) Complete ✅  
+**Next**: Phase 3 - Enhanced statistics and accessibility
 
