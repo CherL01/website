@@ -63,7 +63,7 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Welcome! I'm{' '}
+                Welcome! I&apos;m{' '}
                 <span className="text-gradient">Cherry Lian</span>
               </motion.h1>
 
