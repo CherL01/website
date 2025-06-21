@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --color-primary: #FFDCDC;
+  --color-secondary: #FFF2EB;
+  --color-accent1: #FFE8CD;
+  --color-accent2: #FFD6BA;
+  --text-primary: #2D2D2D;
+  --text-secondary: #6B7280;
+  --text-accent: #9CA3AF;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --text-primary: #F9FAFB;
+    --text-secondary: #D1D5DB;
+    --text-accent: #9CA3AF;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent2);
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Custom component styles */
+@layer components {
+  .card {
+    @apply bg-white backdrop-blur-sm rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-6;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-200 hover:bg-primary-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-200 hover:bg-secondary-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent1));
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-accent2), var(--color-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+} 

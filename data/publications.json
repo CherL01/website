@@ -1,0 +1,43 @@
+[
+  {
+    "id": "icra-2025-ptas",
+    "title": "Implicit Behavioral Cues for Enhancing Trust and Comfort in Robot Social Navigation",
+    "authors": ["Yi Lian", "J. Taery Kim", "Sehoon Ha"],
+    "venue": "ICRA 2025 PTAS Workshop",
+    "year": "2025",
+    "type": "workshop",
+    "status": "accepted",
+    "award": "Best Presentation Award",
+    "abstract": "This work explores implicit behavioral cues in robot navigation systems to enhance human trust and comfort in social navigation scenarios. We present a framework that integrates subtle behavioral signals to improve human-robot interaction in dynamic environments.",
+    "keywords": ["Human-Robot Interaction", "Social Navigation", "Trust", "Behavioral Cues"],
+    "affiliations": ["Georgia Institute of Technology"]
+  },
+  {
+    "id": "apnet-2023-mlacc",
+    "title": "Toward Fair and Efficient Congestion Control: Machine Learning Aided Congestion Control (MLACC)",
+    "authors": ["Ahmed Elbery", "Yi Lian", "Geng Li"],
+    "venue": "APNET '23",
+    "year": "2023",
+    "type": "conference",
+    "status": "published",
+    "doi": "10.1145/3600061.3603275",
+    "doi_url": "https://doi.org/10.1145/3600061.3603275",
+    "abstract": "This paper presents MLACC, a machine learning-aided congestion control system that addresses fairness and efficiency challenges in network traffic management. Our approach uses deep learning models to predict bandwidth requirements and optimize congestion control algorithms.",
+    "keywords": ["Machine Learning", "Congestion Control", "Network Traffic", "Bandwidth Prediction"],
+    "affiliations": ["Huawei Canada"]
+  },
+  {
+    "id": "ieee-network-2023-opendata",
+    "title": "OpenData: A Framework to Train and Deploy ML Solutions in Wide-Area Networks",
+    "authors": ["Sina Keshvadi", "Shuihai Hu", "Yi Lian", "Geng Li"],
+    "venue": "IEEE Network",
+    "year": "2023",
+    "type": "journal",
+    "status": "published",
+    "doi": "10.1109/MNET.2023.3320929",
+    "doi_url": "https://doi.org/10.1109/MNET.2023.3320929",
+    "abstract": "OpenData provides a comprehensive framework for training and deploying machine learning solutions across wide-area networks. The framework addresses data acquisition, model training, and deployment challenges in distributed network environments.",
+    "keywords": ["Machine Learning", "Wide-Area Networks", "Data Framework", "Network Deployment"],
+    "affiliations": ["Huawei Canada"]
+  }
+] 

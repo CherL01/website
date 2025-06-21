@@ -1,0 +1,106 @@
+{
+    "name": "Yi (Cherry) Lian",
+    "contact": {
+      "phone": "470-452-4404",
+      "email": "cherry.lian@gatech.edu"
+    },
+    "profiles": {
+      "linkedin": "https://linkedin.com/in/cherry-yi-lian/",
+      "github": "https://github.com/CherL01",
+      "portfolio": "https://cherrylian01.wixsite.com/engineeringportfolio"
+    },
+    "education": [
+      {
+        "institution": "Georgia Institute of Technology",
+        "location": "Atlanta, GA",
+        "degree": "Master of Science in Robotics: Human-Robot Interaction, Perception, AI",
+        "cgpa": "4.00/4.00",
+        "start_date": "Aug 2024",
+        "end_date": "Apr 2026"
+      },
+      {
+        "institution": "University of Toronto",
+        "location": "Toronto, ON",
+        "degree": "B.A.Sc. in Mechanical Engineering: AI, Robotics, Mechatronics, Manufacturing",
+        "start_date": "Sep 2019",
+        "end_date": "Apr 2024"
+      }
+    ],
+    "experience": [
+      {
+        "title": "Robotics Engineer",
+        "company": "Advanced Mechatronics Solutions",
+        "location": "San Diego, CA",
+        "start_date": "May 2025",
+        "end_date": "Present",
+        "responsibilities": [
+          "Designed and implemented autonomous mobile robot (AMR) and automated guided vehicle (AGV) solutions to improve warehouse automation, material handling, and operational efficiency",
+          "Built and deployed SLAM-based navigation and perception systems for AMRs, leveraging industry-standard tools to enable robust, real-time autonomous operation in dynamic warehouse environments"
+        ]
+      },
+      {
+        "title": "SLAM and Navigation Researcher",
+        "company": "Georgia Institute of Technology",
+        "location": "Atlanta, GA",
+        "start_date": "Aug 2024",
+        "end_date": "Present",
+        "responsibilities": [
+          "Implemented a real-time semantic visual-inertial SLAM system for quadruped and mobile robots by developing a computer vision pipeline for ORB feature extraction and integrating high-frequency IMU and camera data with deep learning-based semantic segmentation",
+          "Developed a semantic navigation framework incorporating a vision-language model (VLM) to generate language-guided actions, enabling intuitive and socially-aware human-robot interaction in dynamic environments",
+          "Led hardware troubleshooting and sensor calibration on TurtleBot4 platform, streamlining data pipelines and connectivity to ensure reliable real-time performance and system robustness",
+          "Publication: Yi Lian, J. Taery Kim, Sehoon Ha, “Implicit Behavioral Cues for Enhancing Trust and Comfort in Robot Social Navigation,” ICRA 2025 PTAS Workshop (Best Presentation Award)"
+        ]
+      },
+      {
+        "title": "Machine Learning Engineer",
+        "company": "Huawei Canada",
+        "location": "Markham, Canada",
+        "start_date": "May 2022",
+        "end_date": "Aug 2023",
+        "responsibilities": [
+          "Designed and deployed LSTM-based deep learning models for bandwidth prediction in large-scale computer networks, achieving a prediction error below 5%",
+          "Streamlined data acquisition pipelines with socket programming and network emulators (Mahimahi, NS2), improving real-time ingestion across 60% of team projects",
+          "Resolved synchronization issues and enhanced data integrity in Django-based clustered databases, enabling reliable deployment of ML-based congestion control systems",
+          "Publications:\n  • Ahmed Elbery, Yi Lian, and Geng Li, “Toward Fair and Efficient Congestion Control: Machine Learning Aided Congestion Control (MLACC),” APNET ’23, 2023, doi:10.1145/3600061.3603275\n  • Sina Keshvadi, Shuihai Hu, Yi Lian, Geng Li, “OpenData: A Framework to Train and Deploy ML Solutions in Wide-Area Networks,” IEEE Network, 2023, doi:10.1109/MNET.2023.3320929"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "name": "HINTeract, Interactive Robot Learning Framework",
+        "technologies": ["Python", "Robosuite", "PyTorch"],
+        "start_date": "Jan 2025",
+        "end_date": "Apr 2025",
+        "details": [
+          "Trained Behavioral Cloning policies from 260+ demonstrations for subtask-level table assembly in Robosuite",
+          "Built a hierarchical imitation learning framework with hint-guided feedback, optimizing sample efficiency and task rollout stability"
+        ]
+      },
+      {
+        "name": "SpooderMan, Autonomous Robot Follower",
+        "technologies": ["ROS2", "Python", "OpenCV"],
+        "start_date": "Aug 2024",
+        "end_date": "Dec 2024",
+        "details": [
+          "Developed an autonomous robot follower on TurtleBot3 by employing SIFT-based feature extraction and image segmentation using OpenCV and custom ROS2 packages",
+          "Integrated a SLAM framework with a dynamic window-based controller for precise global localization and coordinate-based navigation, enabling efficient maze traversal through KNN-based directional sign classification"
+        ]
+      }
+    ],
+    "technical_skills": [
+      "Python", "C", "C++", "Bash", "MATLAB", "Assembly",
+      "PyTorch", "NumPy", "Pandas", "TensorFlow", "Linux",
+      "ROS", "ROS2", "Git/GitHub", "Docker", "Jupyter",
+      "VSCode", "Arduino", "tmux", "scikit-learn", "OpenCV",
+      "NLTK", "PySerial", "socket", "Django", "AWS", "Unity"
+    ],
+    "links": [
+      "mailto:cherry.lian@gatech.edu",
+      "https://linkedin.com/in/cherry-yi-lian/",
+      "https://github.com/CherL01",
+      "https://cherrylian01.wixsite.com/engineeringportfolio",
+      "https://doi.org/10.1145/3600061.3603275",
+      "https://doi.org/10.1109/MNET.2023.3320929"
+    ]
+  }
+  

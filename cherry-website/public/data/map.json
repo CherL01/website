@@ -1,0 +1,78 @@
+[
+  {
+    "city": "Atlanta",
+    "country": "USA",
+    "state": "Georgia",
+    "coordinates": {
+      "lat": 33.7490,
+      "lng": -84.3880
+    },
+    "dates": "Aug 2024 - Present",
+    "institution": "Georgia Institute of Technology",
+    "role": "Master of Science in Robotics",
+    "type": "education",
+    "notes": "MS in Robotics: Human-Robot Interaction, Perception, AI (4.00/4.00 GPA)",
+    "achievements": [
+      "SLAM and Navigation Research",
+      "Semantic Visual-Inertial SLAM system development",
+      "ICRA 2025 PTAS Workshop - Best Presentation Award"
+    ]
+  },
+  {
+    "city": "San Diego",
+    "country": "USA",
+    "state": "California",
+    "coordinates": {
+      "lat": 32.7157,
+      "lng": -117.1611
+    },
+    "dates": "May 2025 - Present",
+    "institution": "Advanced Mechatronics Solutions",
+    "role": "Robotics Engineer",
+    "type": "work",
+    "notes": "Robotics Engineer specializing in AMR and AGV solutions",
+    "achievements": [
+      "Autonomous mobile robot (AMR) solutions",
+      "SLAM-based navigation systems",
+      "Warehouse automation optimization"
+    ]
+  },
+  {
+    "city": "Toronto",
+    "country": "Canada",
+    "state": "Ontario",
+    "coordinates": {
+      "lat": 43.6532,
+      "lng": -79.3832
+    },
+    "dates": "Sep 2019 - Apr 2024",
+    "institution": "University of Toronto",
+    "role": "Bachelor of Applied Science",
+    "type": "education",
+    "notes": "B.A.Sc. in Mechanical Engineering: AI, Robotics, Mechatronics, Manufacturing",
+    "achievements": [
+      "Mechanical Engineering degree",
+      "Focus on AI and Robotics",
+      "Mechatronics and Manufacturing specialization"
+    ]
+  },
+  {
+    "city": "Markham",
+    "country": "Canada",
+    "state": "Ontario",
+    "coordinates": {
+      "lat": 43.8561,
+      "lng": -79.3370
+    },
+    "dates": "May 2022 - Aug 2023",
+    "institution": "Huawei Canada",
+    "role": "Machine Learning Engineer",
+    "type": "work",
+    "notes": "ML Engineer developing LSTM-based models for network prediction",
+    "achievements": [
+      "LSTM-based deep learning models for bandwidth prediction",
+      "Real-time data acquisition pipelines",
+      "Published research in APNET '23 and IEEE Network"
+    ]
+  }
+] 
