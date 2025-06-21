@@ -47,18 +47,18 @@ export default function AboutPage() {
           viewport={{ once: true }}
         >
           <div className="card text-center">
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              I'm a robotics engineer and machine learning researcher currently pursuing my Master's 
-              in Robotics at Georgia Institute of Technology, where I focus on Human-Robot Interaction, 
-              Perception, and AI. My work spans from developing SLAM-based navigation systems for 
-              autonomous mobile robots to creating interactive learning frameworks that enhance 
-              robot-human collaboration.
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed mb-8">
-              With experience at Huawei Canada developing ML models for network optimization and 
-              current research at Georgia Tech on semantic visual-inertial SLAM systems, I'm passionate 
-              about bridging the gap between theoretical research and practical robotic applications.
-            </p>
+                          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                I&apos;m a robotics engineer and machine learning researcher currently pursuing my Master&apos;s 
+                in Robotics at Georgia Institute of Technology, where I focus on Human-Robot Interaction, 
+                Perception, and AI. My work spans from developing SLAM-based navigation systems for 
+                autonomous mobile robots to creating interactive learning frameworks that enhance 
+                robot-human collaboration.
+              </p>
+                          <p className="text-lg text-gray-700 leading-relaxed mb-8">
+                With experience at Huawei Canada developing ML models for network optimization and 
+                current research at Georgia Tech on semantic visual-inertial SLAM systems, I&apos;m passionate 
+                about bridging the gap between theoretical research and practical robotic applications.
+              </p>
             <motion.a
               href="/assets/Yi_Lian_Resume.pdf"
               download
@@ -194,7 +194,7 @@ export default function AboutPage() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">Let's Connect</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">Let&apos;s Connect</h3>
           <div className="flex justify-center space-x-6">
             <motion.a
               href={`mailto:${resumeData.contact.email}`}

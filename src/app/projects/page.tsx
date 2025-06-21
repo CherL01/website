@@ -95,7 +95,7 @@ export default function ProjectsPage() {
               <div className="mt-4 flex flex-wrap gap-2">
                 {searchTerm && (
                   <span className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full">
-                    Search: "{searchTerm}"
+                    Search: &ldquo;{searchTerm}&rdquo;
                   </span>
                 )}
                 {selectedTech && (
@@ -205,7 +205,7 @@ export default function ProjectsPage() {
             <div className="text-6xl mb-4">🔍</div>
             <h3 className="text-2xl font-bold text-gray-800 mb-2">No projects found</h3>
             <p className="text-gray-600 mb-6">
-              Try adjusting your search terms or filters to find what you're looking for.
+              Try adjusting your search terms or filters to find what you&apos;re looking for.
             </p>
             <button
               onClick={() => {

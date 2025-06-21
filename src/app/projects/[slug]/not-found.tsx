@@ -10,7 +10,7 @@ export default function ProjectNotFound() {
           Project Not Found
         </h1>
         <p className="text-lg text-gray-600 mb-8">
-          Sorry, the project you're looking for doesn't exist or may have been moved.
+          Sorry, the project you&apos;re looking for doesn&apos;t exist or may have been moved.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link

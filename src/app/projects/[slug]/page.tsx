@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -7,19 +8,36 @@ import { ArrowLeft, Github, ExternalLink, Calendar, Tag, Award } from 'lucide-re
 import resumeData from '@/data/resume.json';
 
 interface ProjectDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+  const [slug, setSlug] = useState<string>('');
+
+  useEffect(() => {
+    params.then(({ slug }) => setSlug(slug));
+  }, [params]);
   // Generate slug from project name to match with URL
   const generateSlug = (name: string) => {
     return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   };
 
+  // Show loading state while slug is being resolved
+  if (!slug) {
+    return (
+      <div className="min-h-screen pt-24 pb-16 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-6xl mb-4">🤖</div>
+          <p className="text-gray-600">Loading project...</p>
+        </div>
+      </div>
+    );
+  }
+
   // Find the project by slug
-  const project = resumeData.projects.find(p => generateSlug(p.name) === params.slug);
+  const project = resumeData.projects.find(p => generateSlug(p.name) === slug);
 
   if (!project) {
     notFound();
@@ -73,7 +91,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
     }
   };
 
-  const details = projectDetails[params.slug as keyof typeof projectDetails];
+  const details = projectDetails[slug as keyof typeof projectDetails];
 
   return (
     <div className="min-h-screen pt-24 pb-16">
