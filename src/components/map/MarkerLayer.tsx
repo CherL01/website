@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, memo, useCallback } from 'react';
 import { Marker } from 'react-map-gl/mapbox';
 import { motion } from 'framer-motion';
 import { MapLocation, FilterType } from '@/types/map';
@@ -44,7 +44,7 @@ const getMarkerIcon = (types: string[]): string => {
   return '📍';
 };
 
-export default function MarkerLayer({
+const MarkerLayer = memo(function MarkerLayer({
   locations,
   filter,
   selectedLocationId,
@@ -60,6 +60,15 @@ export default function MarkerLayer({
       location.entries.some(entry => entry.type === filter)
     );
   }, [locations, filter]);
+
+  // Memoize click and hover handlers
+  const handleMarkerClick = useCallback((locationId: string) => {
+    onMarkerClick(locationId);
+  }, [onMarkerClick]);
+
+  const handleMarkerHover = useCallback((locationId: string | null) => {
+    onMarkerHover(locationId);
+  }, [onMarkerHover]);
 
   return (
     <>
@@ -89,9 +98,9 @@ export default function MarkerLayer({
                 scale: isSelected ? 1.2 : isHovered ? 1.1 : 1,
                 zIndex: isSelected ? 50 : isHovered ? 40 : 30
               }}
-              onClick={() => onMarkerClick(locationId)}
-              onMouseEnter={() => onMarkerHover(locationId)}
-              onMouseLeave={() => onMarkerHover(null)}
+              onClick={() => handleMarkerClick(locationId)}
+              onMouseEnter={() => handleMarkerHover(locationId)}
+              onMouseLeave={() => handleMarkerHover(null)}
             >
               {/* Marker Container */}
               <div className="relative">
@@ -161,4 +170,6 @@ export default function MarkerLayer({
       })}
     </>
   );
-} 
+});
+
+export default MarkerLayer; 

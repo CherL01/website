@@ -23,6 +23,10 @@ const MarkerLayer = dynamic(() => import('@/components/map/MarkerLayer'), {
   ssr: false,
 });
 
+const TimelinePanel = dynamic(() => import('@/components/map/TimelinePanel'), {
+  ssr: false,
+});
+
 // Filter bar component
 function FilterBar() {
   const { filter, setFilter } = useMapContext();
@@ -98,6 +102,16 @@ function GlobalStats() {
       </div>
     </motion.div>
   );
+}
+
+// Timeline section component
+function TimelineSection() {
+  const { filter } = useMapContext();
+  const { getFilteredLocations } = useMapData();
+  
+  const filteredLocations = getFilteredLocations(filter);
+
+  return <TimelinePanel locations={filteredLocations} filter={filter} />;
 }
 
 // Main map component
@@ -214,8 +228,25 @@ export default function MapPage() {
           {/* Global Statistics */}
           <GlobalStats />
 
-          {/* Interactive Map */}
-          <InteractiveMap />
+          {/* Interactive Map and Timeline */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Map Section */}
+            <div className="lg:col-span-2">
+              <InteractiveMap />
+            </div>
+            
+            {/* Timeline Section */}
+            <div className="lg:col-span-1">
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="card p-6 max-h-[600px] overflow-y-auto"
+              >
+                <TimelineSection />
+              </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </MapProvider>
