@@ -1,12 +1,15 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Download, ExternalLink, Github } from 'lucide-react';
+import { ArrowRight, Download, ExternalLink, Github, Eye } from 'lucide-react';
 import resumeData from '@/data/resume.json';
+import ResumeModal from '@/components/ResumeModal';
 
 export default function HomePage() {
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const featuredProjects = resumeData.projects.slice(0, 2);
 
   return (
@@ -92,16 +95,15 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1 }}
               >
-                <motion.a
-                  href="/assets/Yi_Lian_Resume.pdf"
-                  download
+                <motion.button
+                  onClick={() => setIsResumeModalOpen(true)}
                   className="btn-primary text-lg px-8 py-3 inline-flex items-center space-x-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Download size={20} />
-                  <span>Download Resume</span>
-                </motion.a>
+                  <Eye size={20} />
+                  <span>View Resume</span>
+                </motion.button>
 
                 <motion.div
                   whileHover={{ scale: 1.05 }}
@@ -222,6 +224,12 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Resume Modal */}
+      <ResumeModal 
+        isOpen={isResumeModalOpen}
+        onClose={() => setIsResumeModalOpen(false)}
+      />
     </div>
   );
 } 

@@ -51,7 +51,11 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <motion.div
-              className="text-2xl font-bold text-gradient"
+              className={`text-2xl font-bold transition-all duration-300 ${
+                scrolled 
+                  ? 'text-gradient' 
+                  : 'text-white drop-shadow-lg'
+              }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
