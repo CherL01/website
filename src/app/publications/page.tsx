@@ -2,23 +2,33 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp, ExternalLink, Award, Users, MapPin } from 'lucide-react';
+import { ChevronDown, ChevronUp, ExternalLink, Award, Users, MapPin, Search } from 'lucide-react';
 import publicationsData from '@/data/publications.json';
 
 export default function PublicationsPage() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedYear, setSelectedYear] = useState<string>('');
   const [selectedType, setSelectedType] = useState<string>('');
+  const [selectedTag, setSelectedTag] = useState<string>('');
 
-  // Get unique years and types for filtering
+  // Get unique years, types, and tags for filtering
   const years = [...new Set(publicationsData.map(pub => pub.year))].sort((a, b) => b.localeCompare(a));
   const types = [...new Set(publicationsData.map(pub => pub.type))];
+  const tags = [...new Set(publicationsData.flatMap(pub => pub.keywords))].sort();
 
   // Filter publications
   const filteredPublications = publicationsData.filter(pub => {
+    const matchesSearch = !searchTerm || 
+      pub.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      pub.authors.some(author => author.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      pub.abstract.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      pub.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      pub.venue.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesYear = !selectedYear || pub.year === selectedYear;
     const matchesType = !selectedType || pub.type === selectedType;
-    return matchesYear && matchesType;
+    const matchesTag = !selectedTag || pub.keywords.includes(selectedTag);
+    return matchesSearch && matchesYear && matchesType && matchesTag;
   }).sort((a, b) => b.year.localeCompare(a.year));
 
   const getTypeColor = (type: string) => {
@@ -66,48 +76,105 @@ export default function PublicationsPage() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div className="card">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Year</label>
-                <select
-                  value={selectedYear}
-                  onChange={(e) => setSelectedYear(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
-                >
-                  <option value="">All Years</option>
-                  {years.map(year => (
-                    <option key={year} value={year}>{year}</option>
-                  ))}
-                </select>
+            <div className="flex flex-col gap-4">
+              {/* Search Input */}
+              <div className="relative">
+                <Search size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search publications..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
+                />
               </div>
 
-              <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Type</label>
-                <select
-                  value={selectedType}
-                  onChange={(e) => setSelectedType(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
-                >
-                  <option value="">All Types</option>
-                  {types.map(type => (
-                    <option key={type} value={type}>
-                      {type.charAt(0).toUpperCase() + type.slice(1)}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {(selectedYear || selectedType) && (
-                <div className="flex items-end">
-                  <button
-                    onClick={() => {
-                      setSelectedYear('');
-                      setSelectedType('');
-                    }}
-                    className="px-4 py-2 text-gray-500 hover:text-gray-700 transition-colors duration-200"
+                            {/* Filters Row */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Year</label>
+                  <select
+                    value={selectedYear}
+                    onChange={(e) => setSelectedYear(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
                   >
-                    Clear
-                  </button>
+                    <option value="">All Years</option>
+                    {years.map(year => (
+                      <option key={year} value={year}>{year}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Type</label>
+                  <select
+                    value={selectedType}
+                    onChange={(e) => setSelectedType(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
+                  >
+                    <option value="">All Types</option>
+                    {types.map(type => (
+                      <option key={type} value={type}>
+                        {type.charAt(0).toUpperCase() + type.slice(1)}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Tag</label>
+                  <select
+                    value={selectedTag}
+                    onChange={(e) => setSelectedTag(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
+                  >
+                    <option value="">All Tags</option>
+                    {tags.map(tag => (
+                      <option key={tag} value={tag}>{tag}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {(searchTerm || selectedYear || selectedType || selectedTag) && (
+                  <div className="flex items-end">
+                    <button
+                      onClick={() => {
+                        setSearchTerm('');
+                        setSelectedYear('');
+                        setSelectedType('');
+                        setSelectedTag('');
+                      }}
+                      className="px-4 py-2 text-gray-500 hover:text-gray-700 transition-colors duration-200"
+                    >
+                      Clear All
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Active Filters Display */}
+              {(searchTerm || selectedYear || selectedType || selectedTag) && (
+                <div className="flex flex-wrap gap-2">
+                  {searchTerm && (
+                    <span className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full">
+                      Search: &ldquo;{searchTerm}&rdquo;
+                    </span>
+                  )}
+                  {selectedYear && (
+                    <span className="px-3 py-1 bg-secondary-100 text-secondary-700 text-sm rounded-full">
+                      Year: {selectedYear}
+                    </span>
+                  )}
+                  {selectedType && (
+                    <span className="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full">
+                      Type: {selectedType.charAt(0).toUpperCase() + selectedType.slice(1)}
+                    </span>
+                  )}
+                  {selectedTag && (
+                    <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
+                      Tag: {selectedTag}
+                    </span>
+                  )}
                 </div>
               )}
             </div>
