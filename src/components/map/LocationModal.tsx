@@ -168,12 +168,12 @@ export default function LocationModal({
                       {selectedEntry.achievements.map((achievement, index) => (
                         <motion.div 
                           key={index} 
-                          className="flex items-start"
+                          className="flex items-baseline"
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 }}
                         >
-                          <span className="text-primary-500 mr-3 mt-1 flex-shrink-0">•</span>
+                          <span className="text-primary-500 mr-3 flex-shrink-0">•</span>
                           <p className="text-gray-700 text-sm leading-relaxed">{achievement}</p>
                         </motion.div>
                       ))}

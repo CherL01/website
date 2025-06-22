@@ -227,8 +227,8 @@ const TimelinePanel = memo(function TimelinePanel({ locations, filter }: Timelin
                   {entry.achievements.length > 0 && (
                     <div className="space-y-1">
                       {entry.achievements.slice(0, isSelected ? entry.achievements.length : 2).map((achievement, idx) => (
-                        <div key={idx} className="flex items-start text-sm">
-                          <span className="text-primary-500 mr-2 mt-0.5 flex-shrink-0">•</span>
+                        <div key={idx} className="flex items-baseline text-sm">
+                          <span className="text-primary-500 mr-2 flex-shrink-0">•</span>
                           <span className="text-gray-700 leading-relaxed">{achievement}</span>
                         </div>
                       ))}

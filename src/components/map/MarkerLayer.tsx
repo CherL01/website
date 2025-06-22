@@ -108,23 +108,6 @@ const MarkerLayer = memo(function MarkerLayer({
             >
               {/* Marker Container */}
               <div className="relative">
-                {/* Selection Ring */}
-                {(isSelected || isHovered) && (
-                  <motion.div
-                    className="absolute inset-0 rounded-full border-4 border-white/80 shadow-lg"
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1.2, opacity: 1 }}
-                    style={{
-                      borderColor: isSelected ? '#3B82F6' : '#6B7280',
-                      transform: 'translate(-50%, -50%)',
-                      left: '50%',
-                      top: '50%',
-                      width: '60px',
-                      height: '60px',
-                    }}
-                  />
-                )}
-
                 {/* Main Marker */}
                 <div className={`
                   w-12 h-12 rounded-full flex items-center justify-center text-xl shadow-lg 
