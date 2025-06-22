@@ -91,11 +91,11 @@ function TypingAnimation() {
 
 export function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
+    <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           {/* Copyright */}
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-gray-600 dark:text-gray-400">
             © {new Date().getFullYear()} Yi (Cherry) Lian. All rights reserved.
           </div>
 
@@ -109,7 +109,7 @@ export function Footer() {
                   href={link.href}
                   target={link.name !== 'Email' ? '_blank' : undefined}
                   rel={link.name !== 'Email' ? 'noopener noreferrer' : undefined}
-                  className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={link.name}
@@ -122,8 +122,8 @@ export function Footer() {
         </div>
 
         {/* Additional Info */}
-        <div className="mt-6 pt-6 border-t border-gray-200">
-          <div className="text-center text-xs text-gray-500 min-h-[2rem] flex items-center justify-center">
+        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <div className="text-center text-xs text-gray-500 dark:text-gray-400 min-h-[2rem] flex items-center justify-center">
             <TypingAnimation />
           </div>
         </div>

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Download } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -72,7 +73,7 @@ export function Navbar() {
                 className={`relative text-sm font-medium transition-colors duration-200 ${
                   pathname === item.href
                     ? 'text-primary-600'
-                    : 'text-gray-600 hover:text-primary-500'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-primary-500'
                 }`}
               >
                 {item.name}
@@ -86,6 +87,9 @@ export function Navbar() {
                 )}
               </Link>
             ))}
+            
+            {/* Theme Toggle */}
+            <ThemeToggle />
             
             {/* Resume Download Button */}
             <motion.a
@@ -101,10 +105,11 @@ export function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-primary-500 p-2"
+              className="text-gray-600 dark:text-gray-300 hover:text-primary-500 p-2"
               whileTap={{ scale: 0.95 }}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -122,15 +127,15 @@ export function Navbar() {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-lg rounded-lg shadow-lg mt-2">
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-lg shadow-lg mt-2">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
                     className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                       pathname === item.href
-                        ? 'text-primary-600 bg-primary-50'
-                        : 'text-gray-600 hover:text-primary-500 hover:bg-primary-50'
+                        ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/30'
+                        : 'text-gray-600 dark:text-gray-300 hover:text-primary-500 hover:bg-primary-50 dark:hover:bg-primary-900/30'
                     }`}
                   >
                     {item.name}
@@ -139,7 +144,7 @@ export function Navbar() {
                 <motion.a
                   href="/assets/Yi_Lian_Resume.pdf"
                   download
-                  className="flex items-center space-x-2 px-3 py-2 text-primary-600 font-medium"
+                  className="flex items-center space-x-2 px-3 py-2 text-primary-600 dark:text-primary-400 font-medium"
                   whileTap={{ scale: 0.95 }}
                 >
                   <Download size={16} />

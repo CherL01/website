@@ -12,25 +12,47 @@
   --text-primary: #2D2D2D;
   --text-secondary: #6B7280;
   --text-accent: #9CA3AF;
+  
+  /* Theme-aware colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --border-color: #e5e7eb;
+  --text-heading: #111827;
+  --text-body: #374151;
+  --text-muted: #6b7280;
+  --card-bg: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --text-primary: #F9FAFB;
-    --text-secondary: #D1D5DB;
-    --text-accent: #9CA3AF;
-  }
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --color-primary: #fda4af;
+  --color-secondary: #fed7cc;
+  --color-accent1: #fbbf24;
+  --color-accent2: #f59e0b;
+  
+  /* Dark theme colors */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --border-color: #475569;
+  --text-heading: #f1f5f9;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  --card-bg: #1e293b;
+  --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--bg-primary);
   font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Smooth scrolling */
@@ -65,15 +87,18 @@ html {
 /* Custom component styles */
 @layer components {
   .card {
-    @apply bg-white backdrop-blur-sm rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-6;
+    background: var(--card-bg);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    @apply backdrop-blur-sm rounded-lg hover:shadow-xl transition-all duration-300 p-6;
   }
   
   .btn-primary {
-    @apply bg-primary-200 hover:bg-primary-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-primary-200 hover:bg-primary-300 text-gray-800 dark:text-gray-900 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
   }
   
   .btn-secondary {
-    @apply bg-secondary-200 hover:bg-secondary-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-secondary-200 hover:bg-secondary-300 text-gray-800 dark:text-gray-900 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
   }
   
   .gradient-bg {
@@ -85,6 +110,31 @@ html {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  /* Theme-aware text colors */
+  .text-heading {
+    color: var(--text-heading);
+  }
+  
+  .text-body {
+    color: var(--text-body);
+  }
+  
+  .text-muted {
+    color: var(--text-muted);
+  }
+
+  .bg-theme {
+    background: var(--bg-primary);
+  }
+  
+  .bg-theme-secondary {
+    background: var(--bg-secondary);
+  }
+  
+  .border-theme {
+    border-color: var(--border-color);
   }
 }
 
