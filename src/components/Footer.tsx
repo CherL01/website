@@ -32,21 +32,21 @@ function TypingAnimation() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
 
-  const getCurrentMonth = () => {
-    const months = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ];
-    const now = new Date();
-    return `${months[now.getMonth()]} ${now.getFullYear()}`;
-  };
-
-  const texts = [
-    'Built with Next.js, Tailwind CSS, and Framer Motion.',
-    `Last updated in ${getCurrentMonth()}.`
-  ];
-
   useEffect(() => {
+    const getCurrentMonth = () => {
+      const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ];
+      const now = new Date();
+      return `${months[now.getMonth()]} ${now.getFullYear()}`;
+    };
+
+    const texts = [
+      'Built with Next.js, Tailwind CSS, and Framer Motion.',
+      `Last updated in ${getCurrentMonth()}.`
+    ];
+
     let timeoutId: NodeJS.Timeout;
 
     if (isTyping) {
@@ -73,7 +73,7 @@ function TypingAnimation() {
     }
 
     return () => clearTimeout(timeoutId);
-  }, [displayText, currentIndex, isTyping, texts]);
+  }, [displayText, currentIndex, isTyping]);
 
   return (
     <span>

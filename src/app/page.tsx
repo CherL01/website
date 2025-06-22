@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Download, ExternalLink, Github, Eye } from 'lucide-react';
+import { ArrowRight, ExternalLink, Github, Eye } from 'lucide-react';
 import resumeData from '@/data/resume.json';
 import ResumeModal from '@/components/ResumeModal';
 
