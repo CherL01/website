@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { MapProvider, useMapContext } from '@/contexts/MapContext';
 import { useMapData } from '@/hooks/useMapData';
-import { GlobalStats } from '@/types/map';
+import type { GlobalStats } from '@/types/map';
 import LocationModal from '@/components/map/LocationModal';
 
 // Dynamically import heavy Mapbox components to avoid SSR issues
