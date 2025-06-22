@@ -6,7 +6,7 @@ import { ChevronDown, ChevronUp, ExternalLink, Award, Users, MapPin } from 'luci
 import publicationsData from '@/data/publications.json';
 
 export default function PublicationsPage() {
-  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [selectedYear, setSelectedYear] = useState<string>('');
   const [selectedType, setSelectedType] = useState<string>('');
 
@@ -20,10 +20,6 @@ export default function PublicationsPage() {
     const matchesType = !selectedType || pub.type === selectedType;
     return matchesYear && matchesType;
   }).sort((a, b) => b.year.localeCompare(a.year));
-
-  const toggleExpanded = (id: string) => {
-    setExpandedId(expandedId === id ? null : id);
-  };
 
   const getTypeColor = (type: string) => {
     switch (type) {
@@ -76,7 +72,7 @@ export default function PublicationsPage() {
                 <select
                   value={selectedYear}
                   onChange={(e) => setSelectedYear(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
                 >
                   <option value="">All Years</option>
                   {years.map(year => (
@@ -90,7 +86,7 @@ export default function PublicationsPage() {
                 <select
                   value={selectedType}
                   onChange={(e) => setSelectedType(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
                 >
                   <option value="">All Types</option>
                   {types.map(type => (
@@ -127,6 +123,8 @@ export default function PublicationsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              onMouseEnter={() => setHoveredId(publication.id)}
+              onMouseLeave={() => setHoveredId(null)}
             >
               {/* Publication Header */}
               <div className="flex items-start justify-between mb-4">
@@ -203,26 +201,23 @@ export default function PublicationsPage() {
                       <ExternalLink size={20} />
                     </motion.a>
                   )}
+                </div>
+              </div>
 
-                  <motion.button
-                    onClick={() => toggleExpanded(publication.id)}
-                    className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-50 rounded-lg transition-all duration-200"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    title={expandedId === publication.id ? "Hide abstract" : "Show abstract"}
-                  >
-                    {expandedId === publication.id ? (
-                      <ChevronUp size={20} />
-                    ) : (
-                      <ChevronDown size={20} />
-                    )}
-                  </motion.button>
+              {/* Dropdown Arrow */}
+              <div className="flex justify-center py-2">
+                <div className="text-primary-600 transition-all duration-200">
+                  {hoveredId === publication.id ? (
+                    <ChevronUp size={20} />
+                  ) : (
+                    <ChevronDown size={20} />
+                  )}
                 </div>
               </div>
 
               {/* Expandable Abstract */}
               <AnimatePresence>
-                {expandedId === publication.id && (
+                {hoveredId === publication.id && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
@@ -230,7 +225,7 @@ export default function PublicationsPage() {
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <div className="pt-4 border-t border-gray-100">
+                    <div className="pt-4">
                       <h4 className="text-sm font-semibold text-gray-800 mb-2">Abstract</h4>
                       <p className="text-gray-700 leading-relaxed text-sm">
                         {publication.abstract}

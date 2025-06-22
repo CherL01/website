@@ -12,6 +12,11 @@ export default function HomePage() {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const featuredProjects = resumeData.projects.slice(0, 2);
 
+  // Generate slug from project name (same as projects page)
+  const generateSlug = (name: string) => {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -146,13 +151,17 @@ export default function HomePage() {
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={project.name}
-                className="card group cursor-pointer"
+                className="h-full"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
               >
+                <Link href={`/projects/${generateSlug(project.name)}`} className="block h-full">
+                  <motion.div
+                    className="card group cursor-pointer h-full"
+                    whileHover={{ y: -5 }}
+                  >
                 {/* Project Image Placeholder */}
                 <div className="h-48 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg mb-6 flex items-center justify-center">
                   <div className="text-6xl opacity-50">
@@ -203,6 +212,8 @@ export default function HomePage() {
                     </motion.button>
                   </div>
                 </div>
+                  </motion.div>
+                </Link>
               </motion.div>
             ))}
           </div>

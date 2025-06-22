@@ -70,7 +70,7 @@ export default function ProjectsPage() {
                   placeholder="Search projects..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
                 />
               </div>
 
@@ -80,7 +80,7 @@ export default function ProjectsPage() {
                 <select
                   value={selectedTech}
                   onChange={(e) => setSelectedTech(e.target.value)}
-                  className="pl-10 pr-8 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 bg-white min-w-[200px]"
+                  className="pl-10 pr-8 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 bg-white min-w-[200px] text-black"
                 >
                   <option value="">All Technologies</option>
                   {allTechnologies.map(tech => (

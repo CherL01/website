@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
 
@@ -25,6 +26,68 @@ const socialLinks = [
     icon: ExternalLink,
   },
 ];
+
+function TypingAnimation() {
+  const [displayText, setDisplayText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
+
+  const getCurrentMonth = () => {
+    const months = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    const now = new Date();
+    return `${months[now.getMonth()]} ${now.getFullYear()}`;
+  };
+
+  const texts = [
+    'Built with Next.js, Tailwind CSS, and Framer Motion.',
+    `Last updated in ${getCurrentMonth()}.`
+  ];
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
+    if (isTyping) {
+      if (displayText.length < texts[currentIndex].length) {
+        timeoutId = setTimeout(() => {
+          setDisplayText(texts[currentIndex].slice(0, displayText.length + 1));
+        }, 50); // Typing speed
+      } else {
+        // Pause at end of text, then start erasing
+        timeoutId = setTimeout(() => {
+          setIsTyping(false);
+        }, 2000); // Pause duration
+      }
+    } else {
+      if (displayText.length > 0) {
+        timeoutId = setTimeout(() => {
+          setDisplayText(displayText.slice(0, -1));
+        }, 30); // Erasing speed
+      } else {
+        // Move to next text and start typing
+        setCurrentIndex((prev) => (prev + 1) % texts.length);
+        setIsTyping(true);
+      }
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [displayText, currentIndex, isTyping, texts]);
+
+  return (
+    <span>
+      {displayText}
+      <motion.span
+        className="inline-block ml-1"
+        animate={{ opacity: [1, 0] }}
+        transition={{ duration: 0.8, repeat: Infinity, repeatType: 'reverse' }}
+      >
+        |
+      </motion.span>
+    </span>
+  );
+}
 
 export function Footer() {
   return (
@@ -60,11 +123,8 @@ export function Footer() {
 
         {/* Additional Info */}
         <div className="mt-6 pt-6 border-t border-gray-200">
-          <div className="text-center text-xs text-gray-500">
-            Built with Next.js, Tailwind CSS, and Framer Motion. 
-            <br className="sm:hidden" />
-            <span className="hidden sm:inline"> • </span>
-            Hosted on Vercel.
+          <div className="text-center text-xs text-gray-500 min-h-[2rem] flex items-center justify-center">
+            <TypingAnimation />
           </div>
         </div>
       </div>
