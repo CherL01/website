@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { MapProvider, useMapContext } from '@/contexts/MapContext';
 import { useMapData } from '@/hooks/useMapData';
+import { GlobalStats } from '@/types/map';
 import LocationModal from '@/components/map/LocationModal';
 
 // Dynamically import heavy Mapbox components to avoid SSR issues
@@ -77,21 +78,6 @@ function FilterBar() {
 function GlobalStats() {
   const { globalStats } = useMapData();
 
-  // Entry type colors for consistency with markers
-  const entryTypeColors: Record<string, string> = {
-    education: 'bg-blue-500',
-    work: 'bg-emerald-500',
-    conference: 'bg-purple-500',
-    travel: 'bg-amber-500',
-  };
-
-  const entryTypeIcons: Record<string, string> = {
-    education: '🎓',
-    work: '💼',
-    conference: '🎤',
-    travel: '✈️',
-  };
-
   return (
     <motion.div
       className="mb-8"
@@ -130,7 +116,7 @@ function GlobalStats() {
 }
 
 // Experience Distribution dropdown component
-function ExperienceDistribution({ globalStats }: { globalStats: any }) {
+function ExperienceDistribution({ globalStats }: { globalStats: GlobalStats }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Entry type colors for consistency with markers
