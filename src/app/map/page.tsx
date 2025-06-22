@@ -2,6 +2,8 @@
 
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import { MapProvider, useMapContext } from '@/contexts/MapContext';
 import { useMapData } from '@/hooks/useMapData';
 import LocationModal from '@/components/map/LocationModal';
@@ -99,7 +101,7 @@ function GlobalStats() {
     >
       <div className="card">
         {/* Main Statistics Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="text-center">
             <div className="text-3xl font-bold text-primary-600 mb-2">
               {globalStats.totalLocations}
@@ -118,28 +120,51 @@ function GlobalStats() {
             </div>
             <div className="text-gray-600 text-sm">Continents</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-emerald-600 mb-2">
-              {globalStats.totalEntries}
-            </div>
-            <div className="text-gray-600 text-sm">Experiences</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-purple-600 mb-2">
-              {globalStats.yearsActive}
-            </div>
-            <div className="text-gray-600 text-sm">Years Active</div>
-            {globalStats.yearRange && (
-              <div className="text-xs text-gray-500 mt-1">
-                {globalStats.yearRange.start} - {globalStats.yearRange.end}
-              </div>
-            )}
-          </div>
         </div>
 
         {/* Entry Type Distribution */}
-        <div className="border-t pt-6">
+        <ExperienceDistribution globalStats={globalStats} />
+      </div>
+    </motion.div>
+  );
+}
+
+// Experience Distribution dropdown component
+function ExperienceDistribution({ globalStats }: { globalStats: any }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Entry type colors for consistency with markers
+  const entryTypeColors: Record<string, string> = {
+    education: 'bg-blue-500',
+    work: 'bg-emerald-500',
+    conference: 'bg-purple-500',
+    travel: 'bg-amber-500',
+  };
+
+  const entryTypeIcons: Record<string, string> = {
+    education: '🎓',
+    work: '💼',
+    conference: '🎤',
+    travel: '✈️',
+  };
+
+  return (
+    <div className="border-t pt-6">
+      {/* Collapsible content */}
+      <motion.div
+        id="experience-distribution-content"
+        initial={false}
+        animate={{
+          height: isExpanded ? 'auto' : 0,
+          opacity: isExpanded ? 1 : 0,
+        }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        className="overflow-hidden"
+      >
+        <div className="px-4 pt-4">
+          {/* Header inside dropdown */}
           <h3 className="text-lg font-semibold text-gray-800 mb-4">Experience Distribution</h3>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             {/* Visual Bar Chart */}
@@ -177,7 +202,7 @@ function GlobalStats() {
               <div>
                 <h4 className="text-sm font-semibold text-gray-700 mb-2">Countries Visited</h4>
                 <div className="flex flex-wrap gap-2">
-                  {globalStats.countriesList.map((country) => (
+                  {globalStats.countriesList.map((country: string) => (
                     <span
                       key={country}
                       className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full"
@@ -191,7 +216,7 @@ function GlobalStats() {
               <div>
                 <h4 className="text-sm font-semibold text-gray-700 mb-2">Continents</h4>
                 <div className="flex flex-wrap gap-2">
-                  {globalStats.continentsList.map((continent) => (
+                  {globalStats.continentsList.map((continent: string) => (
                     <span
                       key={continent}
                       className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full"
@@ -204,8 +229,27 @@ function GlobalStats() {
             </div>
           </div>
         </div>
+      </motion.div>
+
+      {/* Centered arrow toggle at bottom */}
+      <div className="flex justify-center pt-2">
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+          aria-expanded={isExpanded}
+          aria-controls="experience-distribution-content"
+          aria-label={isExpanded ? "Collapse experience distribution" : "Expand experience distribution"}
+        >
+          <motion.div
+            animate={{ rotate: isExpanded ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+            className="text-gray-500"
+          >
+            <ChevronDown size={20} />
+          </motion.div>
+        </button>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -335,13 +379,13 @@ export default function MapPage() {
           </p>
         </div>
 
-        <div className="container mx-auto px-4 py-12">
+        <div className="container mx-auto px-4 pt-24 pb-16">
           {/* Page Header */}
           <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: -20 }}
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Global Journey
