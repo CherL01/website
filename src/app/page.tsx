@@ -49,7 +49,7 @@ export default function HomePage() {
                     alt="Yi (Cherry) Lian"
                     width={320}
                     height={320}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-bottom"
                     priority
                   />
                 </motion.div>
