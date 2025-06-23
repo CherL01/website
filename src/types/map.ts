@@ -8,7 +8,7 @@ export const LinkSchema = z.object({
 
 export const MapEntrySchema = z.object({
   id: z.string(),
-  type: z.enum(['education', 'work', 'conference', 'travel']),
+  type: z.enum(['education', 'work', 'conference', 'travel', 'home']),
   institution: z.string(),
   role: z.string(),
   duration: z.string(),
@@ -33,7 +33,7 @@ export type MapLocation = z.infer<typeof MapLocationSchema>;
 export type MapData = z.infer<typeof MapDataSchema>;
 
 // Filter types
-export type FilterType = 'all' | 'education' | 'work' | 'conference' | 'travel';
+export type FilterType = 'all' | 'education' | 'work' | 'conference' | 'travel' | 'home';
 
 // Map context state
 export interface MapContextState {

@@ -21,6 +21,8 @@ const getEntryIcon = (type: string) => {
       return <Mic size={20} className="text-purple-500" />;
     case 'travel':
       return <Plane size={20} className="text-amber-500" />;
+    case 'home':
+      return <MapPin size={20} className="text-rose-500" />;
     default:
       return <MapPin size={20} className="text-gray-500" />;
   }
@@ -55,6 +57,13 @@ const getEntryColors = (type: string) => {
         border: 'border-amber-200',
         accent: 'bg-amber-500',
         text: 'text-amber-700'
+      };
+    case 'home':
+      return {
+        bg: 'bg-rose-50',
+        border: 'border-rose-200',
+        accent: 'bg-rose-500',
+        text: 'text-rose-700'
       };
     default:
       return {

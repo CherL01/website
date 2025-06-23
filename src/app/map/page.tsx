@@ -41,6 +41,7 @@ function FilterBar() {
     { key: 'work' as const, label: 'Work', count: globalStats.entryTypes.work },
     { key: 'conference' as const, label: 'Conference', count: globalStats.entryTypes.conference },
     { key: 'travel' as const, label: 'Travel', count: globalStats.entryTypes.travel },
+    { key: 'home' as const, label: 'Home', count: globalStats.entryTypes.home },
   ];
 
   return (
@@ -125,6 +126,7 @@ function ExperienceDistribution({ globalStats }: { globalStats: GlobalStats }) {
     work: 'bg-emerald-500',
     conference: 'bg-purple-500',
     travel: 'bg-amber-500',
+    home: 'bg-rose-500',
   };
 
   const entryTypeIcons: Record<string, string> = {
@@ -132,6 +134,7 @@ function ExperienceDistribution({ globalStats }: { globalStats: GlobalStats }) {
     work: '💼',
     conference: '🎤',
     travel: '✈️',
+    home: '🏠',
   };
 
   return (
@@ -321,6 +324,10 @@ function InteractiveMap() {
             <div className="flex items-center text-sm text-gray-600">
               <div className="w-6 h-6 bg-amber-500 rounded-full flex items-center justify-center text-white text-xs mr-2">✈️</div>
               Travel
+            </div>
+            <div className="flex items-center text-sm text-gray-600">
+              <div className="w-6 h-6 bg-rose-500 rounded-full flex items-center justify-center text-white text-xs mr-2">🏠</div>
+              Home
             </div>
             <p className="text-xs text-gray-500">Click markers to learn more</p>
           </div>

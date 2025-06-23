@@ -88,5 +88,515 @@
         ]
       }
     ]
-  }
+  },
+  {
+    "city": "Richmond",
+    "country": "Canada",
+    "coordinates": [-123.1336, 49.1666],
+    "entries": [
+      {
+        "id": "",
+        "type": "home",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "Waterloo",
+    "country": "Canada",
+    "coordinates": [-80.5263, 43.4643],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "Vancouver",
+    "country": "Canada",
+    "coordinates": [-123.1207, 49.2827],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "Seattle",
+    "country": "USA",
+    "coordinates": [-122.3321, 47.6062],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "San Francisco",
+    "country": "USA",
+    "coordinates": [-122.4194, 37.7749],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "Los Angeles",
+    "country": "USA",
+    "coordinates": [-118.2437, 34.0522],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "New York",
+    "country": "USA",
+    "coordinates": [-74.0060, 40.7128],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "Durham",
+    "country": "USA",
+    "coordinates": [-78.8986, 35.9940],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "Buffalo",
+    "country": "USA",
+    "coordinates": [-78.8784, 42.8864],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "Orlando",
+    "country": "USA",
+    "coordinates": [-81.3792, 28.5383],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "Tokyo",
+    "country": "Japan",
+    "coordinates": [139.6917, 35.6895],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "Kyoto",
+    "country": "Japan",
+    "coordinates": [135.7681, 35.0116],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "Osaka",
+    "country": "Japan",
+    "coordinates": [135.5023, 34.6937],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "Seoul",
+    "country": "South Korea",
+    "coordinates": [126.9780, 37.5665],
+    "entries": [
+      {
+        "id": "",
+        "type": "travel",
+        "institution": "",
+        "role": "",
+        "duration": "",
+        "photos": [],
+        "links": [],
+        "achievements": []
+      }
+    ]
+  },
+  {
+    "city": "Singapore",
+    "country": "Singapore",
+    "coordinates": [103.8198, 1.3521],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Hong Kong",
+    "country": "China",
+    "coordinates": [114.1694, 22.3193],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Taipei",
+    "country": "Taiwan",
+    "coordinates": [121.5654, 25.0330],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Taichung",
+    "country": "Taiwan",
+    "coordinates": [120.6736, 24.1477],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Tainan",
+    "country": "Taiwan",
+    "coordinates": [120.2270, 22.9999],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Macau",
+    "country": "China",
+    "coordinates": [113.5439, 22.1987],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Cancún",
+    "country": "Mexico",
+    "coordinates": [-86.8515, 21.1619],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "London",
+    "country": "Canada",
+    "coordinates": [-81.2497, 42.9849],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Foshan",
+    "country": "China",
+    "coordinates": [113.1214, 23.0215],
+    "entries": [
+      { "id": "", "type": "home", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Guangzhou",
+    "country": "China",
+    "coordinates": [113.2644, 23.1291],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Whistler",
+    "country": "Canada",
+    "coordinates": [-122.9489, 50.1163],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Richmond Hill",
+    "country": "Canada",
+    "coordinates": [-79.4370, 43.8828],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Kanazawa",
+    "country": "Japan",
+    "coordinates": [136.6562, 36.5613],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Takayama",
+    "country": "Japan",
+    "coordinates": [137.2590, 36.1468],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Shirakawa-go",
+    "country": "Japan",
+    "coordinates": [136.9042, 36.2607],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Nagoya",
+    "country": "Japan",
+    "coordinates": [136.9066, 35.1815],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Nagaoka",
+    "country": "Japan",
+    "coordinates": [138.8366, 37.4459],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Montreal",
+    "country": "Canada",
+    "coordinates": [-73.5673, 45.5019],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Quebec City",
+    "country": "Canada",
+    "coordinates": [-71.2080, 46.8139],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Victoria",
+    "country": "Canada",
+    "coordinates": [-123.3656, 48.4284],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Edmonton",
+    "country": "Canada",
+    "coordinates": [-113.4909, 53.5461],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Calgary",
+    "country": "Canada",
+    "coordinates": [-114.0719, 51.0447],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Saskatoon",
+    "country": "Canada",
+    "coordinates": [-106.6700, 52.1332],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Regina",
+    "country": "Canada",
+    "coordinates": [-104.6189, 50.4452],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Manitoba",
+    "country": "Canada",
+    "coordinates": [-98.8139, 53.7609],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Gimli",
+    "country": "Canada",
+    "coordinates": [-96.9909, 50.6284],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Winnipeg",
+    "country": "Canada",
+    "coordinates": [-97.1384, 49.8951],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "North Bay",
+    "country": "Canada",
+    "coordinates": [-79.4663, 46.3091],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Ottawa",
+    "country": "Canada",
+    "coordinates": [-75.6972, 45.4215],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Fredericton",
+    "country": "Canada",
+    "coordinates": [-66.6490, 45.9636],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Charlottetown",
+    "country": "Canada",
+    "coordinates": [-63.1311, 46.2382],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Halifax",
+    "country": "Canada",
+    "coordinates": [-63.5724, 44.6488],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Whitehorse",
+    "country": "Canada",
+    "coordinates": [-135.0569, 60.7212],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Yellowknife",
+    "country": "Canada",
+    "coordinates": [-114.3718, 62.4539],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  }    
 ] 

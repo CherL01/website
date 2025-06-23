@@ -30,17 +30,20 @@ const getMarkerColor = (types: string[]): string => {
       return 'bg-purple-500';
     case 'travel':
       return 'bg-amber-500';
+    case 'home':
+      return 'bg-rose-500';
     default:
       return 'bg-gray-500';
   }
 };
 
 const getMarkerIcon = (types: string[]): string => {
-  // Priority: education > work > conference > travel
+  // Priority: education > work > conference > travel > home
   if (types.includes('education')) return '🎓';
   if (types.includes('work')) return '💼';
   if (types.includes('conference')) return '🎤';
   if (types.includes('travel')) return '✈️';
+  if (types.includes('home')) return '🏠';
   return '📍';
 };
 

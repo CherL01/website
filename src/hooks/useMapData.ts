@@ -118,6 +118,7 @@ export function useMapData() {
         work: entryTypes.work || 0,
         conference: entryTypes.conference || 0,
         travel: entryTypes.travel || 0,
+        home: entryTypes.home || 0,
       },
       entryTypePercentages,
       countriesList: Array.from(countries).sort(),
