@@ -102,7 +102,7 @@ export default function HomePage() {
               >
                 <motion.button
                   onClick={() => setIsResumeModalOpen(true)}
-                  className="btn-primary text-lg px-8 py-3 inline-flex items-center space-x-2"
+                  className="btn-primary text-lg px-4 sm:px-8 py-3 inline-flex items-center space-x-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
