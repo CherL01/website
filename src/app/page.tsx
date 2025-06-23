@@ -30,10 +30,10 @@ export default function HomePage() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
             {/* Left: Photo */}
             <motion.div
-              className="flex justify-center lg:justify-start"
+              className="flex justify-center lg:justify-start lg:pl-20"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
@@ -85,7 +85,7 @@ export default function HomePage() {
               </motion.p>
 
               <motion.p
-                className="text-lg text-gray-600 max-w-2xl"
+                className="text-lg text-gray-600 max-w-2xl text-center lg:text-left mx-auto lg:mx-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
@@ -100,15 +100,18 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1 }}
               >
-                <motion.button
-                  onClick={() => setIsResumeModalOpen(true)}
-                  className="btn-primary text-lg px-4 sm:px-8 py-3 inline-flex items-center space-x-2"
+                <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Eye size={20} />
-                  <span>View Resume</span>
-                </motion.button>
+                  <button
+                    onClick={() => setIsResumeModalOpen(true)}
+                    className="btn-primary text-lg px-8 py-3 inline-flex items-center space-x-2"
+                  >
+                    <Eye size={20} />
+                    <span>View Resume</span>
+                  </button>
+                </motion.div>
 
                 <motion.div
                   whileHover={{ scale: 1.05 }}
