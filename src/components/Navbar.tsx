@@ -80,9 +80,10 @@ export function Navbar() {
                 {pathname === item.href && (
                   <motion.div
                     className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary-500"
-                    layoutId="activeTab"
-                    initial={false}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    style={{ originX: 0 }}
                   />
                 )}
               </Link>
