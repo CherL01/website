@@ -93,13 +93,14 @@ export function Footer() {
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          {/* Copyright */}
+        {/* Mobile Layout */}
+        <div className="flex flex-col items-center space-y-4 lg:hidden">
           <div className="text-sm text-gray-600 dark:text-gray-400">
             © {new Date().getFullYear()} Yi (Cherry) Lian. All rights reserved.
           </div>
-
-          {/* Social Links */}
+          <div className="text-xs text-gray-500 dark:text-gray-400 min-h-[1.5rem] flex items-center justify-center">
+            <TypingAnimation />
+          </div>
           <div className="flex items-center space-x-6">
             {socialLinks.map((link) => {
               const Icon = link.icon;
@@ -121,10 +122,37 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Additional Info */}
-        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-          <div className="text-center text-xs text-gray-500 dark:text-gray-400 min-h-[2rem] flex items-center justify-center">
+        {/* Desktop Layout */}
+        <div className="hidden lg:grid lg:grid-cols-3 lg:items-center lg:gap-8">
+          {/* Copyright - Left */}
+          <div className="text-sm text-gray-600 dark:text-gray-400 justify-self-start">
+            © {new Date().getFullYear()} Yi (Cherry) Lian. All rights reserved.
+          </div>
+
+          {/* Animated Footnote - Center */}
+          <div className="text-xs text-gray-500 dark:text-gray-400 min-h-[1.5rem] flex items-center justify-center justify-self-center">
             <TypingAnimation />
+          </div>
+
+          {/* Social Links - Right */}
+          <div className="flex items-center space-x-6 justify-self-end">
+            {socialLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  target={link.name !== 'Email' ? '_blank' : undefined}
+                  rel={link.name !== 'Email' ? 'noopener noreferrer' : undefined}
+                  className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label={link.name}
+                >
+                  <Icon size={20} />
+                </motion.a>
+              );
+            })}
           </div>
         </div>
       </div>
