@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
-import { MapPin, Calendar, Award, ExternalLink } from 'lucide-react';
+import { MapPin, Calendar, Award } from 'lucide-react';
 import resumeData from '@/data/resume.json';
 
 export default function AboutPage() {
