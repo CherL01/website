@@ -73,26 +73,26 @@ const MarkerLayer = memo(function MarkerLayer({
     onMarkerHover(locationId);
   }, [onMarkerHover]);
 
-  return (
-    <>
-      {filteredLocations.map((location) => {
-        const [lng, lat] = location.coordinates;
-        const locationId = `${location.city}-${location.country}`;
-        const isSelected = selectedLocationId === locationId;
-        const isHovered = hoveredLocationId === locationId;
-        
-        // Get unique entry types for this location
-        const entryTypes = [...new Set(location.entries.map(entry => entry.type))];
-        const markerColor = getMarkerColor(entryTypes);
-        const markerIcon = getMarkerIcon(entryTypes);
+  // Add error boundary for individual markers
+  const renderMarker = useCallback((location: MapLocation) => {
+    try {
+      const [lng, lat] = location.coordinates;
+      const locationId = `${location.city}-${location.country}`;
+      const isSelected = selectedLocationId === locationId;
+      const isHovered = hoveredLocationId === locationId;
+      
+      // Get unique entry types for this location
+      const entryTypes = [...new Set(location.entries.map(entry => entry.type))];
+      const markerColor = getMarkerColor(entryTypes);
+      const markerIcon = getMarkerIcon(entryTypes);
 
-        return (
-          <Marker
-            key={locationId}
-            longitude={lng}
-            latitude={lat}
-            anchor="bottom"
-          >
+      return (
+        <Marker
+          key={locationId}
+          longitude={lng}
+          latitude={lat}
+          anchor="bottom"
+        >
             <motion.button
               className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-full"
               whileHover={{ scale: 1.1 }}
@@ -157,7 +157,15 @@ const MarkerLayer = memo(function MarkerLayer({
             </motion.button>
           </Marker>
         );
-      })}
+    } catch (error) {
+      console.error(`Error rendering marker for ${location.city}, ${location.country}:`, error);
+      return null;
+    }
+  }, [selectedLocationId, hoveredLocationId, handleMarkerClick, handleMarkerHover]);
+
+  return (
+    <>
+      {filteredLocations.map((location) => renderMarker(location))}
     </>
   );
 });

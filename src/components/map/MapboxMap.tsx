@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import Map, { MapRef, ViewStateChangeEvent } from 'react-map-gl/mapbox';
 // import { useMapboxUsage } from '@/hooks/useMapboxUsage'; // TODO: Fix type issue
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -19,10 +19,12 @@ export default function MapboxMap({
   className = "w-full h-full"
 }: MapboxMapProps) {
   const mapRef = useRef<MapRef>(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
   // const { incrementLoad, UsageMonitor } = useMapboxUsage(); // TODO: Fix type issue
 
   const handleMapLoad = useCallback(() => {
     // incrementLoad(); // Track map load for usage monitoring
+    setIsMapLoaded(true);
     if (process.env.NODE_ENV === 'development') {
       console.log('🗺️ Mapbox map loaded');
     }
@@ -83,20 +85,17 @@ export default function MapboxMap({
           ref={mapRef}
           mapboxAccessToken={mapboxToken}
           initialViewState={{
-            longitude: 0,
-            latitude: 30,
-            zoom: 1.8, // Global view optimized for worldwide locations
+            longitude: -95, // Center of North America
+            latitude: 45,   // Center of North America
+            zoom: 2.5,      // Closer zoom to focus on North America
           }}
           mapStyle="mapbox://styles/mapbox/light-v11"
           maxZoom={10} // Limit zoom to control API usage
           minZoom={0.5}
           onLoad={handleMapLoad}
           onMove={handleViewStateChange}
-          // Performance optimizations
-          maxBounds={[
-            [-180, -90], // Southwest coordinates
-            [180, 90]    // Northeast coordinates
-          ]}
+          // Performance optimizations - allow unlimited panning
+          maxBounds={undefined}
           attributionControl={true}
           logoPosition="bottom-right"
           // Enhanced accessibility for Phase 3
@@ -106,7 +105,7 @@ export default function MapboxMap({
           pitchWithRotate={false}
           touchPitch={false}
         >
-          {children}
+          {isMapLoaded && children}
         </Map>
       </div>
       

@@ -218,11 +218,11 @@ function ExperienceDistribution({ globalStats }: { globalStats: GlobalStats }) {
         </div>
       </motion.div>
 
-      {/* Centered arrow toggle at bottom */}
-      <div className="flex justify-center pt-2">
+      {/* Full width arrow toggle at bottom */}
+      <div className="pt-2">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+          className="w-full p-2 transition-colors flex justify-center group"
           aria-expanded={isExpanded}
           aria-controls="experience-distribution-content"
           aria-label={isExpanded ? "Collapse experience distribution" : "Expand experience distribution"}
@@ -230,7 +230,7 @@ function ExperienceDistribution({ globalStats }: { globalStats: GlobalStats }) {
           <motion.div
             animate={{ rotate: isExpanded ? 180 : 0 }}
             transition={{ duration: 0.2 }}
-            className="text-gray-500"
+            className="text-gray-500 group-hover:text-red-500 transition-colors"
           >
             <ChevronDown size={20} />
           </motion.div>
