@@ -207,7 +207,7 @@ export default function AboutPage() {
 
         {/* Skills Matrix */}
         <motion.section
-          className="mb-16"
+          className="mb-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -222,12 +222,11 @@ export default function AboutPage() {
               {resumeData.technical_skills.map((skill, index) => (
                 <motion.span
                   key={skill}
-                  className="px-4 py-2 bg-primary-100 text-primary-700 text-sm font-medium rounded-full hover:bg-primary-200 transition-colors duration-200"
+                  className="px-4 py-2 bg-primary-100 text-primary-700 text-sm font-medium rounded-full"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
                 >
                   {skill}
                 </motion.span>
@@ -236,43 +235,7 @@ export default function AboutPage() {
           </div>
         </motion.section>
 
-        {/* Contact Links */}
-        <motion.section
-          className="text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">Let&apos;s Connect</h3>
-          <div className="flex justify-center space-x-6">
-            <motion.a
-              href={`mailto:${resumeData.contact.email}`}
-              className="text-primary-600 hover:text-primary-700 font-medium"
-              whileHover={{ scale: 1.05 }}
-            >
-              Email
-            </motion.a>
-            <motion.a
-              href={resumeData.profiles.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              LinkedIn <ExternalLink size={14} className="ml-1" />
-            </motion.a>
-            <motion.a
-              href={resumeData.profiles.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              GitHub <ExternalLink size={14} className="ml-1" />
-            </motion.a>
-          </div>
-        </motion.section>
+
       </div>
     </div>
   );

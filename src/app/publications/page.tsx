@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, ExternalLink, Award, Users, MapPin, Search } from 'lucide-react';
+import Link from 'next/link';
 import publicationsData from '@/data/publications.json';
 
 export default function PublicationsPage() {
@@ -379,6 +380,28 @@ export default function PublicationsPage() {
                 </div>
               </div>
             </div>
+          </motion.div>
+        )}
+
+        {/* Call to Action */}
+        {filteredPublications.length > 0 && (
+          <motion.div
+            className="text-center mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-lg text-gray-600 mb-6">
+              Interested in learning more about my background and experience?
+            </p>
+            <Link
+              href="/about"
+              className="btn-primary text-lg px-8 py-3 inline-flex items-center space-x-2"
+            >
+              <span>Learn More About Me</span>
+              <ExternalLink size={20} />
+            </Link>
           </motion.div>
         )}
       </div>

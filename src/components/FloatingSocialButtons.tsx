@@ -10,19 +10,19 @@ const socialLinks = [
     name: 'Email',
     href: 'mailto:cherry.lian@gatech.edu',
     icon: Mail,
-    color: 'bg-blue-500 hover:bg-blue-600',
+    color: 'bg-primary-200 hover:bg-primary-300',
   },
   {
     name: 'LinkedIn',
     href: 'https://linkedin.com/in/cherry-yi-lian/',
     icon: Linkedin,
-    color: 'bg-blue-700 hover:bg-blue-800',
+    color: 'bg-secondary-500 hover:bg-secondary-600',
   },
   {
     name: 'GitHub',
     href: 'https://github.com/CherL01',
     icon: Github,
-    color: 'bg-gray-800 hover:bg-gray-900',
+    color: 'bg-primary-500 hover:bg-primary-600',
   },
 ];
 
