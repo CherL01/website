@@ -127,7 +127,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 gradient-bg overflow-hidden">
+      <section className="relative pt-24 pb-16 gradient-bg dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 left-10 w-20 h-20 bg-primary-300 rounded-full animate-float"></div>
@@ -173,17 +173,17 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <motion.h1
-                className="text-5xl lg:text-6xl font-bold text-gray-800 leading-tight"
+                className="text-5xl lg:text-6xl font-bold text-gray-800 dark:text-gray-100 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 Welcome! I&apos;m{' '}
-                <span className="text-gradient">Cherry Lian</span>
+                <span className="text-primary-400">Cherry Lian</span>
               </motion.h1>
 
               <motion.p
-                className="text-xl lg:text-2xl text-gray-600 font-medium"
+                className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 font-medium"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -192,7 +192,7 @@ export default function HomePage() {
               </motion.p>
 
               <motion.p
-                className="text-lg text-gray-600 max-w-2xl text-center lg:text-left mx-auto lg:mx-0"
+                className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl text-center lg:text-left mx-auto lg:mx-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}

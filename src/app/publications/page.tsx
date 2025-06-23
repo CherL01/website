@@ -60,7 +60,7 @@ export default function PublicationsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-6">
             <span className="text-gradient">Publications</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">

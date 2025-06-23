@@ -39,7 +39,7 @@ export function Navbar() {
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/90 backdrop-blur-lg shadow-lg' 
+          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg shadow-lg' 
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
@@ -51,11 +51,7 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <motion.div
-              className={`text-2xl font-bold transition-all duration-300 ${
-                scrolled 
-                  ? 'text-gradient' 
-                  : 'text-white drop-shadow-lg'
-              }`}
+              className="text-2xl font-bold text-primary-400 drop-shadow-sm transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -69,10 +65,10 @@ export function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`relative text-sm font-medium transition-colors duration-200 ${
+                className={`relative text-sm font-medium drop-shadow-sm transition-colors duration-200 ${
                   pathname === item.href
                     ? 'text-primary-600'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-primary-500'
+                    : 'text-secondary-800 dark:text-secondary-600 hover:text-primary-500'
                 }`}
               >
                 {item.name}
@@ -127,15 +123,15 @@ export function Navbar() {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-lg shadow-lg mt-2">
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg rounded-lg shadow-lg mt-2">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                    className={`block px-3 py-2 rounded-md text-base font-medium drop-shadow-sm transition-colors duration-200 ${
                       pathname === item.href
                         ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/30'
-                        : 'text-gray-600 dark:text-gray-300 hover:text-primary-500 hover:bg-primary-50 dark:hover:bg-primary-900/30'
+                        : 'text-secondary-600 dark:text-secondary-400 hover:text-primary-500 hover:bg-primary-50 dark:hover:bg-primary-900/30'
                     }`}
                   >
                     {item.name}

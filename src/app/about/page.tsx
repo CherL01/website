@@ -68,8 +68,8 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800">
-            About <span className="text-gradient">Cherry</span>
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-gray-100">
+            About <span className="text-primary-400">Cherry</span>
           </h1>
         </motion.div>
 
@@ -183,8 +183,8 @@ export default function AboutPage() {
                       <ul className="space-y-2">
                         {item.responsibilities.map((responsibility, idx) => (
                           <li key={idx} className="text-gray-600 text-sm leading-relaxed flex items-start">
-                            <span className="text-primary-500 mr-2 mt-1.5 flex-shrink-0">•</span>
-                            <span>{responsibility}</span>
+                            <span className="text-primary-500 mr-3 mt-0 flex-shrink-0">•</span>
+                            <span className="flex-1">{responsibility}</span>
                           </li>
                         ))}
                       </ul>
