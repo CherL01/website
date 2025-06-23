@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp, ExternalLink, Award, Users, MapPin, Search } from 'lucide-react';
+import { ChevronDown, ChevronUp, ExternalLink, Award, Users, MapPin, Search, X } from 'lucide-react';
 import Link from 'next/link';
 import publicationsData from '@/data/publications.json';
 
@@ -136,44 +136,75 @@ export default function PublicationsPage() {
                   </select>
                 </div>
 
-                {(searchTerm || selectedYear || selectedType || selectedTag) && (
-                  <div className="flex items-end">
-                    <button
-                      onClick={() => {
-                        setSearchTerm('');
-                        setSelectedYear('');
-                        setSelectedType('');
-                        setSelectedTag('');
-                      }}
-                      className="px-4 py-2 text-gray-500 hover:text-gray-700 transition-colors duration-200"
-                    >
-                      Clear All
-                    </button>
-                  </div>
-                )}
+                <div className="flex items-end">
+                  <button
+                    onClick={() => {
+                      setSearchTerm('');
+                      setSelectedYear('');
+                      setSelectedType('');
+                      setSelectedTag('');
+                    }}
+                    disabled={!searchTerm && !selectedYear && !selectedType && !selectedTag}
+                    className={`px-4 py-2 transition-colors duration-200 ${
+                      searchTerm || selectedYear || selectedType || selectedTag
+                        ? 'text-gray-500 hover:text-gray-700 cursor-pointer'
+                        : 'text-gray-300'
+                    }`}
+                  >
+                    Clear All
+                  </button>
+                </div>
               </div>
 
               {/* Active Filters Display */}
               {(searchTerm || selectedYear || selectedType || selectedTag) && (
                 <div className="flex flex-wrap gap-2">
                   {searchTerm && (
-                    <span className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full">
-                      Search: &ldquo;{searchTerm}&rdquo;
+                    <span className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full flex items-center gap-2">
+                      <span className="font-bold">Search:</span> &ldquo;{searchTerm}&rdquo;
+                      <button
+                        onClick={() => setSearchTerm('')}
+                        className="hover:bg-primary-200 rounded-full p-0.5 transition-colors duration-200"
+                        aria-label="Clear search"
+                      >
+                        <X size={12} />
+                      </button>
                     </span>
                   )}
                   {selectedYear && (
-                    <span className="px-3 py-1 bg-secondary-100 text-secondary-700 text-sm rounded-full">
-                      Year: {selectedYear}
+                    <span className="px-3 py-1 bg-secondary-100 text-secondary-700 text-sm rounded-full flex items-center gap-2">
+                      <span className="font-bold">Year:</span> {selectedYear}
+                      <button
+                        onClick={() => setSelectedYear('')}
+                        className="hover:bg-secondary-200 rounded-full p-0.5 transition-colors duration-200"
+                        aria-label="Clear year filter"
+                      >
+                        <X size={12} />
+                      </button>
                     </span>
                   )}
                   {selectedType && (
-                    <span className="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full">
-                      Type: {selectedType.charAt(0).toUpperCase() + selectedType.slice(1)}
+                    <span className="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full flex items-center gap-2">
+                      <span className="font-bold">Type:</span> {selectedType.charAt(0).toUpperCase() + selectedType.slice(1)}
+                      <button
+                        onClick={() => setSelectedType('')}
+                        className="hover:bg-accent-200 rounded-full p-0.5 transition-colors duration-200"
+                        aria-label="Clear type filter"
+                      >
+                        <X size={12} />
+                      </button>
                     </span>
                   )}
                   {selectedTag && (
-                    <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
-                      Tag: {selectedTag}
+                    <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full flex items-center gap-2">
+                      <span className="font-bold">Tag:</span> {selectedTag}
+                      <button
+                        onClick={() => setSelectedTag('')}
+                        className="hover:bg-gray-200 rounded-full p-0.5 transition-colors duration-200"
+                        aria-label="Clear tag filter"
+                      >
+                        <X size={12} />
+                      </button>
                     </span>
                   )}
                 </div>
