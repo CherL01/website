@@ -456,13 +456,13 @@
     ]
   },
   {
-    "city": "Nagaoka",
+    "city": "Numazu",
     "country": "Japan",
-    "coordinates": [138.8366, 37.4459],
+    "coordinates": [138.8630, 35.0959],
     "entries": [
       { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
     ]
-  },
+  },  
   {
     "city": "Montreal",
     "country": "Canada",
@@ -742,6 +742,29 @@
     "entries": [
       {"id":"","type":"travel","institution":"","role":"","duration":"","photos":[],"links":[],"achievements":[]}
     ]
-  }
-  
+  },
+  {
+    "city": "Chicago",
+    "country": "USA",
+    "coordinates": [-87.6298, 41.8781],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Dallas",
+    "country": "USA",
+    "coordinates": [-96.7970, 32.7767],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Denver",
+    "country": "USA",
+    "coordinates": [-104.9903, 39.7392],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  }  
 ] 
