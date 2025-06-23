@@ -216,7 +216,7 @@ export default function PublicationsPage() {
 
           {/* Publications List */}
           <div className="space-y-6">
-            {filteredPublications.map((publication, index) => (
+            {filteredPublications.map((publication) => (
               <div
                 key={publication.id}
                 className="card"
