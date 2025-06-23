@@ -598,5 +598,150 @@
     "entries": [
       { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
     ]
-  }    
+  },
+  {
+    "city": "Hainan",
+    "country": "China",
+    "coordinates": [110.3250, 20.0440],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Malé",
+    "country": "Maldives",
+    "coordinates": [73.5093, 4.1755],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Honolulu",
+    "country": "USA",
+    "coordinates": [-157.8583, 21.3069],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Beijing",
+    "country": "China",
+    "coordinates": [116.4074, 39.9042],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Shanghai",
+    "country": "China",
+    "coordinates": [121.4737, 31.2304],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Harbin",
+    "country": "China",
+    "coordinates": [126.6424, 45.7567],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Changchun",
+    "country": "China",
+    "coordinates": [125.3235, 43.8171],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Cozumel",
+    "country": "Mexico",
+    "coordinates": [-86.9458, 20.4220],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Montego Bay",
+    "country": "Jamaica",
+    "coordinates": [-77.9128, 18.4721],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Miami",
+    "country": "USA",
+    "coordinates": [-80.1918, 25.7617],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Las Vegas",
+    "country": "USA",
+    "coordinates": [-115.1398, 36.1699],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Portland",
+    "country": "USA",
+    "coordinates": [-122.6765, 45.5231],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Banff",
+    "country": "Canada",
+    "coordinates": [-115.5708, 51.1784],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Wyoming",
+    "country": "USA",
+    "coordinates": [-107.2903, 43.0750],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Boston",
+    "country": "USA",
+    "coordinates": [-71.0589, 42.3601],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Washington, D.C.",
+    "country": "USA",
+    "coordinates": [-77.0369, 38.9072],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Baltimore",
+    "country": "USA",
+    "coordinates": [-76.6122, 39.2904],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Anchorage",
+    "country": "USA",
+    "coordinates": [-149.9003, 61.2181],
+    "entries": [
+      {"id":"","type":"travel","institution":"","role":"","duration":"","photos":[],"links":[],"achievements":[]}
+    ]
+  }
+  
 ] 
