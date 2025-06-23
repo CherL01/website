@@ -357,10 +357,10 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
               <span>Back to Projects</span>
             </Link>
             <Link
-              href="/contact"
+              href="/about"
               className="btn-primary px-8 py-3 inline-flex items-center space-x-2"
             >
-              <span>Discuss This Project</span>
+              <span>Learn More About Me</span>
               <ExternalLink size={20} />
             </Link>
           </div>

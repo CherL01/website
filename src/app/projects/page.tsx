@@ -229,13 +229,13 @@ export default function ProjectsPage() {
             viewport={{ once: true }}
           >
             <p className="text-lg text-gray-600 mb-6">
-              Interested in collaborating or learning more about my work?
+              Interested in learning more about my background and experience?
             </p>
             <Link
-              href="/contact"
+              href="/about"
               className="btn-primary text-lg px-8 py-3 inline-flex items-center space-x-2"
             >
-              <span>Get In Touch</span>
+              <span>Learn More About Me</span>
               <ExternalLink size={20} />
             </Link>
           </motion.div>
