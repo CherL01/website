@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
 import { MapPin, Calendar, Award, ExternalLink } from 'lucide-react';
 import resumeData from '@/data/resume.json';
 
@@ -18,6 +19,44 @@ export default function AboutPage() {
     };
     return getYear(b.start_date) - getYear(a.start_date);
   });
+
+  // Refs and state for dynamic line heights
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [lineHeights, setLineHeights] = useState<string[]>([]);
+
+  useEffect(() => {
+    const calculateLineHeights = () => {
+      const heights = cardRefs.current.map((cardRef, index) => {
+        if (!cardRef) return '2rem';
+        
+        const cardHeight = cardRef.offsetHeight;
+        const isLastItem = index === timelineItems.length - 1;
+        
+        if (isLastItem) {
+          // Last item line ends where the card ends
+          return `${cardHeight - 65}px`; // Card height minus padding to align with card content bottom
+        } else {
+          // Calculate distance to next icon
+          // Card height + full spacing between timeline items + reach toward next icon
+          // space-y-12 = 48px, plus we need to account for the circle position
+          return `${cardHeight}px`; // Card height + spacing + reach toward next icon
+        }
+      });
+      setLineHeights(heights);
+    };
+
+    // Calculate on mount and when window resizes
+    calculateLineHeights();
+    window.addEventListener('resize', calculateLineHeights);
+    
+    // Also calculate after a short delay to ensure content is fully rendered
+    const timer = setTimeout(calculateLineHeights, 100);
+
+    return () => {
+      window.removeEventListener('resize', calculateLineHeights);
+      clearTimeout(timer);
+    };
+  }, [timelineItems.length]);
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -71,9 +110,6 @@ export default function AboutPage() {
           </h2>
           
           <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary-300"></div>
-            
             <div className="space-y-12">
               {timelineItems.map((item, index) => (
                 <motion.div
@@ -85,14 +121,42 @@ export default function AboutPage() {
                   viewport={{ once: true }}
                 >
                   {/* Timeline marker */}
-                  <div className="flex-shrink-0 w-16 h-16 bg-primary-200 rounded-full flex items-center justify-center mr-8 relative z-10">
-                    <div className="text-2xl">
-                      {item.type === 'education' ? '🎓' : '💼'}
-                    </div>
+                  <div className="flex-shrink-0 mr-8 relative">
+                    {/* Timeline circle */}
+                    <motion.div 
+                      className="w-16 h-16 bg-primary-200 rounded-full flex items-center justify-center relative z-10"
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className="text-2xl">
+                        {item.type === 'education' ? '🎓' : '💼'}
+                      </div>
+                    </motion.div>
+                    
+                    {/* Animated line segment - dynamically calculated height */}
+                    <motion.div
+                      className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-primary-300"
+                      style={{ top: '4rem' }} // Start right at the bottom edge of the circle
+                      initial={{ height: 0 }}
+                      whileInView={{ 
+                        height: lineHeights[index] || '2rem'
+                      }}
+                      transition={{ 
+                        duration: 0.6, 
+                        delay: index * 0.1 + 0.4,
+                        ease: "easeOut"
+                      }}
+                      viewport={{ once: true }}
+                    />
                   </div>
                   
                   {/* Content */}
-                  <div className="flex-grow card min-h-[120px]">
+                  <div 
+                    ref={(el) => { cardRefs.current[index] = el; }}
+                    className="flex-grow card min-h-[120px]"
+                  >
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                       <div>
                         <h3 className="text-xl font-bold text-gray-800 mb-2">
