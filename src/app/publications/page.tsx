@@ -69,162 +69,160 @@ export default function PublicationsPage() {
           </p>
         </motion.div>
 
-        {/* Filters */}
+        {/* Filters and Publications Container */}
         <motion.div
-          className="mb-12"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="card">
-            <div className="flex flex-col gap-4">
-              {/* Search Input */}
-              <div className="relative">
-                <Search size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search publications..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
-                />
+          {/* Filters */}
+          <div className="mb-12">
+            <div className="card">
+              <div className="flex flex-col gap-4">
+                {/* Search Input */}
+                <div className="relative">
+                  <Search size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder="Search publications..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
+                  />
+                </div>
+
+                              {/* Filters Row */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Year</label>
+                    <select
+                      value={selectedYear}
+                      onChange={(e) => setSelectedYear(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
+                    >
+                      <option value="">All Years</option>
+                      {years.map(year => (
+                        <option key={year} value={year}>{year}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="flex-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Type</label>
+                    <select
+                      value={selectedType}
+                      onChange={(e) => setSelectedType(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
+                    >
+                      <option value="">All Types</option>
+                      {types.map(type => (
+                        <option key={type} value={type}>
+                          {type.charAt(0).toUpperCase() + type.slice(1)}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="flex-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Tag</label>
+                    <select
+                      value={selectedTag}
+                      onChange={(e) => setSelectedTag(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
+                    >
+                      <option value="">All Tags</option>
+                      {tags.map(tag => (
+                        <option key={tag} value={tag}>{tag}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="flex items-end">
+                    <button
+                      onClick={() => {
+                        setSearchTerm('');
+                        setSelectedYear('');
+                        setSelectedType('');
+                        setSelectedTag('');
+                      }}
+                      disabled={!searchTerm && !selectedYear && !selectedType && !selectedTag}
+                      className={`px-4 py-2 transition-colors duration-200 ${
+                        searchTerm || selectedYear || selectedType || selectedTag
+                          ? 'text-gray-500 hover:text-gray-700 cursor-pointer'
+                          : 'text-gray-300'
+                      }`}
+                    >
+                      Clear All
+                    </button>
+                  </div>
+                </div>
+
+                {/* Active Filters Display */}
+                {(searchTerm || selectedYear || selectedType || selectedTag) && (
+                  <div className="flex flex-wrap gap-2">
+                    {searchTerm && (
+                      <span className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full flex items-center gap-2">
+                        <span className="font-bold">Search:</span> &ldquo;{searchTerm}&rdquo;
+                        <button
+                          onClick={() => setSearchTerm('')}
+                          className="hover:bg-primary-200 rounded-full p-0.5 transition-colors duration-200"
+                          aria-label="Clear search"
+                        >
+                          <X size={12} />
+                        </button>
+                      </span>
+                    )}
+                    {selectedYear && (
+                      <span className="px-3 py-1 bg-secondary-100 text-secondary-700 text-sm rounded-full flex items-center gap-2">
+                        <span className="font-bold">Year:</span> {selectedYear}
+                        <button
+                          onClick={() => setSelectedYear('')}
+                          className="hover:bg-secondary-200 rounded-full p-0.5 transition-colors duration-200"
+                          aria-label="Clear year filter"
+                        >
+                          <X size={12} />
+                        </button>
+                      </span>
+                    )}
+                    {selectedType && (
+                      <span className="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full flex items-center gap-2">
+                        <span className="font-bold">Type:</span> {selectedType.charAt(0).toUpperCase() + selectedType.slice(1)}
+                        <button
+                          onClick={() => setSelectedType('')}
+                          className="hover:bg-accent-200 rounded-full p-0.5 transition-colors duration-200"
+                          aria-label="Clear type filter"
+                        >
+                          <X size={12} />
+                        </button>
+                      </span>
+                    )}
+                    {selectedTag && (
+                      <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full flex items-center gap-2">
+                        <span className="font-bold">Tag:</span> {selectedTag}
+                        <button
+                          onClick={() => setSelectedTag('')}
+                          className="hover:bg-gray-200 rounded-full p-0.5 transition-colors duration-200"
+                          aria-label="Clear tag filter"
+                        >
+                          <X size={12} />
+                        </button>
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
-
-                            {/* Filters Row */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Year</label>
-                  <select
-                    value={selectedYear}
-                    onChange={(e) => setSelectedYear(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
-                  >
-                    <option value="">All Years</option>
-                    {years.map(year => (
-                      <option key={year} value={year}>{year}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="flex-1">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Type</label>
-                  <select
-                    value={selectedType}
-                    onChange={(e) => setSelectedType(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
-                  >
-                    <option value="">All Types</option>
-                    {types.map(type => (
-                      <option key={type} value={type}>
-                        {type.charAt(0).toUpperCase() + type.slice(1)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="flex-1">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Tag</label>
-                  <select
-                    value={selectedTag}
-                    onChange={(e) => setSelectedTag(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
-                  >
-                    <option value="">All Tags</option>
-                    {tags.map(tag => (
-                      <option key={tag} value={tag}>{tag}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="flex items-end">
-                  <button
-                    onClick={() => {
-                      setSearchTerm('');
-                      setSelectedYear('');
-                      setSelectedType('');
-                      setSelectedTag('');
-                    }}
-                    disabled={!searchTerm && !selectedYear && !selectedType && !selectedTag}
-                    className={`px-4 py-2 transition-colors duration-200 ${
-                      searchTerm || selectedYear || selectedType || selectedTag
-                        ? 'text-gray-500 hover:text-gray-700 cursor-pointer'
-                        : 'text-gray-300'
-                    }`}
-                  >
-                    Clear All
-                  </button>
-                </div>
-              </div>
-
-              {/* Active Filters Display */}
-              {(searchTerm || selectedYear || selectedType || selectedTag) && (
-                <div className="flex flex-wrap gap-2">
-                  {searchTerm && (
-                    <span className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full flex items-center gap-2">
-                      <span className="font-bold">Search:</span> &ldquo;{searchTerm}&rdquo;
-                      <button
-                        onClick={() => setSearchTerm('')}
-                        className="hover:bg-primary-200 rounded-full p-0.5 transition-colors duration-200"
-                        aria-label="Clear search"
-                      >
-                        <X size={12} />
-                      </button>
-                    </span>
-                  )}
-                  {selectedYear && (
-                    <span className="px-3 py-1 bg-secondary-100 text-secondary-700 text-sm rounded-full flex items-center gap-2">
-                      <span className="font-bold">Year:</span> {selectedYear}
-                      <button
-                        onClick={() => setSelectedYear('')}
-                        className="hover:bg-secondary-200 rounded-full p-0.5 transition-colors duration-200"
-                        aria-label="Clear year filter"
-                      >
-                        <X size={12} />
-                      </button>
-                    </span>
-                  )}
-                  {selectedType && (
-                    <span className="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full flex items-center gap-2">
-                      <span className="font-bold">Type:</span> {selectedType.charAt(0).toUpperCase() + selectedType.slice(1)}
-                      <button
-                        onClick={() => setSelectedType('')}
-                        className="hover:bg-accent-200 rounded-full p-0.5 transition-colors duration-200"
-                        aria-label="Clear type filter"
-                      >
-                        <X size={12} />
-                      </button>
-                    </span>
-                  )}
-                  {selectedTag && (
-                    <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full flex items-center gap-2">
-                      <span className="font-bold">Tag:</span> {selectedTag}
-                      <button
-                        onClick={() => setSelectedTag('')}
-                        className="hover:bg-gray-200 rounded-full p-0.5 transition-colors duration-200"
-                        aria-label="Clear tag filter"
-                      >
-                        <X size={12} />
-                      </button>
-                    </span>
-                  )}
-                </div>
-              )}
             </div>
           </div>
-        </motion.div>
 
-        {/* Publications List */}
-        <div className="space-y-6">
-          {filteredPublications.map((publication, index) => (
-            <motion.div
-              key={publication.id}
-              className="card"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              onMouseEnter={() => setHoveredId(publication.id)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
+          {/* Publications List */}
+          <div className="space-y-6">
+            {filteredPublications.map((publication, index) => (
+              <div
+                key={publication.id}
+                className="card"
+                onMouseEnter={() => setHoveredId(publication.id)}
+                onMouseLeave={() => setHoveredId(null)}
+              >
               {/* Publication Header */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1 min-w-0">
@@ -351,34 +349,30 @@ export default function PublicationsPage() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        {/* No Results */}
-        {filteredPublications.length === 0 && (
-          <motion.div
-            className="text-center py-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="text-6xl mb-4">📚</div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">No publications found</h3>
-            <p className="text-gray-600 mb-6">
-              Try adjusting your filters to see more publications.
-            </p>
-            <button
-              onClick={() => {
-                setSelectedYear('');
-                setSelectedType('');
-              }}
-              className="btn-primary"
-            >
-              Clear Filters
-            </button>
-          </motion.div>
-        )}
+          {/* No Results */}
+          {filteredPublications.length === 0 && (
+            <div className="text-center py-16">
+              <div className="text-6xl mb-4">📚</div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">No publications found</h3>
+              <p className="text-gray-600 mb-6">
+                Try adjusting your filters to see more publications.
+              </p>
+              <button
+                onClick={() => {
+                  setSelectedYear('');
+                  setSelectedType('');
+                }}
+                className="btn-primary"
+              >
+                Clear Filters
+              </button>
+            </div>
+          )}
+        </motion.div>
 
         {/* Summary Stats */}
         {filteredPublications.length > 0 && (
