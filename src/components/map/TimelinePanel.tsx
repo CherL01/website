@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, memo, useCallback } from 'react';
+import { useMemo, memo, useCallback, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, GraduationCap, Briefcase, Mic, Plane, ExternalLink } from 'lucide-react';
 import { MapLocation, FilterType } from '@/types/map';
@@ -84,6 +84,9 @@ const TimelinePanel = memo(function TimelinePanel({ locations, filter }: Timelin
     setHoveredLocation
   } = useMapContext();
 
+  // Local state for tracking which timeline entry is being hovered for expansion
+  const [hoveredEntryId, setHoveredEntryId] = useState<string | null>(null);
+
   // Memoize event handlers
   const handleEntryClick = useCallback((locationId: string, entryId: string) => {
     setSelectedLocation(locationId, entryId);
@@ -162,6 +165,7 @@ const TimelinePanel = memo(function TimelinePanel({ locations, filter }: Timelin
           const colors = getEntryColors(entry.type);
           const isSelected = selectedLocationId === entry.locationId && selectedEntryId === entry.id;
           const isHovered = hoveredLocationId === entry.locationId;
+          const isExpanded = hoveredEntryId === entry.id; // Use local hover state for expansion
           const isActive = isSelected || isHovered;
 
           return (
@@ -177,8 +181,14 @@ const TimelinePanel = memo(function TimelinePanel({ locations, filter }: Timelin
               transition={{ delay: index * 0.1 }}
               whileHover={{ x: 5 }}
               onClick={() => handleEntryClick(entry.locationId, entry.id)}
-              onMouseEnter={() => handleEntryHover(entry.locationId)}
-              onMouseLeave={() => handleEntryHover(null)}
+              onMouseEnter={() => {
+                handleEntryHover(entry.locationId);
+                setHoveredEntryId(entry.id); // Set local hover for expansion
+              }}
+              onMouseLeave={() => {
+                handleEntryHover(null);
+                setHoveredEntryId(null); // Clear local hover
+              }}
             >
               {/* Timeline Connector */}
               <div className="flex">
@@ -235,13 +245,13 @@ const TimelinePanel = memo(function TimelinePanel({ locations, filter }: Timelin
                   {/* Achievements Preview */}
                   {entry.achievements.length > 0 && (
                     <div className="space-y-1">
-                      {entry.achievements.slice(0, isSelected ? entry.achievements.length : 2).map((achievement, idx) => (
+                      {entry.achievements.slice(0, isExpanded ? entry.achievements.length : 2).map((achievement, idx) => (
                         <div key={idx} className="flex items-baseline text-sm">
                           <span className="text-primary-500 mr-2 flex-shrink-0">•</span>
                           <span className="text-gray-700 leading-relaxed">{achievement}</span>
                         </div>
                       ))}
-                      {!isSelected && entry.achievements.length > 2 && (
+                      {!isExpanded && entry.achievements.length > 2 && (
                         <p className="text-xs text-gray-500 ml-4">
                           +{entry.achievements.length - 2} more achievements
                         </p>
@@ -250,7 +260,7 @@ const TimelinePanel = memo(function TimelinePanel({ locations, filter }: Timelin
                   )}
 
                   {/* Links */}
-                  {isSelected && entry.links.length > 0 && (
+                  {isExpanded && entry.links.length > 0 && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}

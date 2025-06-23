@@ -26,9 +26,7 @@ const MarkerLayer = dynamic(() => import('@/components/map/MarkerLayer'), {
   ssr: false,
 });
 
-const TimelinePanel = dynamic(() => import('@/components/map/TimelinePanel'), {
-  ssr: false,
-});
+
 
 // Filter bar component with enhanced accessibility
 function FilterBar() {
@@ -242,15 +240,7 @@ function ExperienceDistribution({ globalStats }: { globalStats: GlobalStats }) {
   );
 }
 
-// Timeline section component
-function TimelineSection() {
-  const { filter } = useMapContext();
-  const { getFilteredLocations } = useMapData();
-  
-  const filteredLocations = getFilteredLocations(filter);
 
-  return <TimelinePanel locations={filteredLocations} filter={filter} />;
-}
 
 // Main map component
 function InteractiveMap() {
@@ -394,24 +384,6 @@ export default function MapPage() {
 
           {/* Interactive Map Section */}
           <InteractiveMap />
-
-          {/* Timeline Section */}
-          <motion.div
-            className="mt-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                Journey Timeline
-              </h2>
-              <p className="text-gray-600">
-                Chronological view of experiences - click entries to highlight locations on the map
-              </p>
-            </div>
-            <TimelineSection />
-          </motion.div>
         </div>
 
         {/* Phase 3 Performance Monitor */}
