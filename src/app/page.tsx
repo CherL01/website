@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ExternalLink, Github, Eye, BookOpen, Code, Users, Building, MapPin } from 'lucide-react';
+import { ArrowRight, Eye, BookOpen, Code, Users, Building, MapPin } from 'lucide-react';
 import resumeData from '@/data/resume.json';
 import ResumeModal from '@/components/ResumeModal';
 
@@ -404,7 +404,7 @@ export default function HomePage() {
               Affiliations
             </h2>
             <p className="text-lg text-gray-600">
-              Institutions and organizations I've had the privilege to work with
+              Institutions and organizations I&apos;ve had the privilege to work with
             </p>
           </motion.div>
 
