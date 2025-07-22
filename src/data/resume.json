@@ -72,8 +72,8 @@
         "start_date": "Jan 2025",
         "end_date": "Apr 2025",
         "details": [
-          "Trained Behavioral Cloning policies from 260+ demonstrations for subtask-level table assembly in Robosuite",
-          "Built a hierarchical imitation learning framework with hint-guided feedback, optimizing sample efficiency and task rollout stability"
+          "Trained Behavioral Cloning policies from 260+ demonstrations for subtask-level table assembly in Robosuite.",
+          "Built a hierarchical imitation learning framework with hint-guided feedback, optimizing sample efficiency and task rollout stability."
         ]
       },
       {

@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Eye, BookOpen, Code, Users, Building, MapPin } from 'lucide-react';
+import { ArrowRight, Eye, BookOpen, Code, MapPin } from 'lucide-react';
 import resumeData from '@/data/resume.json';
+import affiliationsData from '@/data/affiliations.json';
 import ResumeModal from '@/components/ResumeModal';
+import AffiliationCard from '@/components/AffiliationCard';
 
 // Type definition for publication data
 interface Publication {
@@ -188,7 +190,7 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                Robotics Engineer & ML Researcher
+                Robotics Engineer & Researcher
               </motion.p>
 
               <motion.p
@@ -197,8 +199,10 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                Specializing in Human-Robot Interaction, SLAM, and autonomous systems. 
-                Currently pursuing MS in Robotics at Georgia Institute of Technology.
+                I&apos;m passionate about building robots that move, think, and collaborate with humans.
+                My work centers on human-robot interaction (HRI), perception, and motion planning for autonomous systems.
+                Currently, I’m pursuing my M.S. in Robotics at Georgia Tech, where I&apos;m developing a robot guide dog to assist people with visual impairments.
+                When I’m not debugging robots, I’m probably exploring a new city. Check out my map to see where I’ve been!
               </motion.p>
 
               <motion.div
@@ -252,8 +256,7 @@ export default function HomePage() {
               Explore My Work
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover my technical projects and research publications in robotics, 
-              machine learning, and human-robot interaction.
+              Discover my projects and publications in robotics and machine learning.
             </p>
           </motion.div>
 
@@ -273,8 +276,8 @@ export default function HomePage() {
                   {/* Header */}
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center space-x-3">
-                      <div className="p-3 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl">
-                        <Code className="w-8 h-8 text-blue-600" />
+                      <div className="p-3 bg-gradient-to-br from-secondary-100 to-secondary-200 rounded-xl">
+                        <Code className="w-8 h-8 text-secondary-600" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold text-gray-800">Projects</h3>
@@ -285,9 +288,9 @@ export default function HomePage() {
                   </div>
 
                   {/* Featured Project Preview */}
-                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 mb-6">
+                  <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-lg p-6 mb-6">
                     <div className="flex items-center space-x-3 mb-3">
-                      <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-gradient-to-br from-blue-200 to-blue-300 flex-shrink-0">
+                      <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-gradient-to-br from-secondary-200 to-secondary-300 flex-shrink-0">
                         <ProjectImage 
                           projectName={resumeData.projects[0]?.name || "HINTeract Framework"} 
                           className="w-full h-full"
@@ -300,7 +303,7 @@ export default function HomePage() {
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {(resumeData.projects[0]?.technologies || ["Python", "PyTorch", "Robosuite"]).slice(0, 3).map((tech) => (
-                        <span key={tech} className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded">
+                        <span key={tech} className="px-2 py-1 bg-secondary-200 text-secondary-800 text-xs font-medium rounded-full">
                           {tech}
                         </span>
                       ))}
@@ -333,8 +336,8 @@ export default function HomePage() {
                   {/* Header */}
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center space-x-3">
-                      <div className="p-3 bg-gradient-to-br from-green-100 to-green-200 rounded-xl">
-                        <BookOpen className="w-8 h-8 text-green-600" />
+                      <div className="p-3 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl">
+                        <BookOpen className="w-8 h-8 text-primary-600" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold text-gray-800">Publications</h3>
@@ -345,7 +348,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Featured Publication Preview */}
-                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-6 mb-6">
+                  <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg p-6 mb-6">
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center space-x-2">
                         <span className="text-2xl">🏆</span>
@@ -369,7 +372,7 @@ export default function HomePage() {
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {recentPublication.keywords?.slice(0, 2).map((keyword: string) => (
-                        <span key={keyword} className="px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded">
+                        <span key={keyword} className="px-2 py-1 bg-primary-200 text-primary-800 text-xs font-medium rounded-full">
                           {keyword}
                         </span>
                       ))}
@@ -408,65 +411,15 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <motion.div
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            {/* Georgia Tech */}
-            <motion.div
-              className="flex flex-col items-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow group"
-              whileHover={{ y: -5 }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Building className="w-8 h-8 text-yellow-600" />
-              </div>
-              <h3 className="font-semibold text-gray-800 text-center mb-1">Georgia Tech</h3>
-              <p className="text-sm text-gray-500 text-center">MS Robotics</p>
-              <p className="text-xs text-gray-400 text-center mt-1">2024 - Present</p>
-            </motion.div>
-
-            {/* University of Toronto */}
-            <motion.div
-              className="flex flex-col items-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow group"
-              whileHover={{ y: -5 }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Building className="w-8 h-8 text-red-600" />
-              </div>
-              <h3 className="font-semibold text-gray-800 text-center mb-1">University of Toronto</h3>
-              <p className="text-sm text-gray-500 text-center">B.A.Sc. Mechanical Engineering</p>
-              <p className="text-xs text-gray-400 text-center mt-1">2019 - 2024</p>
-            </motion.div>
-
-            {/* Huawei Canada */}
-            <motion.div
-              className="flex flex-col items-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow group"
-              whileHover={{ y: -5 }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Users className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="font-semibold text-gray-800 text-center mb-1">Huawei Canada</h3>
-              <p className="text-sm text-gray-500 text-center">ML Engineer</p>
-              <p className="text-xs text-gray-400 text-center mt-1">2022 - 2023</p>
-            </motion.div>
-
-            {/* Advanced Mechatronics Solutions */}
-            <motion.div
-              className="flex flex-col items-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow group"
-              whileHover={{ y: -5 }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Code className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="font-semibold text-gray-800 text-center mb-1">Advanced Mechatronics</h3>
-              <p className="text-sm text-gray-500 text-center">Robotics Engineer</p>
-              <p className="text-xs text-gray-400 text-center mt-1">2025 - Present</p>
-            </motion.div>
-          </motion.div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {affiliationsData.map((affiliation, index) => (
+              <AffiliationCard 
+                key={affiliation.id} 
+                affiliation={affiliation} 
+                index={index} 
+              />
+            ))}
+          </div>
         </div>
       </section>
 

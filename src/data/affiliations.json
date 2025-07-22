@@ -1,0 +1,46 @@
+[
+  {
+    "id": "university-toronto",
+    "name": "University of Toronto",
+    "fullName": "University of Toronto",
+    "role": "B.A.Sc. Mechanical Engineering",
+    "period": "2019 - 2024",
+    "logo": "/assets/logos/university-toronto.png",
+    "website": "https://www.utoronto.ca/",
+    "color": "from-blue-100 to-blue-200",
+    "iconColor": "text-blue-600"
+  },
+  {
+    "id": "huawei",
+    "name": "Huawei Canada",
+    "fullName": "Huawei Technologies Canada Co., Ltd.",
+    "role": "ML Engineer",
+    "period": "2022 - 2023",
+    "logo": "/assets/logos/huawei.png",
+    "website": "https://www.huawei.com/ca/",
+    "color": "from-red-100 to-red-200",
+    "iconColor": "text-red-600"
+  },
+  {
+    "id": "georgia-tech",
+    "name": "Georgia Tech",
+    "fullName": "Georgia Institute of Technology",
+    "role": "M.S. Robotics",
+    "period": "2024 - Present",
+    "logo": "/assets/logos/georgia-tech.png",
+    "website": "https://www.gatech.edu/",
+    "color": "from-yellow-100 to-yellow-200",
+    "iconColor": "text-yellow-600"
+  },
+  {
+    "id": "advanced-mechatronics",
+    "name": "Advanced Mechatronics Solutions",
+    "fullName": "Advanced Mechatronics Solutions",
+    "role": "Robotics Engineer",
+    "period": "2025 - Present",
+    "logo": "/assets/logos/advanced-mechatronics.png",
+    "website": "https://www.ams-fa.com/",
+    "color": "from-purple-100 to-purple-200",
+    "iconColor": "text-purple-600"
+  }
+] 
