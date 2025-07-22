@@ -766,5 +766,61 @@
     "entries": [
       { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
     ]
+  },
+  {
+    "city": "Mississauga",
+    "country": "Canada",
+    "coordinates": [-79.6441, 43.5890],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Scarborough",
+    "country": "Canada",
+    "coordinates": [-79.2733, 43.7769],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Pickering",
+    "country": "Canada",
+    "coordinates": [-79.0890, 43.8350],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Owen Sound",
+    "country": "Canada",
+    "coordinates": [-80.9429, 44.5690],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Tobermory",
+    "country": "Canada",
+    "coordinates": [-81.6660, 45.2553],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Hamilton",
+    "country": "Canada",
+    "coordinates": [-79.8711, 43.2557],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Niagara Falls",
+    "country": "Canada",
+    "coordinates": [-79.0740, 43.0896],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
   }  
 ] 
