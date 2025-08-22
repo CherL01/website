@@ -118,6 +118,11 @@ export default function HomePage() {
   // Count projects and publications
   const projectCount = resumeData.projects.length;
   const publicationCount = publicationsData.length;
+  
+  // Find SpooderMan project for featured display
+  const featuredProject = resumeData.projects.find(project => 
+    project.name.includes('SpooderMan')
+  ) || resumeData.projects[0]; // Fallback to first project if SpooderMan not found
   const recentPublication = publicationsData.find(pub => pub.award) || publicationsData[0] || {
     id: "default",
     title: "Loading...",
@@ -297,17 +302,17 @@ export default function HomePage() {
                     <div className="flex items-center space-x-3 mb-3">
                       <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-gradient-to-br from-secondary-200 to-secondary-300 flex-shrink-0">
                         <ProjectImage 
-                          projectName={resumeData.projects[0]?.name || "HINTeract Framework"} 
+                          projectName={featuredProject.name} 
                           className="w-full h-full"
                         />
                       </div>
-                      <h4 className="font-semibold text-gray-800 dark:text-gray-100">{resumeData.projects[0]?.name || "HINTeract Framework"}</h4>
+                      <h4 className="font-semibold text-gray-800 dark:text-gray-100">{featuredProject.name}</h4>
                     </div>
                     <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                      {resumeData.projects[0]?.details.join(' ') || "Interactive robot learning with hierarchical imitation learning and hint-guided feedback"}
+                      {featuredProject.details.join(' ')}
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {(resumeData.projects[0]?.technologies || ["Python", "PyTorch", "Robosuite"]).slice(0, 3).map((tech) => (
+                      {featuredProject.technologies.slice(0, 3).map((tech) => (
                         <span key={tech} className="px-2 py-1 bg-secondary-200 text-secondary-800 text-xs font-medium rounded-full">
                           {tech}
                         </span>
