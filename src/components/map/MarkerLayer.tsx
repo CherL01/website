@@ -114,9 +114,6 @@ const MarkerLayer = memo(function MarkerLayer({
           longitude={lng}
           latitude={lat}
           anchor="bottom"
-          onError={(error) => {
-            console.warn(`Failed to render marker for ${location.city}:`, error);
-          }}
         >
             <motion.button
               className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-full"
