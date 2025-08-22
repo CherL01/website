@@ -149,7 +149,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
       paperUrl: null
     },
     'spooderman-autonomous-robot-follower': {
-      fullDescription: 'SpooderMan is an autonomous robot follower system built on TurtleBot3, combining advanced computer vision with sophisticated navigation algorithms. The system demonstrates robust person-following capabilities in complex indoor environments using SIFT-based feature extraction and dynamic path planning.',
+      fullDescription: 'SpooderMan is an autonomous robot follower system developed on TurtleBot3, combining SIFT-based visual tracking, semantic scene understanding, and SLAM-enabled navigation. Designed for complex indoor environments, it showcases robust person-following and directional awareness through real-time image processing and adaptive path planning.',
       keyFeatures: [
         'SIFT-based feature extraction for robust person detection',
         'Advanced image segmentation using OpenCV',
@@ -408,6 +408,76 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                         }
                       }}
                     />
+                  </motion.div>
+                ))
+              ) : project.name.includes('SpooderMan') ? (
+                // SpooderMan gallery with videos and images
+                [
+                  { type: 'video', src: '/assets/projects/spooderman-gallery/demo.mp4', title: 'Robot Following Demo' },
+                  { type: 'video', src: '/assets/projects/spooderman-gallery/point_nav.mp4', title: 'Point Navigation with Obstacle Avoidance' },
+                  { type: 'image', src: '/assets/projects/spooderman-gallery/screenshot-1.jpg', title: 'Maze Testing' },
+                  // { type: 'video', src: '/assets/projects/spooderman-gallery/maze-navigation.mp4', title: 'Maze Navigation' }
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    className="h-64 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-600 relative group"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {item.type === 'video' ? (
+                      <video
+                        src={item.src}
+                        className="w-full h-full object-cover"
+                        controls
+                        preload="metadata"
+                        poster={`/assets/projects/spooderman-gallery/poster-${index + 1}.jpg`}
+                        onError={(e) => {
+                          // Fallback to placeholder if video fails to load
+                          const target = e.target as HTMLVideoElement;
+                          target.style.display = 'none';
+                          const parent = target.parentElement;
+                          if (parent) {
+                            parent.innerHTML = `
+                              <div class="flex items-center justify-center h-full">
+                                <div class="text-center text-gray-400 dark:text-gray-500">
+                                  <div class="text-4xl mb-2">🎥</div>
+                                  <p class="text-sm">${item.title}</p>
+                                  <p class="text-xs">(Video Coming Soon)</p>
+                                </div>
+                              </div>
+                            `;
+                          }
+                        }}
+                      />
+                    ) : (
+                      <Image
+                        src={item.src}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                        onError={(e) => {
+                          // Fallback to placeholder if image fails to load
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const parent = target.parentElement;
+                          if (parent) {
+                            parent.innerHTML = `
+                              <div class="flex items-center justify-center h-full">
+                                <div class="text-center text-gray-400 dark:text-gray-500">
+                                  <div class="text-4xl mb-2">📸</div>
+                                  <p class="text-sm">${item.title}</p>
+                                  <p class="text-xs">(Coming Soon)</p>
+                                </div>
+                              </div>
+                            `;
+                          }
+                        }}
+                      />
+                    )}
+                    {/* Overlay with title */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <p className="text-white text-sm font-medium">{item.title}</p>
+                    </div>
                   </motion.div>
                 ))
               ) : (
