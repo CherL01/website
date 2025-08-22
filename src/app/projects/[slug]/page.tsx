@@ -126,7 +126,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
       paperUrl: null
     },
     'hinteract-interactive-robot-learning-framework': {
-      fullDescription: 'HINTeract represents a breakthrough in interactive robot learning, combining hierarchical imitation learning with hint-guided feedback mechanisms. This framework addresses the critical challenge of sample efficiency in robot learning by leveraging human demonstrations and interactive feedback to guide policy optimization.',
+      fullDescription: 'HINTeract is a hierarchical imitation learning framework that improves sample efficiency in robotic manipulation by combining human demonstrations with interactive, hint-guided feedback. Designed for table assembly tasks in Robosuite, it enables more stable and efficient policy learning through modular subtask decomposition.',
       keyFeatures: [
         'Hierarchical Imitation Learning with 260+ demonstrations',
         'Hint-guided feedback system for improved sample efficiency',
@@ -376,20 +376,57 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           >
             <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8">Gallery</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[1, 2, 3, 4].map((index) => (
-                <motion.div
-                  key={index}
-                  className="h-64 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-200 dark:border-gray-600"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="text-center text-gray-400 dark:text-gray-500">
-                    <div className="text-4xl mb-2">📸</div>
-                    <p className="text-sm">Screenshot {index}</p>
-                    <p className="text-xs">(Coming Soon)</p>
-                  </div>
-                </motion.div>
-              ))}
+              {project.name.includes('HINTeract') ? (
+                // HINTeract gallery with actual images
+                [1, 2, 3, 4].map((index) => (
+                  <motion.div
+                    key={index}
+                    className="h-64 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-600 relative"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Image
+                      src={`/assets/projects/hinteract-gallery/screenshot-${index}.jpg`}
+                      alt={`HINTeract Screenshot ${index}`}
+                      fill
+                      className="object-cover"
+                      onError={(e) => {
+                        // Fallback to placeholder if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `
+                            <div class="flex items-center justify-center h-full">
+                              <div class="text-center text-gray-400 dark:text-gray-500">
+                                <div class="text-4xl mb-2">📸</div>
+                                <p class="text-sm">Screenshot ${index}</p>
+                                <p class="text-xs">(Coming Soon)</p>
+                              </div>
+                            </div>
+                          `;
+                        }
+                      }}
+                    />
+                  </motion.div>
+                ))
+              ) : (
+                // Placeholder gallery for other projects
+                [1, 2, 3, 4].map((index) => (
+                  <motion.div
+                    key={index}
+                    className="h-64 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-200 dark:border-gray-600"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="text-center text-gray-400 dark:text-gray-500">
+                      <div className="text-4xl mb-2">📸</div>
+                      <p className="text-sm">Screenshot {index}</p>
+                      <p className="text-xs">(Coming Soon)</p>
+                    </div>
+                  </motion.div>
+                ))
+              )}
             </div>
           </motion.section>
         )}
