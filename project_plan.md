@@ -46,7 +46,7 @@
       "city": "San Diego",
       "country": "USA",
       "state": "California", 
-      "dates": "May 2025 - Present",
+      "dates": "May 2025 - Aug 2025",
       "notes": "Robotics Engineer position at Advanced Mechatronics Solutions"
     }
   ]
