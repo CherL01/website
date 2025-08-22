@@ -14,7 +14,18 @@ interface MarkerLayerProps {
   onMarkerHover: (locationId: string | null) => void;
 }
 
-const getMarkerColor = (types: string[]): string => {
+const getMarkerColor = (types: string[], filter?: string): string => {
+  // If filtering by a specific type, use that type's color if it exists
+  if (filter && filter !== 'all' && types.includes(filter)) {
+    switch (filter) {
+      case 'education': return 'bg-blue-500';
+      case 'work': return 'bg-emerald-500';
+      case 'conference': return 'bg-purple-500';
+      case 'travel': return 'bg-amber-500';
+      case 'home': return 'bg-rose-500';
+    }
+  }
+  
   // If multiple entry types, use a gradient or mixed color
   if (types.length > 1) {
     return 'bg-gradient-to-r from-blue-500 to-emerald-500';
@@ -37,8 +48,19 @@ const getMarkerColor = (types: string[]): string => {
   }
 };
 
-const getMarkerIcon = (types: string[]): string => {
-  // Priority: education > work > conference > travel > home
+const getMarkerIcon = (types: string[], filter?: string): string => {
+  // If filtering by a specific type, prioritize that type if it exists
+  if (filter && filter !== 'all' && types.includes(filter)) {
+    switch (filter) {
+      case 'education': return '🎓';
+      case 'work': return '💼';
+      case 'conference': return '🎤';
+      case 'travel': return '✈️';
+      case 'home': return '🏠';
+    }
+  }
+  
+  // Default priority: education > work > conference > travel > home
   if (types.includes('education')) return '🎓';
   if (types.includes('work')) return '💼';
   if (types.includes('conference')) return '🎤';
@@ -83,8 +105,8 @@ const MarkerLayer = memo(function MarkerLayer({
       
       // Get unique entry types for this location
       const entryTypes = [...new Set(location.entries.map(entry => entry.type))];
-      const markerColor = getMarkerColor(entryTypes);
-      const markerIcon = getMarkerIcon(entryTypes);
+      const markerColor = getMarkerColor(entryTypes, filter);
+      const markerIcon = getMarkerIcon(entryTypes, filter);
 
       return (
         <Marker

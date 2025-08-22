@@ -63,7 +63,23 @@
         "achievements": [
           "SLAM and Navigation Research",
           "Semantic Visual-Inertial SLAM system development",
-          "ICRA 2025 PTAS Workshop - Best Presentation Award"
+          "Human-Robot Interaction research"
+        ]
+      },
+      {
+        "id": "icra-2025-ptas",
+        "type": "conference",
+        "institution": "ICRA 2025 PTAS Workshop",
+        "role": "Presenter",
+        "duration": "2025",
+        "photos": [],
+        "links": [
+          { "label": "ICRA Conference", "url": "https://icra2025.org" }
+        ],
+        "achievements": [
+          "Best Presentation Award",
+          "Paper: Implicit Behavioral Cues for Enhancing Trust and Comfort in Robot Social Navigation",
+          "Co-authors: Yi Lian, J. Taery Kim, Sehoon Ha"
         ]
       }
     ]
@@ -78,7 +94,7 @@
         "type": "work",
         "institution": "Advanced Mechatronics Solutions",
         "role": "Robotics Engineer",
-        "duration": "May 2025 - Present",
+        "duration": "May 2025 - Aug 2025",
         "photos": [],
         "links": [],
         "achievements": [
