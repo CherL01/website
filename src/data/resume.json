@@ -96,9 +96,9 @@
         "start_date": "Feb 2025",
         "end_date": "Feb 2025",
         "details": [
-          "Developed an integrated application that automatically extracts drug mentions and metadata from research papers (PDF/URL), achieving a 92% extraction accuracy on benchmark datasets.",
-          "Engineered a recommendation engine using NLP and public biomedical databases to deliver drug similarity suggestions, improving recommendation precision by 20%.",
-          "Deployed a chatbot powered by the Google Gemini API on AWS via Streamlit, reducing research data processing time by 35% and streamlining drug repurposing workflows."
+          "Designed a research support tool for drug repurposing that combines automated information extraction, intelligent recommendation, and conversational assistance.",
+          "The system streamlines literature analysis and hypothesis generation using NLP, biomedical databases, and an AI-powered chatbot interface.",
+          "The system streamlines literature analysis and hypothesis generation using NLP, biomedical databases, and an AI-powered chatbot interface."
         ]
       },
       {

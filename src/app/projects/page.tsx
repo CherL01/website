@@ -2,9 +2,63 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Search, Filter, Github, ExternalLink, Calendar, X } from 'lucide-react';
 import resumeData from '@/data/resume.json';
+
+// Project image component with fallback - same as home page
+function ProjectImage({ projectName, className }: { projectName: string; className?: string }) {
+  const [imageError, setImageError] = useState(false);
+  
+  // Map project names to shorter image filenames
+  const getProjectImageName = (name: string): string => {
+    const nameLower = name.toLowerCase();
+    
+    // Direct mapping for known projects
+    if (nameLower.includes('hinteract')) return 'hinteract-framework';
+    if (nameLower.includes('spooderman')) return 'spooderman';
+    if (nameLower.includes('pharmore')) return 'pharmore';
+    
+    // For unknown projects, use first word only
+    const firstWord = name.split(/[,\s]+/)[0].toLowerCase().replace(/[^a-z0-9]/g, '');
+    return firstWord;
+  };
+
+  // Project-specific emoji mapping
+  const getProjectEmoji = (name: string) => {
+    if (name.toLowerCase().includes('hinteract')) return '🤖';
+    if (name.toLowerCase().includes('spooderman') || name.toLowerCase().includes('spider')) return '🕷️';
+    if (name.toLowerCase().includes('pharmore')) return '💊';
+    if (name.toLowerCase().includes('oogway')) return '🐢';
+    if (name.toLowerCase().includes('kir-b')) return '🚗';
+    if (name.toLowerCase().includes('drowsiness') || name.toLowerCase().includes('driver')) return '👁️';
+    return '🔧'; // Default for other projects
+  };
+
+  const imageFileName = getProjectImageName(projectName);
+  const imagePath = `/assets/projects/${imageFileName}.jpg`;
+  const emoji = getProjectEmoji(projectName);
+
+  if (imageError) {
+    // Fallback to styled emoji placeholder
+    return (
+      <div className={`bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center ${className || ''}`}>
+        <span className="text-white text-6xl opacity-60">{emoji}</span>
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={imagePath}
+      alt={projectName}
+      fill
+      className={`object-cover ${className || ''}`}
+      onError={() => setImageError(true)}
+    />
+  );
+}
 
 export default function ProjectsPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -157,17 +211,12 @@ export default function ProjectsPage() {
                   whileHover={{ y: -5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {/* Project Image Placeholder */}
-                  <div className="h-48 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg mb-6 flex items-center justify-center relative overflow-hidden">
-                    <div className="text-6xl opacity-60">
-                      {project.name.includes('HINTeract') ? '🤖' : 
-                       project.name.includes('SpooderMan') ? '🕷️' :
-                       project.name.includes('PHARMore') ? '💊' :
-                       project.name.includes('Oogway') ? '🐢' :
-                       project.name.includes('Kir-B') ? '🚗' :
-                       project.name.includes('Drowsiness') || project.name.includes('Driver') ? '👁️' : 
-                       '🔧'}
-                    </div>
+                  {/* Project Image */}
+                  <div className="h-48 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg mb-6 relative overflow-hidden">
+                    <ProjectImage 
+                      projectName={project.name}
+                      className="w-full h-full"
+                    />
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-primary-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                   </div>

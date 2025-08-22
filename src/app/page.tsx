@@ -38,6 +38,7 @@ function ProjectImage({ projectName, className }: { projectName: string; classNa
     // Direct mapping for known projects
     if (nameLower.includes('hinteract')) return 'hinteract-framework';
     if (nameLower.includes('spooderman')) return 'spooderman';
+    if (nameLower.includes('pharmore')) return 'pharmore';
     
     // For unknown projects, use first word only
     const firstWord = name.split(/[,\s]+/)[0].toLowerCase().replace(/[^a-z0-9]/g, '');

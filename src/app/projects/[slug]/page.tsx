@@ -3,9 +3,65 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Github, ExternalLink, Calendar, Tag, Award } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Calendar, Tag, Award, Play } from 'lucide-react';
 import resumeData from '@/data/resume.json';
+
+// Project image component for hero banner
+function ProjectHeroImage({ projectName }: { projectName: string }) {
+  const [imageError, setImageError] = useState(false);
+  
+  // Map project names to shorter image filenames
+  const getProjectImageName = (name: string): string => {
+    const nameLower = name.toLowerCase();
+    
+    // Direct mapping for known projects
+    if (nameLower.includes('hinteract')) return 'hinteract-framework';
+    if (nameLower.includes('spooderman')) return 'spooderman';
+    if (nameLower.includes('pharmore')) return 'pharmore';
+    
+    // For unknown projects, use first word only
+    const firstWord = name.split(/[,\s]+/)[0].toLowerCase().replace(/[^a-z0-9]/g, '');
+    return firstWord;
+  };
+
+  // Project-specific emoji mapping
+  const getProjectEmoji = (name: string) => {
+    if (name.toLowerCase().includes('hinteract')) return '🤖';
+    if (name.toLowerCase().includes('spooderman') || name.toLowerCase().includes('spider')) return '🕷️';
+    if (name.toLowerCase().includes('pharmore')) return '💊';
+    if (name.toLowerCase().includes('oogway')) return '🐢';
+    if (name.toLowerCase().includes('kir-b')) return '🚗';
+    if (name.toLowerCase().includes('drowsiness') || name.toLowerCase().includes('driver')) return '👁️';
+    return '🔧'; // Default for other projects
+  };
+
+  const imageFileName = getProjectImageName(projectName);
+  const imagePath = `/assets/projects/${imageFileName}.jpg`;
+  const emoji = getProjectEmoji(projectName);
+
+  if (imageError) {
+    // Fallback to emoji
+    return (
+      <div className="text-9xl opacity-40">
+        {emoji}
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative w-96 h-96 opacity-40">
+      <Image
+        src={imagePath}
+        alt={projectName}
+        fill
+        className="object-cover rounded-lg"
+        onError={() => setImageError(true)}
+      />
+    </div>
+  );
+}
 
 interface ProjectDetailPageProps {
   params: Promise<{
@@ -45,6 +101,30 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
 
   // Mock additional project data for demo (in real app, this would come from a more detailed data source)
   const projectDetails = {
+    'pharmore-data-mining-for-drug-discovery': {
+      fullDescription: 'PHARMore is a comprehensive research support tool for drug repurposing that combines automated information extraction, intelligent recommendation systems, and conversational AI assistance. Built for Hacklytics 2025, this system streamlines literature analysis and hypothesis generation using advanced NLP techniques, biomedical databases, and an AI-powered chatbot interface.',
+      keyFeatures: [
+        'Automated literature analysis from biomedical databases',
+        'AI-powered drug repurposing recommendations',
+        'Interactive chatbot interface using Gemini AI',
+        'Streamlit web application for user-friendly interaction',
+        'Integration with AWS cloud services for scalability',
+        'Real-time hypothesis generation and validation'
+      ],
+      challenges: [
+        'Processing large volumes of biomedical literature efficiently',
+        'Ensuring accuracy in drug-target interaction predictions',
+        'Balancing automation with expert domain knowledge requirements'
+      ],
+      results: [
+        'Successfully implemented for Hacklytics 2025 hackathon',
+        'Streamlined drug discovery research workflow',
+        'Provided intelligent recommendations for drug repurposing'
+      ],
+      githubUrl: 'https://github.com/CherL01/PHARMore',
+      demoUrl: 'https://pharmore.streamlit.app/',
+      paperUrl: null
+    },
     'hinteract-interactive-robot-learning-framework': {
       fullDescription: 'HINTeract represents a breakthrough in interactive robot learning, combining hierarchical imitation learning with hint-guided feedback mechanisms. This framework addresses the critical challenge of sample efficiency in robot learning by leveraging human demonstrations and interactive feedback to guide policy optimization.',
       keyFeatures: [
@@ -65,6 +145,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
         'Improved task rollout stability through hierarchical decomposition'
       ],
       githubUrl: 'https://github.com/CherL01/HINTeract',
+      demoUrl: null,
       paperUrl: null
     },
     'spooderman-autonomous-robot-follower': {
@@ -87,6 +168,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
         'KNN-based directional sign classification with 95% accuracy'
       ],
       githubUrl: 'https://github.com/CherL01/SpooderMan',
+      demoUrl: null,
       paperUrl: null
     }
   };
@@ -120,15 +202,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
         transition={{ duration: 0.8 }}
       >
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-9xl opacity-40">
-            {project.name.includes('HINTeract') ? '🤖' : 
-             project.name.includes('SpooderMan') ? '🕷️' :
-             project.name.includes('PHARMore') ? '💊' :
-             project.name.includes('Oogway') ? '🐢' :
-             project.name.includes('Kir-B') ? '🚗' :
-             project.name.includes('Drowsiness') || project.name.includes('Driver') ? '👁️' : 
-             '🔧'}
-          </div>
+          <ProjectHeroImage projectName={project.name} />
         </div>
         
         {/* Overlay Content */}
@@ -210,15 +284,32 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                       href={details.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+                      className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors duration-200"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <span className="flex items-center text-gray-700 font-medium">
+                      <span className="flex items-center text-gray-700 dark:text-gray-300 font-medium">
                         <Github size={20} className="mr-3" />
                         View Code
                       </span>
                       <ExternalLink size={16} className="text-gray-400" />
+                    </motion.a>
+                  )}
+                  
+                  {details?.demoUrl && (
+                    <motion.a
+                      href={details.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/50 rounded-lg transition-colors duration-200"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <span className="flex items-center text-blue-700 dark:text-blue-300 font-medium">
+                        <Play size={20} className="mr-3" />
+                        Live Demo
+                      </span>
+                      <ExternalLink size={16} className="text-blue-400" />
                     </motion.a>
                   )}
                   
@@ -227,11 +318,11 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                       href={details.paperUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+                      className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors duration-200"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <span className="flex items-center text-gray-700 font-medium">
+                      <span className="flex items-center text-gray-700 dark:text-gray-300 font-medium">
                         <Award size={20} className="mr-3" />
                         Research Paper
                       </span>
@@ -274,32 +365,34 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           </motion.section>
         )}
 
-        {/* Screenshots Gallery Placeholder */}
-        <motion.section
-          className="mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">Gallery</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[1, 2, 3, 4].map((index) => (
-              <motion.div
-                key={index}
-                className="h-64 bg-gradient-to-br from-primary-50 to-secondary-50 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-200"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="text-center text-gray-400">
-                  <div className="text-4xl mb-2">📸</div>
-                  <p className="text-sm">Screenshot {index}</p>
-                  <p className="text-xs">(Coming Soon)</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
+        {/* Screenshots Gallery Placeholder - Hidden for PHARMore */}
+        {!project.name.includes('PHARMore') && (
+          <motion.section
+            className="mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8">Gallery</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[1, 2, 3, 4].map((index) => (
+                <motion.div
+                  key={index}
+                  className="h-64 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-200 dark:border-gray-600"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="text-center text-gray-400 dark:text-gray-500">
+                    <div className="text-4xl mb-2">📸</div>
+                    <p className="text-sm">Screenshot {index}</p>
+                    <p className="text-xs">(Coming Soon)</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+        )}
 
         {/* Results & Challenges */}
         {(details?.results || details?.challenges) && (
