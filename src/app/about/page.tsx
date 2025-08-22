@@ -82,14 +82,14 @@ export default function AboutPage() {
           viewport={{ once: true }}
         >
           <div className="card text-center">
-                          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                 I&apos;m a robotics engineer and machine learning researcher currently pursuing my Master&apos;s 
                 in Robotics at Georgia Institute of Technology, where I focus on Human-Robot Interaction, 
                 Perception, and AI. My work spans from developing SLAM-based navigation systems for 
                 autonomous mobile robots to creating interactive learning frameworks that enhance 
                 robot-human collaboration.
               </p>
-                          <p className="text-lg text-gray-700 leading-relaxed">
+                          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 With experience at Huawei Canada developing ML models for network optimization and 
                 current research at Georgia Tech on semantic visual-inertial SLAM systems, I&apos;m passionate 
                 about bridging the gap between theoretical research and practical robotic applications.
@@ -105,7 +105,7 @@ export default function AboutPage() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold text-gray-800 mb-12 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-12 text-center">
             Academic & Professional Journey
           </h2>
           
@@ -159,14 +159,14 @@ export default function AboutPage() {
                   >
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                       <div>
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">
+                        <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">
                           {'title' in item ? item.title : item.degree}
                         </h3>
                         <div className="flex items-center text-primary-600 font-medium mb-2">
                           <MapPin size={16} className="mr-1" />
                           {'company' in item ? item.company : item.institution}
                         </div>
-                        <div className="flex items-center text-gray-500 text-sm mb-3">
+                        <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-3">
                           <Calendar size={16} className="mr-1" />
                           {item.start_date} - {item.end_date}
                         </div>
@@ -182,7 +182,7 @@ export default function AboutPage() {
                     {'responsibilities' in item ? (
                       <ul className="space-y-2">
                         {item.responsibilities.map((responsibility, idx) => (
-                          <li key={idx} className="text-gray-600 text-sm leading-relaxed flex items-start">
+                          <li key={idx} className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed flex items-start">
                             <span className="text-primary-500 mr-3 mt-0 flex-shrink-0">•</span>
                             <span className="flex-1">{responsibility}</span>
                           </li>
@@ -191,7 +191,7 @@ export default function AboutPage() {
                     ) : (
                       <div className="text-gray-600">
                         {'location' in item && (
-                          <div className="flex items-center text-gray-500 text-sm">
+                          <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
                             <MapPin size={14} className="mr-1" />
                             {item.location}
                           </div>
@@ -213,7 +213,7 @@ export default function AboutPage() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold text-gray-800 mb-12 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-12 text-center">
             Technical Skills
           </h2>
           

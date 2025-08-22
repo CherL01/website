@@ -63,7 +63,7 @@ export default function PublicationsPage() {
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-6">
             <span className="text-gradient">Publications</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Research contributions in machine learning, robotics, and network optimization 
             from my work at Georgia Tech and Huawei Canada.
           </p>
@@ -87,18 +87,18 @@ export default function PublicationsPage() {
                     placeholder="Search publications..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   />
                 </div>
 
                               {/* Filters Row */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="flex-1">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Year</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Filter by Year</label>
                     <select
                       value={selectedYear}
                       onChange={(e) => setSelectedYear(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
+                      className="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     >
                       <option value="">All Years</option>
                       {years.map(year => (
@@ -108,11 +108,11 @@ export default function PublicationsPage() {
                   </div>
 
                   <div className="flex-1">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Type</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Filter by Type</label>
                     <select
                       value={selectedType}
                       onChange={(e) => setSelectedType(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
+                      className="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     >
                       <option value="">All Types</option>
                       {types.map(type => (
@@ -124,11 +124,11 @@ export default function PublicationsPage() {
                   </div>
 
                   <div className="flex-1">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Tag</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Filter by Tag</label>
                     <select
                       value={selectedTag}
                       onChange={(e) => setSelectedTag(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 text-black"
+                      className="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     >
                       <option value="">All Tags</option>
                       {tags.map(tag => (
@@ -148,8 +148,8 @@ export default function PublicationsPage() {
                       disabled={!searchTerm && !selectedYear && !selectedType && !selectedTag}
                       className={`px-4 py-2 transition-colors duration-200 ${
                         searchTerm || selectedYear || selectedType || selectedTag
-                          ? 'text-gray-500 hover:text-gray-700 cursor-pointer'
-                          : 'text-gray-300'
+                          ? 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 cursor-pointer'
+                          : 'text-gray-300 dark:text-gray-600'
                       }`}
                     >
                       Clear All
@@ -246,12 +246,12 @@ export default function PublicationsPage() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-800 mb-2 leading-tight">
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2 leading-tight">
                     {publication.title}
                   </h3>
 
                   {/* Authors */}
-                  <p className="text-gray-600 mb-2">
+                  <p className="text-gray-600 dark:text-gray-300 mb-2">
                     <span className="inline-flex items-center mr-2">
                       <Users size={14} className="mr-1" />
                       {publication.authors.map((author, idx) => (
@@ -263,7 +263,7 @@ export default function PublicationsPage() {
                   </p>
 
                   {/* Venue */}
-                  <p className="text-gray-600 mb-3">
+                  <p className="text-gray-600 dark:text-gray-300 mb-3">
                     <span className="inline-flex items-center">
                       <MapPin size={14} className="mr-1" />
                       <span className="font-medium">{publication.venue}</span>
@@ -275,7 +275,7 @@ export default function PublicationsPage() {
                     {publication.keywords.map((keyword, idx) => (
                       <span
                         key={idx}
-                        className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md"
+                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-md"
                       >
                         {keyword}
                       </span>
@@ -323,15 +323,15 @@ export default function PublicationsPage() {
                     className="overflow-hidden"
                   >
                     <div className="pt-4">
-                      <h4 className="text-sm font-semibold text-gray-800 mb-2">Abstract</h4>
-                      <p className="text-gray-700 leading-relaxed text-sm">
+                      <h4 className="text-sm font-semibold text-gray-800 dark:text-gray-100 mb-2">Abstract</h4>
+                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
                         {publication.abstract}
                       </p>
                       
                       {publication.affiliations && (
                         <div className="mt-3">
-                          <h5 className="text-xs font-semibold text-gray-600 mb-1">Affiliations</h5>
-                          <p className="text-xs text-gray-500">
+                          <h5 className="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-1">Affiliations</h5>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">
                             {publication.affiliations.join(', ')}
                           </p>
                         </div>
@@ -339,8 +339,8 @@ export default function PublicationsPage() {
 
                       {publication.doi && (
                         <div className="mt-3">
-                          <h5 className="text-xs font-semibold text-gray-600 mb-1">DOI</h5>
-                          <p className="text-xs text-gray-500 font-mono">
+                          <h5 className="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-1">DOI</h5>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-mono">
                             {publication.doi}
                           </p>
                         </div>
@@ -357,8 +357,8 @@ export default function PublicationsPage() {
           {filteredPublications.length === 0 && (
             <div className="text-center py-16">
               <div className="text-6xl mb-4">📚</div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">No publications found</h3>
-              <p className="text-gray-600 mb-6">
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">No publications found</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">
                 Try adjusting your filters to see more publications.
               </p>
               <button
@@ -389,19 +389,19 @@ export default function PublicationsPage() {
                   <div className="text-3xl font-bold text-primary-600 mb-2">
                     {publicationsData.length}
                   </div>
-                  <div className="text-gray-600">Total Publications</div>
+                  <div className="text-gray-600 dark:text-gray-400">Total Publications</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-secondary-600 mb-2">
                     {years.length}
                   </div>
-                  <div className="text-gray-600">Years Active</div>
+                  <div className="text-gray-600 dark:text-gray-400">Years Active</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-accent-600 mb-2">
                     {publicationsData.filter(p => p.award).length}
                   </div>
-                  <div className="text-gray-600">Award Winners</div>
+                  <div className="text-gray-600 dark:text-gray-400">Award Winners</div>
                 </div>
               </div>
             </div>
@@ -417,7 +417,7 @@ export default function PublicationsPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
               Interested in learning more about my background and experience?
             </p>
             <Link

@@ -13,10 +13,10 @@ import LocationModal from '@/components/map/LocationModal';
 const MapboxMap = dynamic(() => import('@/components/map/MapboxMap'), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-96 md:h-[500px] bg-gray-100 rounded-lg flex items-center justify-center">
+    <div className="w-full h-96 md:h-[500px] bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
       <div className="text-center">
         <div className="text-4xl mb-4">🌍</div>
-        <p className="text-gray-600">Loading interactive map...</p>
+        <p className="text-gray-600 dark:text-gray-300">Loading interactive map...</p>
       </div>
     </div>
   ),
@@ -54,7 +54,7 @@ function FilterBar() {
               focus:outline-none focus:ring-2 focus:ring-offset-2
               ${filter === key
                 ? 'bg-primary-500 text-white shadow-md focus:ring-primary-300'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 focus:ring-gray-300'
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 focus:ring-gray-300'
               }
             `}
             aria-pressed={filter === key}
@@ -66,7 +66,7 @@ function FilterBar() {
       </div>
       
       {/* Keyboard navigation hint */}
-      <div className="mt-2 text-xs text-gray-500">
+      <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
         💡 Tip: Use Tab to navigate filters, Enter/Space to select, and arrow keys to navigate the map
       </div>
     </div>
@@ -91,19 +91,19 @@ function GlobalStats() {
             <div className="text-3xl font-bold text-primary-600 mb-2">
               {globalStats.totalLocations}
             </div>
-            <div className="text-gray-600 text-sm">Locations</div>
+            <div className="text-gray-600 dark:text-gray-400 text-sm">Locations</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-secondary-600 mb-2">
               {globalStats.countries}
             </div>
-            <div className="text-gray-600 text-sm">Countries</div>
+            <div className="text-gray-600 dark:text-gray-400 text-sm">Countries</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-accent-600 mb-2">
               {globalStats.continents}
             </div>
-            <div className="text-gray-600 text-sm">Continents</div>
+            <div className="text-gray-600 dark:text-gray-400 text-sm">Continents</div>
           </div>
         </div>
 
@@ -150,7 +150,7 @@ function ExperienceDistribution({ globalStats }: { globalStats: GlobalStats }) {
       >
         <div className="px-4 pt-4">
           {/* Header inside dropdown */}
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">Experience Distribution</h3>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">Experience Distribution</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
@@ -165,19 +165,19 @@ function ExperienceDistribution({ globalStats }: { globalStats: GlobalStats }) {
                     <div key={type} className="flex items-center space-x-3">
                       <div className="flex items-center min-w-[100px]">
                         <span className="text-lg mr-2">{entryTypeIcons[type] || '📍'}</span>
-                        <span className="text-sm font-medium capitalize text-gray-700">
+                        <span className="text-sm font-medium capitalize text-gray-700 dark:text-gray-300">
                           {type}
                         </span>
                       </div>
-                      <div className="flex-1 bg-gray-200 rounded-full h-3 relative overflow-hidden">
+                      <div className="flex-1 bg-gray-200 dark:bg-gray-600 rounded-full h-3 relative overflow-hidden">
                         <div
                           className={`h-full rounded-full transition-all duration-1000 ${entryTypeColors[type] || 'bg-gray-400'}`}
                           style={{ width: `${percentage}%` }}
                         />
                       </div>
                       <div className="min-w-[60px] text-right">
-                        <span className="text-sm font-semibold text-gray-800">{count}</span>
-                        <span className="text-xs text-gray-500 ml-1">({percentage}%)</span>
+                        <span className="text-sm font-semibold text-gray-800 dark:text-gray-100">{count}</span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">({percentage}%)</span>
                       </div>
                     </div>
                   );
@@ -187,7 +187,7 @@ function ExperienceDistribution({ globalStats }: { globalStats: GlobalStats }) {
             {/* Geographic Summary */}
             <div className="space-y-4">
               <div>
-                <h4 className="text-sm font-semibold text-gray-700 mb-2">Countries Visited</h4>
+                <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Countries Visited</h4>
                 <div className="flex flex-wrap gap-2">
                   {globalStats.countriesList.map((country: string) => (
                     <span
@@ -201,7 +201,7 @@ function ExperienceDistribution({ globalStats }: { globalStats: GlobalStats }) {
               </div>
               
               <div>
-                <h4 className="text-sm font-semibold text-gray-700 mb-2">Continents</h4>
+                <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Continents</h4>
                 <div className="flex flex-wrap gap-2">
                   {globalStats.continentsList.map((continent: string) => (
                     <span
@@ -299,27 +299,27 @@ function InteractiveMap() {
           
           {/* Map Legend */}
           <div className="mt-6 flex flex-wrap gap-6 justify-center">
-            <div className="flex items-center text-sm text-gray-600">
+            <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
               <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-2">🎓</div>
               Education
             </div>
-            <div className="flex items-center text-sm text-gray-600">
+            <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
               <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-white text-xs mr-2">💼</div>
               Work
             </div>
-            <div className="flex items-center text-sm text-gray-600">
+            <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
               <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs mr-2">🎤</div>
               Conference
             </div>
-            <div className="flex items-center text-sm text-gray-600">
+            <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
               <div className="w-6 h-6 bg-amber-500 rounded-full flex items-center justify-center text-white text-xs mr-2">✈️</div>
               Travel
             </div>
-            <div className="flex items-center text-sm text-gray-600">
+            <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
               <div className="w-6 h-6 bg-rose-500 rounded-full flex items-center justify-center text-white text-xs mr-2">🏠</div>
               Home
             </div>
-            <p className="text-xs text-gray-500">Click markers to learn more</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Click markers to learn more</p>
           </div>
         </div>
       </motion.div>
@@ -352,7 +352,7 @@ function PerformanceMonitor() {
 export default function MapPage() {
   return (
     <MapProvider>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
         {/* SEO Enhancement for Phase 3 */}
         <div className="sr-only">
           <h1>Cherry Lian&apos;s Global Journey - Interactive World Map</h1>
@@ -370,10 +370,10 @@ export default function MapPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               Global Journey
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Explore my international experiences in robotics, AI, and engineering across the globe. 
               From academic pursuits to industry collaborations, each location represents a milestone in my professional journey.
             </p>

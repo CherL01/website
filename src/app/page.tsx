@@ -247,7 +247,7 @@ export default function HomePage() {
       </section>
 
       {/* Projects & Publications Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -256,10 +256,10 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">
               Explore My Work
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Discover my projects and publications in robotics and machine learning.
             </p>
           </motion.div>
@@ -284,8 +284,8 @@ export default function HomePage() {
                         <Settings className="w-8 h-8 text-secondary-600" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-800">Projects</h3>
-                        <p className="text-gray-500">{projectCount} technical projects</p>
+                        <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Projects</h3>
+                        <p className="text-gray-500 dark:text-gray-400">{projectCount} technical projects</p>
                       </div>
                     </div>
                     <ArrowRight className="w-6 h-6 text-gray-400 group-hover:text-primary-600 transition-colors" />
@@ -300,9 +300,9 @@ export default function HomePage() {
                           className="w-full h-full"
                         />
                       </div>
-                      <h4 className="font-semibold text-gray-800">{resumeData.projects[0]?.name || "HINTeract Framework"}</h4>
+                      <h4 className="font-semibold text-gray-800 dark:text-gray-100">{resumeData.projects[0]?.name || "HINTeract Framework"}</h4>
                     </div>
-                    <p className="text-gray-600 text-sm mb-4">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                       {resumeData.projects[0]?.details.join(' ') || "Interactive robot learning with hierarchical imitation learning and hint-guided feedback"}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -316,8 +316,8 @@ export default function HomePage() {
 
                   {/* CTA */}
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">Robotics • ML • Computer Vision</span>
-                    <span className="text-primary-600 font-medium group-hover:text-primary-700">
+                    <span className="text-sm text-gray-500 dark:text-gray-400">Robotics • ML • Computer Vision</span>
+                    <span className="text-primary-600 dark:text-primary-400 font-medium group-hover:text-primary-700 dark:group-hover:text-primary-300">
                       Explore All Projects →
                     </span>
                   </div>
@@ -344,8 +344,8 @@ export default function HomePage() {
                         <BookOpen className="w-8 h-8 text-primary-600" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-800">Publications</h3>
-                        <p className="text-gray-500">{publicationCount} research papers</p>
+                        <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Publications</h3>
+                        <p className="text-gray-500 dark:text-gray-400">{publicationCount} research papers</p>
                       </div>
                     </div>
                     <ArrowRight className="w-6 h-6 text-gray-400 group-hover:text-primary-600 transition-colors" />
@@ -362,16 +362,16 @@ export default function HomePage() {
                       </div>
                       <span className="text-xs text-gray-500">{recentPublication.year}</span>
                     </div>
-                    <h4 className="font-semibold text-gray-800 mb-2 line-clamp-2">
+                    <h4 className="font-semibold text-gray-800 dark:text-gray-100 mb-2 line-clamp-2">
                       {recentPublication.title}
                     </h4>
                     <div className="flex items-center mb-3">
-                      <span className="text-sm text-gray-600 font-medium inline-flex items-center">
+                      <span className="text-sm text-gray-600 dark:text-gray-300 font-medium inline-flex items-center">
                         <MapPin size={14} className="mr-1" />
                         {recentPublication.venue}
                       </span>
                     </div>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
                       {recentPublication.abstract}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -385,8 +385,8 @@ export default function HomePage() {
 
                   {/* CTA */}
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">HRI • SLAM • Network ML</span>
-                    <span className="text-primary-600 font-medium group-hover:text-primary-700">
+                    <span className="text-sm text-gray-500 dark:text-gray-400">HRI • SLAM • Network ML</span>
+                    <span className="text-primary-600 dark:text-primary-400 font-medium group-hover:text-primary-700 dark:group-hover:text-primary-300">
                       View All Publications →
                     </span>
                   </div>
@@ -398,7 +398,7 @@ export default function HomePage() {
       </section>
 
       {/* Affiliations Section */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-12"
@@ -407,10 +407,10 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">
               Affiliations
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-300">
               Institutions and organizations I&apos;ve had the privilege to work with
             </p>
           </motion.div>

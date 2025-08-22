@@ -37,7 +37,7 @@ export default function AffiliationCard({ affiliation, index }: AffiliationCardP
 
   return (
     <motion.div
-      className={`flex flex-col items-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group ${
+      className={`flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group ${
         affiliation.website !== '#' ? 'cursor-pointer' : ''
       }`}
       whileHover={{ y: -5 }}
@@ -66,13 +66,13 @@ export default function AffiliationCard({ affiliation, index }: AffiliationCardP
       </div>
 
       {/* Content */}
-      <h3 className="font-semibold text-gray-800 text-center mb-1 line-clamp-2">
+      <h3 className="font-semibold text-gray-800 dark:text-gray-100 text-center mb-1 line-clamp-2">
         {affiliation.name}
       </h3>
-      <p className="text-sm text-gray-500 text-center mb-1">
+      <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-1">
         {affiliation.role}
       </p>
-      <p className="text-xs text-gray-400 text-center">
+      <p className="text-xs text-gray-400 dark:text-gray-500 text-center">
         {affiliation.period}
       </p>
 
