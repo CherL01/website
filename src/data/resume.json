@@ -28,6 +28,18 @@
     ],
     "experience": [
       {
+        "title": "Introduction to Artificial Intelligence Teaching Assistant",
+        "company": "Georgia Institute of Technology",
+        "location": "Atlanta, GA",
+        "start_date": "Aug 2025",
+        "end_date": "Present",
+        "responsibilities": [
+          "Supported a class of 2000+ students by managing student communication pipelines and coordinating logistics across multiple platforms",
+          "Designed and reviewed coding assignments, quizzes, and exams to align with core AI concepts and ensure fairness and clarity",
+          "Conducted code reviews and provided structured feedback to enhance student understanding of algorithmic implementation and debugging"
+        ]
+      },
+      {
         "title": "Robotics Engineer",
         "company": "Advanced Mechatronics Solutions",
         "location": "San Diego, CA",
@@ -39,13 +51,25 @@
         ]
       },
       {
+        "title": "Deep Reinforcement Learning Teaching Assistant",
+        "company": "Georgia Institute of Technology",
+        "location": "Atlanta, GA",
+        "start_date": "Aug 2024",
+        "end_date": "Apr 2025",
+        "responsibilities": [
+          "Led and coordinated a team of 6 teaching assistants to strategically plan and design coursework deliverables, ensuring that all tasks met key deadlines and project milestones",
+          "Collaborated with faculty to design course modules, completing curriculum development 2 days ahead of schedule",
+          "Streamlined communication channels for 130+ students and staff by implementing documentation protocols and efficient discussion platforms, significantly improving organizational clarity and responsiveness"
+        ]
+      },
+      {
         "title": "SLAM and Navigation Researcher",
         "company": "Georgia Institute of Technology",
         "location": "Atlanta, GA",
         "start_date": "Aug 2024",
         "end_date": "Present",
         "responsibilities": [
-          "Implemented a real-time semantic visual-inertial SLAM system for quadruped and mobile robots by developing a computer vision pipeline for ORB feature extraction and integrating high-frequency IMU and camera data with deep learning-based semantic segmentation",
+          "Implemented and tested modules for visual-inertial SLAM pipelines on mobile robots, focusing on ORB-based feature extraction and semantic map integration using deep learning models",
           "Developed a semantic navigation framework incorporating a vision-language model (VLM) to generate language-guided actions, enabling intuitive and socially-aware human-robot interaction in dynamic environments",
           "Led hardware troubleshooting and sensor calibration on TurtleBot4 platform, streamlining data pipelines and connectivity to ensure reliable real-time performance and system robustness",
           "Publication: Yi Lian, J. Taery Kim, Sehoon Ha, “Implicit Behavioral Cues for Enhancing Trust and Comfort in Robot Social Navigation,” ICRA 2025 PTAS Workshop (Best Presentation Award)"
