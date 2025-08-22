@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Eye, BookOpen, Code, MapPin } from 'lucide-react';
+import { ArrowRight, Eye, BookOpen, Settings, MapPin } from 'lucide-react';
 import resumeData from '@/data/resume.json';
 import affiliationsData from '@/data/affiliations.json';
 import ResumeModal from '@/components/ResumeModal';
@@ -281,7 +281,7 @@ export default function HomePage() {
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center space-x-3">
                       <div className="p-3 bg-gradient-to-br from-secondary-100 to-secondary-200 rounded-xl">
-                        <span className="text-2xl">⚙️</span>
+                        <Settings className="w-8 h-8 text-secondary-600" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold text-gray-800">Projects</h3>
