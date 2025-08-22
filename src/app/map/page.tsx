@@ -374,8 +374,7 @@ export default function MapPage() {
               Global Journey
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Explore my international experiences in robotics, AI, and engineering across the globe. 
-              From academic pursuits to industry collaborations, each location represents a milestone in my professional journey.
+              My virtual passport!
             </p>
           </motion.div>
 

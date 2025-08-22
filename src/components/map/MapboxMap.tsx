@@ -24,11 +24,14 @@ export default function MapboxMap({
 
   const handleMapLoad = useCallback(() => {
     // incrementLoad(); // Track map load for usage monitoring
-    setIsMapLoaded(true);
-    if (process.env.NODE_ENV === 'development') {
-      console.log('🗺️ Mapbox map loaded');
-    }
-    onMapLoad?.();
+    // Add a small delay to ensure the map is fully ready
+    setTimeout(() => {
+      setIsMapLoaded(true);
+      if (process.env.NODE_ENV === 'development') {
+        console.log('🗺️ Mapbox map loaded');
+      }
+      onMapLoad?.();
+    }, 100);
   }, [onMapLoad]);
 
   const handleViewStateChange = useCallback((evt: ViewStateChangeEvent) => {

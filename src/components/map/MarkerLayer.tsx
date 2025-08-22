@@ -77,6 +77,10 @@ const MarkerLayer = memo(function MarkerLayer({
   onMarkerClick,
   onMarkerHover
 }: MarkerLayerProps) {
+  // Add a safety check to ensure we have valid locations
+  if (!locations || locations.length === 0) {
+    return null;
+  }
   // Filter locations based on the current filter
   const filteredLocations = useMemo(() => {
     if (filter === 'all') return locations;
@@ -114,6 +118,9 @@ const MarkerLayer = memo(function MarkerLayer({
           longitude={lng}
           latitude={lat}
           anchor="bottom"
+          onError={(error) => {
+            console.warn(`Failed to render marker for ${location.city}:`, error);
+          }}
         >
             <motion.button
               className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-full"
@@ -185,11 +192,17 @@ const MarkerLayer = memo(function MarkerLayer({
     }
   }, [selectedLocationId, hoveredLocationId, handleMarkerClick, handleMarkerHover]);
 
-  return (
-    <>
-      {filteredLocations.map((location) => renderMarker(location))}
-    </>
-  );
+  // Add error boundary for the entire marker layer
+  try {
+    return (
+      <>
+        {filteredLocations.map((location) => renderMarker(location))}
+      </>
+    );
+  } catch (error) {
+    console.error('Error rendering marker layer:', error);
+    return null; // Return null if there's an error, preventing the entire map from crashing
+  }
 });
 
 export default MarkerLayer; 
