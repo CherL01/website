@@ -67,6 +67,17 @@
     ],
     "projects": [
       {
+        "name": "PHARMore, Data Mining for Drug Discovery",
+        "technologies": ["Python", "Streamlit", "AWS", "Gemini", "PyTorch"],
+        "start_date": "Feb 2025",
+        "end_date": "Feb 2025",
+        "details": [
+          "Developed an integrated application that automatically extracts drug mentions and metadata from research papers (PDF/URL), achieving a 92% extraction accuracy on benchmark datasets.",
+          "Engineered a recommendation engine using NLP and public biomedical databases to deliver drug similarity suggestions, improving recommendation precision by 20%.",
+          "Deployed a chatbot powered by the Google Gemini API on AWS via Streamlit, reducing research data processing time by 35% and streamlining drug repurposing workflows."
+        ]
+      },
+      {
         "name": "HINTeract, Interactive Robot Learning Framework",
         "technologies": ["Python", "Robosuite", "PyTorch"],
         "start_date": "Jan 2025",
@@ -85,6 +96,37 @@
           "Developed an autonomous robot follower on TurtleBot3 by employing SIFT-based feature extraction and image segmentation using OpenCV and custom ROS2 packages",
           "Integrated a SLAM framework with a dynamic window-based controller for precise global localization and coordinate-based navigation, enabling efficient maze traversal through KNN-based directional sign classification"
         ]
+      },
+      {
+        "name": "Oogway, Autonomous Rover and Robot Companion",
+        "technologies": ["ROS", "C++", "OpenCV"],
+        "start_date": "Jan 2024",
+        "end_date": "Apr 2024",
+        "details": [
+          "Developed a SLAM system on TurtleBot 2 using SURF-based feature detection, enabling reliable recognition and tracking of over five distinct objects in a maze environment with ROS, gmapping, and OpenCV.",
+          "Integrated object-following and emotion-display modules that resulted in an 80% user satisfaction rating, improving the system's responsiveness and user engagement."
+        ]
+      },
+      {
+        "name": "Kir-B, Autonomous Maze-Navigating Rover",
+        "technologies": ["Python", "Arduino"],
+        "start_date": "Sep 2023",
+        "end_date": "Dec 2023",
+        "details": [
+          "Designed an Arduino-based autonomous maze-navigating rover, achieving a top 3 ranking for autonomy in competition.",
+          "Developed and integrated modules for obstacle avoidance, localization, object detection, and communication, enabling efficient sensor data transfer from Arduino Mega via Bluetooth and high-level command processing in Python.",
+          "Improved localization accuracy by 70% through advanced sensor data preprocessing and the implementation of a particle filter algorithm."
+        ]
+      },
+      {
+        "name": "Driver Drowsiness Detector, Real-time Drowsiness Detection",
+        "technologies": ["PyTorch", "OpenCV"],
+        "start_date": "Jan 2021",
+        "end_date": "Apr 2021",
+        "details": [
+          "Designed and trained a convolutional neural network (CNN) in PyTorch for high-accuracy driver drowsiness detection (98.9%), with real-time facial feature extraction from video frames using OpenCV.",
+          "Implemented a bounding box system for precise feature detection, achieving reliable monitoring in live video scenarios."
+        ]
       }
     ],
     "technical_skills": [
@@ -92,7 +134,8 @@
       "PyTorch", "NumPy", "Pandas", "TensorFlow", "Linux",
       "ROS", "ROS2", "Git/GitHub", "Docker", "Jupyter",
       "VSCode", "Arduino", "tmux", "scikit-learn", "OpenCV",
-      "NLTK", "PySerial", "socket", "Django", "AWS", "Unity"
+      "NLTK", "PySerial", "socket", "Django", "AWS", "Unity",
+      "Streamlit", "Gemini", "NLP"
     ],
     "links": [
       "mailto:cherry.lian@gatech.edu",

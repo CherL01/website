@@ -48,6 +48,10 @@ function ProjectImage({ projectName, className }: { projectName: string; classNa
   const getProjectEmoji = (name: string) => {
     if (name.toLowerCase().includes('hinteract')) return '🤖';
     if (name.toLowerCase().includes('spooderman') || name.toLowerCase().includes('spider')) return '🕷️';
+    if (name.toLowerCase().includes('pharmore')) return '💊';
+    if (name.toLowerCase().includes('oogway')) return '🐢';
+    if (name.toLowerCase().includes('kir-b')) return '🚗';
+    if (name.toLowerCase().includes('drowsiness') || name.toLowerCase().includes('driver')) return '👁️';
     return '🔧'; // Default for other projects
   };
 

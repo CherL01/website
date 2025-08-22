@@ -121,7 +121,13 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
       >
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-9xl opacity-40">
-            {project.name.includes('HINTeract') ? '🤖' : '🕷️'}
+            {project.name.includes('HINTeract') ? '🤖' : 
+             project.name.includes('SpooderMan') ? '🕷️' :
+             project.name.includes('PHARMore') ? '💊' :
+             project.name.includes('Oogway') ? '🐢' :
+             project.name.includes('Kir-B') ? '🚗' :
+             project.name.includes('Drowsiness') || project.name.includes('Driver') ? '👁️' : 
+             '🔧'}
           </div>
         </div>
         

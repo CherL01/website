@@ -160,7 +160,13 @@ export default function ProjectsPage() {
                   {/* Project Image Placeholder */}
                   <div className="h-48 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg mb-6 flex items-center justify-center relative overflow-hidden">
                     <div className="text-6xl opacity-60">
-                      {project.name.includes('HINTeract') ? '🤖' : '🕷️'}
+                      {project.name.includes('HINTeract') ? '🤖' : 
+                       project.name.includes('SpooderMan') ? '🕷️' :
+                       project.name.includes('PHARMore') ? '💊' :
+                       project.name.includes('Oogway') ? '🐢' :
+                       project.name.includes('Kir-B') ? '🚗' :
+                       project.name.includes('Drowsiness') || project.name.includes('Driver') ? '👁️' : 
+                       '🔧'}
                     </div>
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-primary-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
