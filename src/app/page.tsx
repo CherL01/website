@@ -200,9 +200,9 @@ export default function HomePage() {
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
                 I&apos;m passionate about building robots that move, think, and collaborate with humans.
-                My work centers on human-robot interaction (HRI), perception, and motion planning for autonomous systems.
-                Currently, I’m pursuing my M.S. in Robotics at Georgia Tech, where I&apos;m developing a robot guide dog to assist people with visual impairments.
-                When I’m not debugging robots, I’m probably exploring a new city. Check out my map to see where I’ve been!
+                My work focuses on human-robot interaction (HRI), perception, and motion planning for autonomous systems.
+                I&apos;m currently pursuing my M.S. in Robotics at Georgia Tech, where I&apos;m developing a robot guide dog to assist people with visual impairments.
+                When I&apos;m not debugging robots, I&apos;m probably exploring a new city. Check out my map to see where I&apos;ve been!
               </motion.p>
 
               <motion.div
