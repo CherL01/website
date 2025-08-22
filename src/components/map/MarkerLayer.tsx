@@ -77,10 +77,6 @@ const MarkerLayer = memo(function MarkerLayer({
   onMarkerClick,
   onMarkerHover
 }: MarkerLayerProps) {
-  // Add a safety check to ensure we have valid locations
-  if (!locations || locations.length === 0) {
-    return null;
-  }
   // Filter locations based on the current filter
   const filteredLocations = useMemo(() => {
     if (filter === 'all') return locations;
@@ -190,7 +186,12 @@ const MarkerLayer = memo(function MarkerLayer({
       console.error(`Error rendering marker for ${location.city}, ${location.country}:`, error);
       return null;
     }
-  }, [selectedLocationId, hoveredLocationId, handleMarkerClick, handleMarkerHover]);
+      }, [selectedLocationId, hoveredLocationId, handleMarkerClick, handleMarkerHover, filter]);
+
+  // Add safety check after all hooks
+  if (!locations || locations.length === 0) {
+    return null;
+  }
 
   // Add error boundary for the entire marker layer
   try {
