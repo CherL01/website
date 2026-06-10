@@ -16,6 +16,7 @@ interface Publication {
   title: string;
   authors: string[];
   venue: string;
+  venue_note?: string;
   year: string;
   type: string;
   status: string;

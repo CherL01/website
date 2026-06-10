@@ -268,6 +268,11 @@ export default function PublicationsPage() {
                       <MapPin size={14} className="mr-1" />
                       <span className="font-medium">{publication.venue}</span>
                     </span>
+                    {publication.venue_note && (
+                      <span className="block text-sm text-gray-500 dark:text-gray-400 mt-0.5 ml-5">
+                        {publication.venue_note}
+                      </span>
+                    )}
                   </p>
 
                   {/* Keywords */}
