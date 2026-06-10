@@ -536,14 +536,6 @@
     ]
   },
   {
-    "city": "Manitoba",
-    "country": "Canada",
-    "coordinates": [-98.8139, 53.7609],
-    "entries": [
-      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
-    ]
-  },
-  {
     "city": "Gimli",
     "country": "Canada",
     "coordinates": [-96.9909, 50.6284],
@@ -704,7 +696,7 @@
     ]
   },
   {
-    "city": "Portland",
+    "city": "Portland, OR",
     "country": "USA",
     "coordinates": [-122.6765, 45.5231],
     "entries": [
@@ -715,14 +707,6 @@
     "city": "Banff",
     "country": "Canada",
     "coordinates": [-115.5708, 51.1784],
-    "entries": [
-      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
-    ]
-  },
-  {
-    "city": "Wyoming",
-    "country": "USA",
-    "coordinates": [-107.2903, 43.0750],
     "entries": [
       { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
     ]
@@ -931,6 +915,110 @@
     "city": "Paris",
     "country": "France",
     "coordinates": [2.3522, 48.8566],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Cypress",
+    "country": "USA",
+    "coordinates": [-118.0373, 33.8169],
+    "entries": [
+      { "id": "", "type": "work", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Yellowstone",
+    "country": "USA",
+    "coordinates": [-110.5885, 44.428],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Savannah",
+    "country": "USA",
+    "coordinates": [-81.0998, 32.0809],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Helen",
+    "country": "USA",
+    "coordinates": [-83.7327, 34.7029],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Augusta",
+    "country": "USA",
+    "coordinates": [-82.0105, 33.4735],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "New Orleans",
+    "country": "USA",
+    "coordinates": [-90.0715, 29.9511],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Key West",
+    "country": "USA",
+    "coordinates": [-81.78, 24.5551],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Chichén Itzá",
+    "country": "Mexico",
+    "coordinates": [-88.5678, 20.6843],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Raleigh",
+    "country": "USA",
+    "coordinates": [-78.6382, 35.7796],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "San Jose",
+    "country": "USA",
+    "coordinates": [-121.8863, 37.3382],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Santa Cruz",
+    "country": "USA",
+    "coordinates": [-122.0308, 36.9741],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Nanaimo",
+    "country": "Canada",
+    "coordinates": [-123.9401, 49.1659],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Portland, ME",
+    "country": "USA",
+    "coordinates": [-70.2553, 43.6591],
     "entries": [
       { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
     ]
