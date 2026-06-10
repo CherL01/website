@@ -19,6 +19,7 @@ const CONTINENT_MAP: Record<string, string> = {
   'France': 'Europe',
   'Italy': 'Europe',
   'Spain': 'Europe',
+  'Malta': 'Europe',
   'Netherlands': 'Europe',
   'Switzerland': 'Europe',
   'Sweden': 'Europe',

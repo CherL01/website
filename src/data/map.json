@@ -838,5 +838,101 @@
     "entries": [
       { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
     ]
-  }  
-] 
+  },
+  {
+    "city": "Barcelona",
+    "country": "Spain",
+    "coordinates": [2.1734, 41.3851],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Marseille",
+    "country": "France",
+    "coordinates": [5.3698, 43.2965],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Genoa",
+    "country": "Italy",
+    "coordinates": [8.9463, 44.4056],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Civitavecchia",
+    "country": "Italy",
+    "coordinates": [11.7963, 42.0934],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Rome",
+    "country": "Italy",
+    "coordinates": [12.4964, 41.9028],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Messina",
+    "country": "Italy",
+    "coordinates": [15.5540, 38.1938],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Valletta",
+    "country": "Malta",
+    "coordinates": [14.5146, 35.8989],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Zurich",
+    "country": "Switzerland",
+    "coordinates": [8.5417, 47.3769],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Geneva",
+    "country": "Switzerland",
+    "coordinates": [6.1432, 46.2044],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Lyon",
+    "country": "France",
+    "coordinates": [4.8357, 45.7640],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Avignon",
+    "country": "France",
+    "coordinates": [4.8055, 43.9493],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  },
+  {
+    "city": "Paris",
+    "country": "France",
+    "coordinates": [2.3522, 48.8566],
+    "entries": [
+      { "id": "", "type": "travel", "institution": "", "role": "", "duration": "", "photos": [], "links": [], "achievements": [] }
+    ]
+  }
+]
